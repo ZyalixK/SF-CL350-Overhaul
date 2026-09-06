@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/aileron-gauge/aileron-gauge.css">
+
+<script type="text/html" id="aileron-gauge-template">
+  <div class="component-container">
+    <svg width="232" height="192" viewBox="-58 -48 116 96" class="bg-black">
+      <!-- Guide -->
+      <!-- <circle cx="0" cy="0" r="35" fill="magenta" style="opacity: 0.5"></circle> -->
+
+      <!-- Gauge Pointer -->
+      <path d="
+          M -22 0
+          L 0 -3
+          L 0 3
+          Z
+        " id="ail-pointer-left" class="ail-out-of-band" stroke-linejoin="round" fill="transparent" style="transform: rotate(0deg);">
+      </path>
+      <path d="
+          M 22 0
+          L 0 -3
+          L 0 3
+          Z
+        " id="ail-pointer-right" class="ail-out-of-band" fill="transparent" style="transform: rotate(0deg);",
+        }">
+      </path>
+
+      <!-- center circle -->
+      <circle cx="0" cy="0" r="2.5" class="fill-white"></circle>
+
+      <!-- Line Marker -->
+      <!-- adjust x on M and A +- 3 -->
+      <path d="
+        M -18 -31
+        A 35 35, 0, 0 0, -18 31
+        M 18 -31
+        A 35 35, 0, 0 1, 18 31
+      " class="stroke-white" fill="transparent"></path>
+
+      <path id="ail-band-left" d="
+        M -35 -10
+        A 35 35, 0, 0 0, -35 10
+      " fill="transparent" class="stroke-green" stroke-width="4">
+      </path>
+      <path id="ail-band-right" d="
+        M 35 -10
+        A 35 35, 0, 0 1, 35 10
+      " fill="transparent" class="stroke-green" stroke-width="4">
+      </path>
+
+      <!-- Tick Markers -->
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(-150deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(-120deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(-60deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(-30deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(0deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(30deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(60deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(120deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(150deg)"></line>
+      <line x1="30" y1="0" x2="36" y2="0" class="stroke-white" style="transform: rotate(180deg)"></line>
+
+      <!-- Texts -->
+      <text x="-10" y="-33" class="fill-grey text-sm">
+        <tspan>AIL</tspan>
+      </text>>
+      <text x="-42" y="45" class="text-sm fill-grey">
+        <tspan>LWD</tspan>
+        <tspan x="20">RWD</tspan>
+      </text>
+
+    </svg>
+  </div>
+</script>
+
+<script type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/aileron-gauge/aileron-gauge.js"></script>

@@ -1,0 +1,2043 @@
+<ModelBehaviors>
+  <!-- ANIM -->
+  <Template Name="P21_ANIM_WRAP">
+    <DefaultTemplateParameters>
+      <ANIM_DURATION>0.25</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_REST>0</ANIM_FRAME_REST>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_NAME>ANIM_NOT_DEFINED</ANIM_NAME>
+      <ANIM_LAG>0</ANIM_LAG>
+      <EXTRA_CODE></EXTRA_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+    </DefaultTemplateParameters>
+
+    <UseTemplate Name="ASOBO_GT_Anim_Code">
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <ANIM_LENGTH>#ANIM_FRAME_MAX# #ANIM_FRAME_MIN# - abs</ANIM_LENGTH>
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_LAG>#ANIM_LAG#</ANIM_LAG>
+      <ANIM_CODE>
+                #EXTRA_CODE#
+                #ANIM_DURATION# (A:ANIMATION DELTA TIME, second) / (&gt;O:ANIM_INTERVAL)
+                #ANIM_FRAME_MAX# #ANIM_FRAME_MIN# - (O:ANIM_INTERVAL) / (&gt;O:ANIM_POS_INC)
+                (O:ANIM_TARGET_POS) (O:ANIM_CUR_POS) - abs (O:ANIM_POS_INC) &lt; if{
+                    (O:ANIM_TARGET_POS) (&gt;O:ANIM_CUR_POS)
+                    (O:ANIM_CUR_POS) #ANIM_FRAME_MIN# &gt; if{
+                        #ANIM_FRAME_REST# (&gt;O:ANIM_TARGET_POS)
+                        #ONANIMFINISHED#
+                    }
+                } els{
+                    (O:ANIM_TARGET_POS) (O:ANIM_CUR_POS) &gt; if{
+                        (O:ANIM_CUR_POS) (O:ANIM_POS_INC) + (&gt;O:ANIM_CUR_POS)
+                    } els{
+                        (O:ANIM_CUR_POS) (O:ANIM_POS_INC) - (&gt;O:ANIM_CUR_POS)
+                    }
+                }
+                (O:ANIM_CUR_POS) #ANIM_FRAME_MIN# max (&gt;O:ANIM_CUR_POS)
+                (O:ANIM_CUR_POS) #ANIM_FRAME_MAX# min (&gt;O:ANIM_CUR_POS)                
+                (O:ANIM_CUR_POS)					
+      </ANIM_CODE>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="P21_ANIM">
+    <DefaultTemplateParameters>
+      <ANIM_DURATION>0.5</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_LAG>0</ANIM_LAG>
+      <ANIM_NAME>ANIM_NOT_DEFINED</ANIM_NAME>
+      <EXTRA_CODE></EXTRA_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+    </DefaultTemplateParameters>
+
+    <UseTemplate Name="ASOBO_GT_Anim_Code">
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <ANIM_LENGTH>#ANIM_FRAME_MAX# #ANIM_FRAME_MIN# -</ANIM_LENGTH>
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_LAG>#ANIM_LAG#</ANIM_LAG>
+      <ANIM_CODE>
+            #EXTRA_CODE#
+            #ANIM_DURATION# (A:ANIMATION DELTA TIME, second) / (&gt;O:ANIM_INTERVAL)
+            #ANIM_FRAME_MAX# #ANIM_FRAME_MIN# - (O:ANIM_INTERVAL) / (&gt;O:ANIM_POS_INC)
+            (O:ANIM_TARGET_POS) (O:ANIM_CUR_POS) - abs (O:ANIM_POS_INC) &lt; if{
+                (O:ANIM_TARGET_POS) (&gt;O:ANIM_CUR_POS)
+                #ONANIMFINISHED#
+            } els{
+                (O:ANIM_TARGET_POS) (O:ANIM_CUR_POS) &gt; if{
+                    (O:ANIM_CUR_POS) (O:ANIM_POS_INC) + (&gt;O:ANIM_CUR_POS)
+                } els{
+                    (O:ANIM_CUR_POS) (O:ANIM_POS_INC) - (&gt;O:ANIM_CUR_POS)
+                }
+            }
+            (O:ANIM_CUR_POS) #ANIM_FRAME_MIN# max (&gt;O:ANIM_CUR_POS)
+            (O:ANIM_CUR_POS) #ANIM_FRAME_MAX# min (&gt;O:ANIM_CUR_POS)                
+            (O:ANIM_CUR_POS)					
+      </ANIM_CODE>
+    </UseTemplate>
+  </Template>
+
+  <!-- SOUNDS -->
+  <Template Name="P21_GENERIC_SOUND">
+    <DefaultTemplateParameters>
+      <ANIM_NAME>ANIM_GENERIC_SOUND_BUTTON</ANIM_NAME>
+      <ANIM_POS_X>ANIM_GENERIC_SOUND_X</ANIM_POS_X>
+      <ANIM_POS_Y>ANIM_GENERIC_SOUND_Y</ANIM_POS_Y>
+      <ANIM_POS_Z>ANIM_GENERIC_SOUND_Z</ANIM_POS_Z>
+      <CODE_POS_X>(L:P21_X_SND_GENERIC_POS_X) 100 *</CODE_POS_X>
+      <CODE_POS_Y>(L:P21_X_SND_GENERIC_POS_Y) 100 *</CODE_POS_Y>
+      <CODE_POS_Z>(L:P21_X_SND_GENERIC_POS_Z) 100 *</CODE_POS_Z>
+      <CODE_PLAY>(L:P21_X_SND_GENERIC_PLAY) 100 *</CODE_PLAY>
+      <SOUND_TRIGGER_TIME>0.25</SOUND_TRIGGER_TIME>
+      <SOUND_TRIGGER_TIME_2>0.75</SOUND_TRIGGER_TIME_2>
+      <SOUND_TRIGGER_DIR>Forward</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_DIR_2>Backward</SOUND_TRIGGER_DIR_2>
+      <SOUND_EVENT>generic_button_push_on</SOUND_EVENT>
+      <SOUND_EVENT_2>generic_button_push_off</SOUND_EVENT_2>
+    </DefaultTemplateParameters>
+
+    <Condition Valid="CUSTOM_ANIM">
+      <True>
+        <UseTemplate Name="ASOBO_GT_Anim_Code">
+          <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+          <ANIM_LENGTH>100</ANIM_LENGTH>
+          <ANIM_DURATION>0.01</ANIM_DURATION>
+          <ANIM_CODE>#CODE_PLAY#</ANIM_CODE>
+          <ANIM_LAG>0</ANIM_LAG>
+        </UseTemplate>
+      </True>
+    </Condition>
+
+    <AnimationTriggers Animation="#ANIM_NAME#">
+      <EventTrigger NormalizedTime="#SOUND_TRIGGER_TIME#" Direction="#SOUND_TRIGGER_DIR#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT#" Action="Play" />
+      </EventTrigger>
+      <EventTrigger NormalizedTime="#SOUND_TRIGGER_TIME_2#" Direction="#SOUND_TRIGGER_DIR_2#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT_2#" Action="Play" />
+      </EventTrigger>
+    </AnimationTriggers>
+  </Template>
+
+  <!-- INPUT EVENT -->
+  <InputEvent ID="P21_EVENT">
+    <Presets>
+      <Preset ID="#PRESET_NAME#">
+        <Tooltip>
+          <Icon>#TT_ICON#</Icon>
+          <Interaction>#TT_INTERACTION#</Interaction>
+          <InteractionLockable>#TT_INTERACTIONLOCKABLE#</InteractionLockable>
+          <TTValue RPN="True">#TT_VALUE#</TTValue>
+          <TTDescription RPN="True">#TT_DESCRIPTION#</TTDescription>
+          <TT_DESCRIPTION_IS_DYNAMIC>#TT_DESCRIPTION_IS_DYNAMIC#</TT_DESCRIPTION_IS_DYNAMIC>
+          <TOOLTIP_TITLE_IS_DYNAMIC>#TOOLTIP_TITLE_IS_DYNAMIC#</TOOLTIP_TITLE_IS_DYNAMIC>
+          <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+        </Tooltip>
+        <Value>
+          <Units>numbers</Units>
+          <Code>(#VAL_LOCALVAR#)</Code>
+          <Init>(#VAL_LOCALVAR#)</Init>
+        </Value>
+        <Inc>
+          <Code>(#VAL_LOCALVAR#) p0 + (&gt;#VAL_LOCALVAR#)</Code>
+          <Parameters>
+            <Param Type="Float" RPN="False">p0</Param>
+          </Parameters>
+        </Inc>
+        <Dec>
+          <Code>(#VAL_LOCALVAR#) p0 - (&gt;#VAL_LOCALVAR#)</Code>
+          <Parameters>
+            <Param Type="Float" RPN="False">p0</Param>
+          </Parameters>
+        </Dec>
+        <Set>
+          <Code>p0 (&gt;#VAL_LOCALVAR#)</Code>
+          <Parameters>
+            <Param Type="Float" RPN="False">p0</Param>
+          </Parameters>
+        </Set>
+      </Preset>
+    </Presets>
+  </InputEvent>
+
+  <!-- BUTTONS -->
+  <Template Name="P21_BUTTON">
+    <DefaultTemplateParameters>
+      <ANIM_DURATION>0.1</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <PUSHED_IN_ANIMPOS>100</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0</PUSHED_OUT_ANIMPOS>
+      <ANIM_NAME></ANIM_NAME>
+      <ANIM_CODE>(#VAR_NAME#) 100 * (&gt;O:ANIM_TARGET_POS)</ANIM_CODE>
+
+      <CURSOR>Hand</CURSOR>
+      <VAR_NAME>H:P21_X_BTN_MOMENTARY</VAR_NAME>
+      <TOOLTIPID>Push Button Momentary</TOOLTIPID>
+      <TT_DESCRIPTION>'Click to Set'</TT_DESCRIPTION>
+      <TOOLTIP_VAL_CODE>'BTN'</TOOLTIP_VAL_CODE>
+      <TOOLTIP_TITLE>'Push Button'</TOOLTIP_TITLE>
+      <TOOLTIP_TITLE_IS_DYNAMIC>true</TOOLTIP_TITLE_IS_DYNAMIC>
+
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <ONINIT_CODE></ONINIT_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+    </DefaultTemplateParameters>
+
+    <Condition Valid="NODE_ID">
+      <True>
+        <UseInputEvent ID="P21_EVENT">
+          <PRESET_NAME>#NODE_ID#</PRESET_NAME>
+          <TT_ICON>PUSH</TT_ICON>
+          <TT_INTERACTION>PRIMARY_DOWN</TT_INTERACTION>
+          <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+          <TOOLTIP_TITLE_IS_DYNAMIC>#TOOLTIP_TITLE_IS_DYNAMIC#</TOOLTIP_TITLE_IS_DYNAMIC>
+          <TT_DESCRIPTION_IS_DYNAMIC>#TT_DESCRIPTION_IS_DYNAMIC#</TT_DESCRIPTION_IS_DYNAMIC>
+          <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+          <TT_DESCRIPTION>#TT_DESCRIPTION#</TT_DESCRIPTION>
+          <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+          <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+        </UseInputEvent>
+      </True>
+      <False>
+        <UseInputEvent ID="P21_EVENT">
+          <PRESET_NAME>#VAR_NAME#</PRESET_NAME>
+          <TT_ICON>PUSH</TT_ICON>
+          <TT_INTERACTION>PRIMARY_DOWN</TT_INTERACTION>
+          <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+          <TOOLTIP_TITLE_IS_DYNAMIC>#TOOLTIP_TITLE_IS_DYNAMIC#</TOOLTIP_TITLE_IS_DYNAMIC>
+          <TT_DESCRIPTION_IS_DYNAMIC>#TT_DESCRIPTION_IS_DYNAMIC#</TT_DESCRIPTION_IS_DYNAMIC>
+          <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+          <TT_DESCRIPTION>#TT_DESCRIPTION#</TT_DESCRIPTION>
+          <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+          <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+        </UseInputEvent>
+      </False>
+    </Condition>
+
+    <UseTemplate Name="P21_ANIM">
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_FRAME_MIN>#ANIM_FRAME_MIN#</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>#ANIM_FRAME_MAX#</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>#ANIM_FRAME_REST#</ANIM_FRAME_REST>
+      <PUSHED_IN_ANIMPOS>#PUSHED_IN_ANIMPOS#</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>#PUSHED_OUT_ANIMPOS#</PUSHED_OUT_ANIMPOS>
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <EXTRA_CODE>
+				(O:_INITED) 1 != if{
+					1 (&gt;O:_INITED)
+					#ONINIT_CODE#
+				} els{
+					#ONUPDATE_CODE#
+				}
+				#ANIM_CODE#
+      </EXTRA_CODE>
+      <ONANIMFINISHED>#ONANIMFINISHED#</ONANIMFINISHED>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="P21_BUTTON_MOMENTARY">
+    <DefaultTemplateParameters>
+      <ANIM_DURATION>0.1</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>0</ANIM_FRAME_REST>
+      <PUSHED_IN_ANIMPOS>100</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0</PUSHED_OUT_ANIMPOS>
+      <ANIM_NAME></ANIM_NAME>
+
+      <CURSOR>Hand</CURSOR>
+      <VAR_NAME>H:P21_X_BTN_MOMENTARY</VAR_NAME>
+      <TOOLTIPID>Push Button Momentary</TOOLTIPID>
+      <TT_DESCRIPTION>'Click to Set'</TT_DESCRIPTION>
+      <TOOLTIP_VAL_CODE>'BTN'</TOOLTIP_VAL_CODE>
+      <TOOLTIP_TITLE>'Push Button'</TOOLTIP_TITLE>
+      <TOOLTIP_TITLE_IS_DYNAMIC>true</TOOLTIP_TITLE_IS_DYNAMIC>
+
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <ONINIT_CODE></ONINIT_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+    </DefaultTemplateParameters>
+
+    <Condition Valid="NODE_ID">
+      <True>
+        <UseInputEvent ID="P21_EVENT">
+          <PRESET_NAME>#NODE_ID#</PRESET_NAME>
+          <TT_ICON>PUSH</TT_ICON>
+          <TT_INTERACTION>PRIMARY_DOWN</TT_INTERACTION>
+          <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+          <TOOLTIP_TITLE_IS_DYNAMIC>#TOOLTIP_TITLE_IS_DYNAMIC#</TOOLTIP_TITLE_IS_DYNAMIC>
+          <TT_DESCRIPTION_IS_DYNAMIC>#TT_DESCRIPTION_IS_DYNAMIC#</TT_DESCRIPTION_IS_DYNAMIC>
+          <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+          <TT_DESCRIPTION>#TT_DESCRIPTION#</TT_DESCRIPTION>
+          <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+          <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+        </UseInputEvent>
+      </True>
+      <False>
+        <UseInputEvent ID="P21_EVENT">
+          <PRESET_NAME>#VAR_NAME#</PRESET_NAME>
+          <TT_ICON>PUSH</TT_ICON>
+          <TT_INTERACTION>PRIMARY_DOWN</TT_INTERACTION>
+          <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+          <TOOLTIP_TITLE_IS_DYNAMIC>#TOOLTIP_TITLE_IS_DYNAMIC#</TOOLTIP_TITLE_IS_DYNAMIC>
+          <TT_DESCRIPTION_IS_DYNAMIC>#TT_DESCRIPTION_IS_DYNAMIC#</TT_DESCRIPTION_IS_DYNAMIC>
+          <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+          <TT_DESCRIPTION>#TT_DESCRIPTION#</TT_DESCRIPTION>
+          <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+          <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+        </UseInputEvent>
+      </False>
+    </Condition>
+
+    <UseTemplate Name="P21_ANIM_WRAP">
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_FRAME_MIN>#ANIM_FRAME_MIN#</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>#ANIM_FRAME_MAX#</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>#ANIM_FRAME_REST#</ANIM_FRAME_REST>
+      <PUSHED_IN_ANIMPOS>#PUSHED_IN_ANIMPOS#</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>#PUSHED_OUT_ANIMPOS#</PUSHED_OUT_ANIMPOS>
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <EXTRA_CODE>
+				(O:_INITED) 1 != if{
+					1 (&gt;O:_INITED)
+					#ONINIT_CODE#
+				} els{
+					#ONUPDATE_CODE#
+				}
+      </EXTRA_CODE>
+      <ONANIMFINISHED>#ONANIMFINISHED#</ONANIMFINISHED>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="P21_BTN_PUSH_TOGGLE_MOUSERECT">
+    <DefaultTemplateParameters>
+      <MouseFlags>LeftAll+WheelUp+WheelDown+Lock+Unlock</MouseFlags>
+      <CURSOR>Hand</CURSOR>
+      <TOOLTIPID>Button Toggle</TOOLTIPID>
+      <TOOLTIP_TITLE>'Button Toggle'</TOOLTIP_TITLE>
+      <MAX_VALUE>2</MAX_VALUE>
+      <PUSHED_IN_VAL>1.0</PUSHED_IN_VAL>
+      <PUSHED_OUT_VAL>0.0</PUSHED_OUT_VAL>
+      <PUSHED_IN_ANIMPOS>100.0</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0.0</PUSHED_OUT_ANIMPOS>
+      <VAR_NAME>H:P21_X_BTN</VAR_NAME>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+      <VAR_AUDIO_POS_X>L:P21_X_SND_GENERIC_POS_X</VAR_AUDIO_POS_X>
+      <VAR_AUDIO_POS_Y>L:P21_X_SND_GENERIC_POS_Y</VAR_AUDIO_POS_Y>
+      <VAR_AUDIO_POS_Z>L:P21_X_SND_GENERIC_POS_Z</VAR_AUDIO_POS_Z>
+    </DefaultTemplateParameters>
+
+    <OverrideTemplateParameters>
+      <Condition Check="NODE_ID">
+        <!-- <TOOLTIP_TITLE>(R:1:@TT_Package.#NODE_ID#)</TOOLTIP_TITLE> -->
+        <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+        <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      </Condition>
+    </OverrideTemplateParameters>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>#MouseFlags#</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <CALLBACKCODE>
+				(M:Event) 'LeftSingle' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;#VAR_AUDIO_POS_X#)
+					#AUDIO_POS_Y# (&gt;#VAR_AUDIO_POS_Y#)
+					#AUDIO_POS_Z# (&gt;#VAR_AUDIO_POS_Z#)
+
+					(#VAR_NAME#) #PUSHED_OUT_VAL# == if{ 
+	            		#PUSHED_IN_VAL# (&gt;#VAR_NAME#)
+						#PUSHED_IN_ANIMPOS# (&gt;O:ANIM_TARGET_POS)
+	            	} els{
+	            		#PUSHED_OUT_VAL# (&gt;#VAR_NAME#)      
+						#PUSHED_OUT_ANIMPOS# (&gt;O:ANIM_TARGET_POS)     	
+	            	}
+					
+					#ONCHANGE_CODE#
+				} 
+				(M:Event) 'WheelDown' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;L:P21_X_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_X_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_X_SND_GENERIC_POS_Z)
+	            	#PUSHED_OUT_VAL# (&gt;#VAR_NAME#)
+					#PUSHED_OUT_ANIMPOS# (&gt;O:ANIM_TARGET_POS)     
+					#ONCHANGE_CODE#
+	            }
+	            (M:Event) 'WheelUp' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;L:P21_X_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_X_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_X_SND_GENERIC_POS_Z)
+	            	#PUSHED_IN_VAL# (&gt;#VAR_NAME#)
+					#PUSHED_IN_ANIMPOS# (&gt;O:ANIM_TARGET_POS)
+					#ONCHANGE_CODE#  
+	            }	
+      </CALLBACKCODE>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="P21_BTN_PUSH_TOGGLE">
+    <DefaultTemplateParameters>
+      <ANIM_DURATION>0.2</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>0</ANIM_FRAME_REST>
+      <PUSHED_IN_VAL>1.0</PUSHED_IN_VAL>
+      <PUSHED_OUT_VAL>0.0</PUSHED_OUT_VAL>
+      <PUSHED_IN_ANIMPOS>100</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0</PUSHED_OUT_ANIMPOS>
+      <ANIM_NAME>NO_ANIM_DEFINED</ANIM_NAME>
+
+      <SOUND_TRIGGER_TIME>0.2</SOUND_TRIGGER_TIME>
+      <SOUND_TRIGGER_TIME_2>0.8</SOUND_TRIGGER_TIME_2>
+      <SOUND_TRIGGER_DIR>Forward</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_DIR_2>Backward</SOUND_TRIGGER_DIR_2>
+      <SOUND_TRIGGER_ACTION>Play</SOUND_TRIGGER_ACTION>
+      <SOUND_EVENT>generic_switch_on</SOUND_EVENT>
+      <SOUND_EVENT_2>generic_switch_off</SOUND_EVENT_2>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+      <VAR_AUDIO_POS_X>L:P21_X_SND_GENERIC_POS_X</VAR_AUDIO_POS_X>
+      <VAR_AUDIO_POS_Y>L:P21_X_SND_GENERIC_POS_Y</VAR_AUDIO_POS_Y>
+      <VAR_AUDIO_POS_Z>L:P21_X_SND_GENERIC_POS_Z</VAR_AUDIO_POS_Z>
+
+      <CURSOR>Hand</CURSOR>
+      <VAR_NAME>H:P21_X_BTN_MOMENTARY</VAR_NAME>
+      <TOOLTIPID>Push Button Toggle</TOOLTIPID>
+      <TT_DESCRIPTION>'Click to Set'</TT_DESCRIPTION>
+      <TOOLTIP_TITLE_IS_DYNAMIC>true</TOOLTIP_TITLE_IS_DYNAMIC>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <TT_DESCRIPTION_IS_DYNAMIC>true</TT_DESCRIPTION_IS_DYNAMIC>
+      <TOOLTIP_VAL_CODE>(#VAR_NAME#)</TOOLTIP_VAL_CODE>
+
+      <ONCHANGE_CODE>
+				(#VAR_NAME#) 100 * (&gt;O:ANIM_TARGET_POS)
+				(#VAR_NAME#) (&gt;O:_LAST_VALUE)
+      </ONCHANGE_CODE>
+      <ONUPDATE_CODE>
+				(#VAR_NAME#) 100 * (&gt;O:ANIM_TARGET_POS)
+				(#VAR_NAME#) (&gt;O:_LAST_VALUE)
+      </ONUPDATE_CODE>
+      <ONINIT_CODE>
+				(#VAR_NAME#) 100 * (&gt;O:ANIM_TARGET_POS)
+				(#VAR_NAME#) (&gt;O:_LAST_VALUE)
+      </ONINIT_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+    </DefaultTemplateParameters>
+
+    <UseTemplate Name="P21_BUTTON"></UseTemplate>
+    <UseTemplate Name="P21_BTN_PUSH_TOGGLE_MOUSERECT"></UseTemplate>
+    <UseTemplate Name="P21_GENERIC_SOUND"></UseTemplate>
+  </Template>
+
+  <Template Name="P21_ROTARY_3STATE">
+    <DefaultTemplateParameters>
+      <ANIM_LENGTH>100</ANIM_LENGTH>
+      <ANIM_DURATION>1.0</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_LAG>0</ANIM_LAG>
+      <WHEEL_REACTION>0.05</WHEEL_REACTION>
+      <ANIM_STEP>0.05</ANIM_STEP>
+      <ANIM_NAME>#NODE_ID#</ANIM_NAME>
+      <DRAG_REACTION>0.25</DRAG_REACTION>
+      <CURSOR>Grab</CURSOR>
+      <VAR_NAME>L:#NODE_ID#</VAR_NAME>
+      <TOOLTIPID>@TT_Package.#NODE_ID#</TOOLTIPID>
+      <SOUND_TRIGGER_DIR>Both</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_ACTION>Play</SOUND_TRIGGER_ACTION>
+      <SOUND_EVENT>generic_rotary_selector</SOUND_EVENT>
+      <TOOLTIP_VAL_CODE>(#VAR_NAME#)</TOOLTIP_VAL_CODE>
+      <TOOLTIP_TITLE_IS_DYNAMIC>True</TOOLTIP_TITLE_IS_DYNAMIC>
+      <!-- <TOOLTIP_TITLE>#TOOLTIP_VAL_CODE# (R:1:@TT_Package.#NODE_ID#) '%s = %s' (F:Format)</TOOLTIP_TITLE> -->
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <ONINIT_CODE></ONINIT_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+      <ANIM_CODE>
+				(#VAR_NAME#) 50 * (&gt;O:ANIM_TARGET_POS)
+      </ANIM_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+    </DefaultTemplateParameters>
+
+    <UseInputEvent ID="P21_EVENT">
+      <PRESET_NAME>#NODE_ID#</PRESET_NAME>
+      <TT_ICON>ROTATE</TT_ICON>
+      <TT_INTERACTION>INCREASE+DECREASE</TT_INTERACTION>
+      <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+      <TT_DESCRIPTION>'Mouse Wheel to Adjust'</TT_DESCRIPTION>
+      <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+      <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+    </UseInputEvent>
+
+    <UseTemplate Name="P21_ANIM">
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_FRAME_MIN>#ANIM_FRAME_MIN#</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>#ANIM_FRAME_MAX#</ANIM_FRAME_MAX>
+      <ANIM_LAG>#ANIM_LAG#</ANIM_LAG>
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <EXTRA_CODE>
+				(O:_INITED) 1 != if{
+					1 (&gt;O:_INITED)
+					#ONINIT_CODE#
+				}
+				#ANIM_CODE#
+				#ONUPDATE_CODE#
+      </EXTRA_CODE>
+      <ONANIMFINISHED>#ONANIMFINISHED#</ONANIMFINISHED>
+    </UseTemplate>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>LeftAll+WheelUp+WheelDown</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <CALLBACKCODE>    
+				(M:Event) 'LeftRelease' scmi 0 == if{ 
+					0 (&gt;O:_CurMove) 
+					0 (&gt;O:_LastMove) 
+				} els{
+          (M:Event) 'LeftDrag' scmi 0 == if{ 
+            (M:RelativeX) (M:RelativeY) + (&gt;O:_CurMove) 
+            (O:_CurMove) (O:_LastMove) -  0.01 &gt; if{ 
+              (O:_CurMove) (&gt;O:_LastMove) 	
+              (#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+              (#VAR_NAME#) 2 &gt; if{
+                2 (&gt;#VAR_NAME#)
+              }
+              #ANIM_CODE# 
+              #ONCHANGE_CODE#
+              #ONUPDATE_CODE#												
+            } els{
+              (O:_LastMove) (O:_CurMove) - 0.01 &gt; if{ 
+
+                (O:_CurMove) (&gt;O:_LastMove) 
+                (#VAR_NAME#) 1 - (&gt;#VAR_NAME#)
+                (#VAR_NAME#) 0 &lt; if{
+                  0 (&gt;#VAR_NAME#)
+                }
+                #ANIM_CODE# 								
+                #ONUPDATE_CODE#									
+              }
+            }            
+          }     
+        }				
+        (M:Event) 'WheelDown' scmi 0 == if{ 
+
+          (#VAR_NAME#) 1 - (&gt;#VAR_NAME#)
+          (#VAR_NAME#) 0 &lt; if{
+            0 (&gt;#VAR_NAME#)						
+          }
+          #ANIM_CODE#
+          #ONCHANGE_CODE#
+          #ONUPDATE_CODE#
+        }
+        (M:Event) 'WheelUp' scmi 0 == if{ 
+
+          (#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+          (#VAR_NAME#) 2 &gt; if{
+          2 (&gt;#VAR_NAME#)
+        }
+          #ANIM_CODE#   
+          #ONCHANGE_CODE#
+          #ONUPDATE_CODE#					    	
+        }	            
+      </CALLBACKCODE>
+    </UseTemplate>
+
+    <AnimationTriggers Animation="#ANIM_NAME#">
+      <EventTrigger Count="2" Direction="#SOUND_TRIGGER_DIR#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT#" Action="#SOUND_TRIGGER_ACTION#" />
+      </EventTrigger>
+    </AnimationTriggers>
+
+  </Template>
+
+  <Template Name="P21_BTN_MOMENTARY_MOUSERECT">
+    <DefaultTemplateParameters>
+      <MouseFlags>LeftAll+Lock+Unlock</MouseFlags>
+      <CURSOR>Hand</CURSOR>
+      <TOOLTIPID>Button Momentary</TOOLTIPID>
+      <!-- <TOOLTIP_TITLE>'#TOOLTIPID#'</TOOLTIP_TITLE> -->
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <PUSHED_IN_VAL>1.0</PUSHED_IN_VAL>
+      <PUSHED_OUT_VAL>0.0</PUSHED_OUT_VAL>
+      <PUSHED_IN_ANIMPOS>100.0</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0.0</PUSHED_OUT_ANIMPOS>
+      <VAR_NAME>H:P21_BTN</VAR_NAME>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+      <VAR_AUDIO_POS_X>L:P21_SND_GENERIC_POS_X</VAR_AUDIO_POS_X>
+      <VAR_AUDIO_POS_Y>L:P21_SND_GENERIC_POS_Y</VAR_AUDIO_POS_Y>
+      <VAR_AUDIO_POS_Z>L:P21_SND_GENERIC_POS_Z</VAR_AUDIO_POS_Z>
+    </DefaultTemplateParameters>
+
+    <OverrideTemplateParameters>
+      <Condition Check="NODE_ID">
+        <!-- <TOOLTIP_TITLE>(R:1:@TT_Package.#NODE_ID#)</TOOLTIP_TITLE> -->
+        <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+        <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      </Condition>
+    </OverrideTemplateParameters>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>#MouseFlags#</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <CALLBACKCODE>
+				(M:Event) 'LeftSingle' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;#VAR_AUDIO_POS_X#)
+					#AUDIO_POS_Y# (&gt;#VAR_AUDIO_POS_Y#)
+					#AUDIO_POS_Z# (&gt;#VAR_AUDIO_POS_Z#)
+
+					#PUSHED_IN_VAL# (&gt;#VAR_NAME#)
+					#PUSHED_IN_ANIMPOS# (&gt;O:ANIM_TARGET_POS)
+
+					#ONCHANGE_CODE#
+				} els{
+					(O:ANIM_CUR_POS) (O:ANIM_TARGET_POS) == if{
+						#AUDIO_POS_X# (&gt;#VAR_AUDIO_POS_X#)
+						#AUDIO_POS_Y# (&gt;#VAR_AUDIO_POS_Y#)
+						#AUDIO_POS_Z# (&gt;#VAR_AUDIO_POS_Z#)
+
+						#PUSHED_OUT_VAL# (&gt;#VAR_NAME#)
+						#PUSHED_OUT_ANIMPOS# (&gt;O:ANIM_TARGET_POS)
+
+						#ONCHANGE_CODE#
+					}					
+				}
+      </CALLBACKCODE>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="P21_BTN_PUSH_MOMENTARY">
+    <DefaultTemplateParameters>
+      <ANIM_DURATION>0.1</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>0</ANIM_FRAME_REST>
+      <PUSHED_IN_VAL>1.0</PUSHED_IN_VAL>
+      <PUSHED_OUT_VAL>0.0</PUSHED_OUT_VAL>
+      <PUSHED_IN_ANIMPOS>100</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0</PUSHED_OUT_ANIMPOS>
+      <ANIM_NAME>NO_ANIM_DEFINED</ANIM_NAME>
+
+      <SOUND_TRIGGER_TIME>0.25</SOUND_TRIGGER_TIME>
+      <SOUND_TRIGGER_DIR>Forward</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_ACTION>Play</SOUND_TRIGGER_ACTION>
+      <SOUND_EVENT>generic_button_push_momentary</SOUND_EVENT>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+      <VAR_AUDIO_POS_X>L:P21_SND_GENERIC_POS_X</VAR_AUDIO_POS_X>
+      <VAR_AUDIO_POS_Y>L:P21_SND_GENERIC_POS_Y</VAR_AUDIO_POS_Y>
+      <VAR_AUDIO_POS_Z>L:P21_SND_GENERIC_POS_Z</VAR_AUDIO_POS_Z>
+
+      <CURSOR>Hand</CURSOR>
+      <VAR_NAME>H:P21_BTN_MOMENTARY</VAR_NAME>
+      <TOOLTIPID>Push Button Momentary</TOOLTIPID>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <TT_DESCRIPTION>'Click to Set'</TT_DESCRIPTION>
+      <TOOLTIP_TITLE_IS_DYNAMIC>true</TOOLTIP_TITLE_IS_DYNAMIC>
+      <TT_DESCRIPTION_IS_DYNAMIC>true</TT_DESCRIPTION_IS_DYNAMIC>
+      <TOOLTIP_VAL_CODE>'BTN'</TOOLTIP_VAL_CODE>
+
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <ONINIT_CODE></ONINIT_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+    </DefaultTemplateParameters>
+
+    <UseTemplate Name="P21_BUTTON_MOMENTARY"></UseTemplate>
+    <UseTemplate Name="P21_BTN_MOMENTARY_MOUSERECT"></UseTemplate>
+  </Template>
+
+  <Template Name="P21_FMS_BUTTON">
+    <DefaultTemplateParameters>
+      <SOUND_EVENT>fms_key</SOUND_EVENT>
+      <ANIM_NAME>ANIM_FMS_LSK_L1_BTN</ANIM_NAME>
+      <VAR_NAME>L:P21_FMS_BV_LSK_L1_BTN</VAR_NAME>
+      <TOOLTIPID>BUTTON</TOOLTIPID>
+      <ANIM_DURATION>0.1</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>0</ANIM_FRAME_REST>
+      <PUSHED_IN_ANIMPOS>100</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0</PUSHED_OUT_ANIMPOS>
+    </DefaultTemplateParameters>
+
+    <UseTemplate Name="P21_BTN_PUSH_MOMENTARY">
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_FRAME_MIN>#ANIM_FRAME_MIN#</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>#ANIM_FRAME_MAX#</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>#ANIM_FRAME_REST#</ANIM_FRAME_REST>
+      <PUSHED_IN_ANIMPOS>#PUSHED_IN_ANIMPOS#</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>#PUSHED_OUT_ANIMPOS#</PUSHED_OUT_ANIMPOS>
+      <AUDIO_POS_X>0.452</AUDIO_POS_X>
+      <AUDIO_POS_Y>0.760</AUDIO_POS_Y>
+      <AUDIO_POS_Z>0.331</AUDIO_POS_Z>
+      <SOUND_EVENT>fms_key</SOUND_EVENT>
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <VAR_NAME>#VAR_NAME#</VAR_NAME>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+    </UseTemplate>
+  </Template>
+
+
+  <Template Name="P21_ROTARY_INFINITE_CLICKY">
+    <DefaultTemplateParameters>
+      <ANIM_LENGTH>100</ANIM_LENGTH>
+      <ANIM_DURATION>0.01</ANIM_DURATION>
+      <ANIM_LAG>0</ANIM_LAG>
+      <STEP_COUNT>36</STEP_COUNT>
+      <ANIM_NAME>#NODE_ID#</ANIM_NAME>
+      <DRAG_REACTION>0.1</DRAG_REACTION>
+      <CURSOR>Grab</CURSOR>
+      <VAR_NAME>L:#NODE_ID#</VAR_NAME>
+      <VAL_MULT>1.0</VAL_MULT>
+      <VAL_MIN>0</VAL_MIN>
+      <VAL_MAX>1</VAL_MAX>
+      <VAL_CLAMP>0</VAL_CLAMP>
+      <TOOLTIPID>@TT_Package.#NODE_ID#</TOOLTIPID>
+      <LEFT_SINGLE_CODE></LEFT_SINGLE_CODE>
+      <LEFT_RELEASE_CODE></LEFT_RELEASE_CODE>
+      <TOOLTIP_VAL_CODE>(#VAR_NAME#)</TOOLTIP_VAL_CODE>
+      <TOOLTIP_TITLE_IS_DYNAMIC>True</TOOLTIP_TITLE_IS_DYNAMIC>
+      <TOOLTIP_TITLE>
+				#TOOLTIP_VAL_CODE# sp0
+				l0 (R:1:@TT_Package.#NODE_ID#) '%s = %s' (F:Format)
+      </TOOLTIP_TITLE>
+      <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <ONINIT_CODE></ONINIT_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+    </DefaultTemplateParameters>
+
+    <UseInputEvent ID="P21_EVENT">
+      <PRESET_NAME>#NODE_ID#</PRESET_NAME>
+      <TT_ICON>ROTATE</TT_ICON>
+      <TT_INTERACTION>INCREASE+DECREASE</TT_INTERACTION>
+      <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+      <TT_DESCRIPTION>'Mouse Wheel to Adjust'</TT_DESCRIPTION>
+      <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+      <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+    </UseInputEvent>
+
+    <UseTemplate Name="ASOBO_GT_Anim_Code">
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <ANIM_LENGTH>#ANIM_LENGTH#</ANIM_LENGTH>
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_CODE>
+				(#VAR_NAME#) 1.0 % (&gt;O:WrapAnimVar) 
+				(O:WrapAnimVar) abs (&gt;O:WrapAnimVar) 
+				#ANIM_LENGTH# (O:WrapAnimVar) * #ANIM_LENGTH# min
+				(O:_INITED) 1 != if{
+					1 (&gt;O:_INITED)
+					#ONINIT_CODE#
+				} els{
+					#ONUPDATE_CODE#
+				}
+      </ANIM_CODE>
+      <ANIM_LAG>#ANIM_LAG#</ANIM_LAG>
+    </UseTemplate>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>LeftAll+WheelUp+WheelDown</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <TOOLTIP_TITLE_IS_DYNAMIC>#TOOLTIP_TITLE_IS_DYNAMIC#</TOOLTIP_TITLE_IS_DYNAMIC>
+      <CALLBACKCODE>    
+				(M:Event) 'LeftSingle' scmi 0 == if{ 
+					#LEFT_SINGLE_CODE# 
+					(M:RelativeX) (M:RelativeY) + (&gt;O:_LastMove) 
+				} 
+				(M:Event) 'LeftRelease' scmi 0 == if{ 
+					#LEFT_RELEASE_CODE# 		
+					0 (&gt;O:_CurMove) 			
+					0 (&gt;O:_LastMove) 
+				} els{
+		            (M:Event) 'LeftDrag' scmi 0 == if{ 
+						(M:RelativeX) (M:RelativeY) + (&gt;O:_CurMove) 
+
+	 					(O:_LastMove) (O:_CurMove) - #DRAG_REACTION# / abs (&gt;O:DragVal)
+						(O:_LastMove) (O:_CurMove) - 0 &lt; if{ 									
+							(#VAR_NAME#) #VAL_MULT# / (O:DragVal) + #VAL_MULT# * (&gt;O:_NewVal)
+							1.0 #STEP_COUNT# / (&gt;O:DragFactor)
+							(O:_NewVal) (O:DragFactor) % (O:_NewVal) - - (&gt;O:_NewVal)	
+							(O:_NewVal)	(#VAR_NAME#) - abs 0 &gt; if{
+								(O:_NewVal)	(&gt;#VAR_NAME#)								
+								(O:_CurMove) (&gt;O:_LastMove) 		
+
+								#ONCHANGE_CODE#
+								#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+								#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+								#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+								(L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY) 0 &gt; if{
+									0 (&gt;L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY)
+								} els{
+									1 (&gt;L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY)
+								}
+							}	
+							
+						} els{
+							(O:_LastMove) (O:_CurMove) - 0 &gt; if{ 
+								(#VAR_NAME#) #VAL_MULT# / (O:DragVal) - #VAL_MULT# * (&gt;O:_NewVal)
+								1.0 #STEP_COUNT# / (&gt;O:DragFactor)
+								(O:_NewVal) (O:DragFactor) % (O:_NewVal) - - (&gt;O:_NewVal)
+								(O:_NewVal)	(#VAR_NAME#) - abs 0 &gt; if{
+									(O:_NewVal)	(&gt;#VAR_NAME#)									
+									(O:_CurMove) (&gt;O:_LastMove) 		
+
+									#ONCHANGE_CODE#
+									#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+									#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+									#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)									
+									(L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY) 0 &gt; if{
+										0 (&gt;L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY)
+									} els{
+										1 (&gt;L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY)
+									}									
+								}	
+							}
+						}
+		            }     
+	            }				
+	            (M:Event) 'WheelDown' scmi 0 == if{ 
+					1.0 #STEP_COUNT# / (&gt;O:DragFactor)
+	            	(#VAR_NAME#) #VAL_MULT# / (O:DragFactor) - #VAL_MULT# * (&gt;#VAR_NAME#)
+
+					#ONCHANGE_CODE#
+					#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+					(L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY) 0 &gt; if{
+						0 (&gt;L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY)
+					} els{
+						1 (&gt;L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY)
+					}
+	            }
+	            (M:Event) 'WheelUp' scmi 0 == if{ 
+					1.0 #STEP_COUNT# / (&gt;O:DragFactor)
+	            	(#VAR_NAME#) #VAL_MULT# / (O:DragFactor) + #VAL_MULT# *  (&gt;#VAR_NAME#)	 
+
+					#ONCHANGE_CODE#
+					#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+					(L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY) 0 &gt; if{
+						0 (&gt;L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY)
+					} els{
+						1 (&gt;L:P21_SND_GENERIC_PLAY_ROTARY_CLICKY)
+					}
+	            }			
+				#VAL_CLAMP#	0 &gt; if{
+					(#VAR_NAME#) #VAL_MIN# &lt; if{
+						#VAL_MAX# (&gt;#VAR_NAME#)
+					}
+					(#VAR_NAME#) #VAL_MAX# &gt; if{
+						#VAL_MIN# (&gt;#VAR_NAME#)
+					}
+				}	       
+      </CALLBACKCODE>
+    </UseTemplate>
+  </Template>
+
+
+  <Template Name="P21_ROTARY_4STATE">
+    <DefaultTemplateParameters>
+      <ANIM_LENGTH>100</ANIM_LENGTH>
+      <ANIM_DURATION>1.0</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_LAG>0</ANIM_LAG>
+      <WHEEL_REACTION>0.05</WHEEL_REACTION>
+      <ANIM_STEP>0.05</ANIM_STEP>
+      <ANIM_NAME>#NODE_ID#</ANIM_NAME>
+      <DRAG_REACTION>0.25</DRAG_REACTION>
+      <CURSOR>Grab</CURSOR>
+      <VAR_NAME>L:#NODE_ID#</VAR_NAME>
+      <TOOLTIPID>@TT_Package.#NODE_ID#</TOOLTIPID>
+      <SOUND_TRIGGER_DIR>Both</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_ACTION>Play</SOUND_TRIGGER_ACTION>
+      <SOUND_EVENT>generic_rotary_selector</SOUND_EVENT>
+      <TOOLTIP_VAL_CODE>(#VAR_NAME#)</TOOLTIP_VAL_CODE>
+      <TOOLTIP_TITLE_IS_DYNAMIC>True</TOOLTIP_TITLE_IS_DYNAMIC>
+      <TOOLTIP_TITLE>#TOOLTIP_VAL_CODE# (R:1:@TT_Package.#NODE_ID#) '%s = %s' (F:Format)</TOOLTIP_TITLE>
+      <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      <ANIM_CODE>(#VAR_NAME#) 33.3 * (&gt;O:ANIM_TARGET_POS)</ANIM_CODE>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+    </DefaultTemplateParameters>
+
+    <UseInputEvent ID="P21_EVENT">
+      <PRESET_NAME>#NODE_ID#</PRESET_NAME>
+      <TT_ICON>ROTATE</TT_ICON>
+      <TT_INTERACTION>INCREASE+DECREASE</TT_INTERACTION>
+      <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+      <TT_DESCRIPTION>'Mouse Wheel to Adjust'</TT_DESCRIPTION>
+      <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+      <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+    </UseInputEvent>
+
+    <UseTemplate Name="P21_ANIM">
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_FRAME_MIN>#ANIM_FRAME_MIN#</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>#ANIM_FRAME_MAX#</ANIM_FRAME_MAX>
+      <ANIM_LAG>#ANIM_LAG#</ANIM_LAG>
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <EXTRA_CODE>
+				#ANIM_CODE#
+				#ONUPDATE_CODE#
+      </EXTRA_CODE>
+    </UseTemplate>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>LeftAll+WheelUp+WheelDown</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <CALLBACKCODE>    
+				(M:Event) 'LeftSingle' scmi 0 == if{ 
+				} 
+				(M:Event) 'LeftRelease' scmi 0 == if{ 
+					0 (&gt;O:_CurMove) 
+					0 (&gt;O:_LastMove) 
+				} els{
+		            (M:Event) 'LeftDrag' scmi 0 == if{ 
+						(M:RelativeX) (M:RelativeY) + (&gt;O:_CurMove) 
+						(O:_CurMove) (O:_LastMove) -  0.01 &gt; if{ 
+							#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+							#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+							#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+							(O:_CurMove) (&gt;O:_LastMove) 	
+							(#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+							(#VAR_NAME#) 3 &gt; if{
+								3 (&gt;#VAR_NAME#)
+							}
+							#ANIM_CODE#   
+							#ONCHANGE_CODE#
+							#ONUPDATE_CODE#													
+						} els{
+							(O:_LastMove) (O:_CurMove) - 0.01 &gt; if{ 
+								#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+								#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+								#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+								(O:_CurMove) (&gt;O:_LastMove) 
+								(#VAR_NAME#) 1 - (&gt;#VAR_NAME#)
+								(#VAR_NAME#) 0 &lt; if{
+									0 (&gt;#VAR_NAME#)
+								}
+								#ANIM_CODE#
+								#ONCHANGE_CODE#
+								#ONUPDATE_CODE#
+							}
+						}						
+		            }     
+	            }				
+	            (M:Event) 'WheelDown' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+	            	(#VAR_NAME#) 1 - (&gt;#VAR_NAME#)
+					(#VAR_NAME#) 0 &lt; if{
+						0 (&gt;#VAR_NAME#)
+					}
+					#ANIM_CODE#
+					#ONCHANGE_CODE#
+					#ONUPDATE_CODE#
+	            }
+	            (M:Event) 'WheelUp' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+	            	(#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+					(#VAR_NAME#) 3 &gt; if{
+						3 (&gt;#VAR_NAME#)
+					}
+					#ANIM_CODE#
+					#ONCHANGE_CODE#
+					#ONUPDATE_CODE#
+	            }	            
+      </CALLBACKCODE>
+    </UseTemplate>
+
+    <AnimationTriggers Animation="#ANIM_NAME#">
+      <EventTrigger Count="3" Direction="#SOUND_TRIGGER_DIR#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT#" Action="#SOUND_TRIGGER_ACTION#" />
+      </EventTrigger>
+    </AnimationTriggers>
+  </Template>
+
+  <Template Name="P21_ROTARY_5STATE">
+    <DefaultTemplateParameters>
+      <ANIM_LENGTH>100</ANIM_LENGTH>
+      <ANIM_DURATION>1.0</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_LAG>0</ANIM_LAG>
+      <WHEEL_REACTION>0.05</WHEEL_REACTION>
+      <ANIM_STEP>0.05</ANIM_STEP>
+      <ANIM_NAME>#NODE_ID#</ANIM_NAME>
+      <DRAG_REACTION>0.25</DRAG_REACTION>
+      <CURSOR>Grab</CURSOR>
+      <VAR_NAME>L:#NODE_ID#</VAR_NAME>
+      <TOOLTIPID>@TT_Package.#NODE_ID#</TOOLTIPID>
+      <SOUND_TRIGGER_DIR>Both</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_ACTION>Play</SOUND_TRIGGER_ACTION>
+      <SOUND_EVENT>autobrake_knob</SOUND_EVENT>
+      <TOOLTIP_VAL_CODE>(#VAR_NAME#)</TOOLTIP_VAL_CODE>
+      <TOOLTIP_TITLE_IS_DYNAMIC>True</TOOLTIP_TITLE_IS_DYNAMIC>
+      <TOOLTIP_TITLE>#TOOLTIP_VAL_CODE# (R:1:@TT_Package.#NODE_ID#) '%s = %s' (F:Format)</TOOLTIP_TITLE>
+      <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      <ANIM_CODE>(#VAR_NAME#) 25.0 * (&gt;O:ANIM_TARGET_POS)</ANIM_CODE>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <ONINIT_CODE></ONINIT_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+    </DefaultTemplateParameters>
+
+    <UseInputEvent ID="P21_EVENT">
+      <PRESET_NAME>#NODE_ID#</PRESET_NAME>
+      <TT_ICON>ROTATE</TT_ICON>
+      <TT_INTERACTION>INCREASE+DECREASE</TT_INTERACTION>
+      <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+      <TT_DESCRIPTION>'Mouse Wheel to Adjust'</TT_DESCRIPTION>
+      <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+      <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+    </UseInputEvent>
+
+    <UseTemplate Name="P21_ANIM">
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_FRAME_MIN>#ANIM_FRAME_MIN#</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>#ANIM_FRAME_MAX#</ANIM_FRAME_MAX>
+      <ANIM_LAG>#ANIM_LAG#</ANIM_LAG>
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <EXTRA_CODE>
+				(O:_INITED) 1 != if{
+					1 (&gt;O:_INITED)
+					#ONINIT_CODE#
+				} els{
+					#ANIM_CODE#
+					#ONUPDATE_CODE#
+				}				
+      </EXTRA_CODE>
+    </UseTemplate>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>LeftAll+WheelUp+WheelDown</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <CALLBACKCODE>    
+				(M:Event) 'LeftSingle' scmi 0 == if{ 
+				} 
+				(M:Event) 'LeftRelease' scmi 0 == if{ 
+					0 (&gt;O:_CurMove) 
+					0 (&gt;O:_LastMove) 
+				} els{
+		            (M:Event) 'LeftDrag' scmi 0 == if{ 
+						(M:RelativeX) (M:RelativeY) + (&gt;O:_CurMove) 
+						(O:_CurMove) (O:_LastMove) -  0.01 &gt; if{ 
+							#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+							#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+							#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+							(O:_CurMove) (&gt;O:_LastMove) 	
+							(#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+							(#VAR_NAME#) 4 &gt; if{
+								4 (&gt;#VAR_NAME#)
+							}
+							#ANIM_CODE#   
+							#ONCHANGE_CODE#											
+						} els{
+							(O:_LastMove) (O:_CurMove) - 0.01 &gt; if{ 
+								#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+								#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+								#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+								(O:_CurMove) (&gt;O:_LastMove) 
+								(#VAR_NAME#) 1 - (&gt;#VAR_NAME#)
+								(#VAR_NAME#) 0 &lt; if{
+									0 (&gt;#VAR_NAME#)
+								}
+								#ANIM_CODE#
+								#ONCHANGE_CODE#
+							}
+						}						
+		            }     
+	            }				
+	            (M:Event) 'WheelDown' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+	            	(#VAR_NAME#) 1 - (&gt;#VAR_NAME#)
+					(#VAR_NAME#) 0 &lt; if{
+						0 (&gt;#VAR_NAME#)
+					}
+					#ANIM_CODE#
+					#ONCHANGE_CODE#
+	            }
+	            (M:Event) 'WheelUp' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+	            	(#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+					(#VAR_NAME#) 4 &gt; if{
+						4 (&gt;#VAR_NAME#)
+					}
+					#ANIM_CODE#
+					#ONCHANGE_CODE#
+	            }	            
+      </CALLBACKCODE>
+    </UseTemplate>
+
+    <AnimationTriggers Animation="#ANIM_NAME#">
+      <EventTrigger Count="4" Direction="#SOUND_TRIGGER_DIR#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT#" Action="#SOUND_TRIGGER_ACTION#" />
+      </EventTrigger>
+    </AnimationTriggers>
+  </Template>
+
+  <Template Name="P21_GENERIC_SOUND_1">
+    <DefaultTemplateParameters>
+      <ANIM_NAME>ANIM_GENERIC_SOUND_BUTTON</ANIM_NAME>
+      <ANIM_POS_X>ANIM_GENERIC_SOUND_X</ANIM_POS_X>
+      <ANIM_POS_Y>ANIM_GENERIC_SOUND_Y</ANIM_POS_Y>
+      <ANIM_POS_Z>ANIM_GENERIC_SOUND_Z</ANIM_POS_Z>
+      <CODE_POS_X>(L:P21_EXX_SND_GENERIC_POS_X) 100 *</CODE_POS_X>
+      <CODE_POS_Y>(L:P21_EXX_SND_GENERIC_POS_Y) 100 *</CODE_POS_Y>
+      <CODE_POS_Z>(L:P21_EXX_SND_GENERIC_POS_Z) 100 *</CODE_POS_Z>
+      <CODE_PLAY>(L:P21_EXX_SND_GENERIC_PLAY) 100 *</CODE_PLAY>
+      <SOUND_TRIGGER_TIME>0.5</SOUND_TRIGGER_TIME>
+      <SOUND_TRIGGER_DIR>Both</SOUND_TRIGGER_DIR>
+      <CUSTOM_ANIM>false</CUSTOM_ANIM>
+      <SOUND_EVENT>generic_button_push_momentary</SOUND_EVENT>
+    </DefaultTemplateParameters>
+
+    <Condition Valid="CUSTOM_ANIM">
+      <True>
+        <UseTemplate Name="ASOBO_GT_Anim_Code">
+          <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+          <ANIM_LENGTH>100</ANIM_LENGTH>
+          <ANIM_DURATION>0.01</ANIM_DURATION>
+          <ANIM_CODE>#CODE_PLAY#</ANIM_CODE>
+          <ANIM_LAG>0</ANIM_LAG>
+        </UseTemplate>
+      </True>
+    </Condition>
+
+    <AnimationTriggers Animation="#ANIM_NAME#">
+      <EventTrigger NormalizedTime="#SOUND_TRIGGER_TIME#" Direction="#SOUND_TRIGGER_DIR#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT#" Action="Play" />
+      </EventTrigger>
+    </AnimationTriggers>
+  </Template>
+
+  <Template Name="P21_MCDU_LEFT_BUTTON">
+    <DefaultTemplateParameters>
+      <SOUND_EVENT>mcdu_key</SOUND_EVENT>
+      <ANIM_NAME>ANIM_MCDU_LEFT_LSK_L1_BTN</ANIM_NAME>
+      <VAR_NAME>H:P21_MCDU_LEFT_BV_LSK_L1_BTN</VAR_NAME>
+      <TOOLTIPID>BUTTON</TOOLTIPID>
+      <ANIM_DURATION>0.1</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>0</ANIM_FRAME_REST>
+      <PUSHED_IN_ANIMPOS>100</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0</PUSHED_OUT_ANIMPOS>
+    </DefaultTemplateParameters>
+
+    <UseTemplate Name="P21_BTN_PUSH_MOMENTARY">
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_FRAME_MIN>#ANIM_FRAME_MIN#</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>#ANIM_FRAME_MAX#</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>#ANIM_FRAME_REST#</ANIM_FRAME_REST>
+      <PUSHED_IN_ANIMPOS>#PUSHED_IN_ANIMPOS#</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>#PUSHED_OUT_ANIMPOS#</PUSHED_OUT_ANIMPOS>
+      <AUDIO_POS_X>0.452</AUDIO_POS_X>
+      <AUDIO_POS_Y>0.760</AUDIO_POS_Y>
+      <AUDIO_POS_Z>0.331</AUDIO_POS_Z>
+      <SOUND_EVENT>mcdu_key</SOUND_EVENT>
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <VAR_NAME>#VAR_NAME#</VAR_NAME>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="P21_BTN_PUSH_HOLD_MOUSERECT">
+    <DefaultTemplateParameters>
+      <MouseFlags>LeftAll+Lock+Unlock</MouseFlags>
+      <CURSOR>Hand</CURSOR>
+      <TOOLTIPID>Button Push Hold</TOOLTIPID>
+      <TOOLTIP_TITLE>'Button Push Hold'</TOOLTIP_TITLE>
+      <MAX_VALUE>2</MAX_VALUE>
+      <PUSHED_IN_VAL>1.0</PUSHED_IN_VAL>
+      <PUSHED_OUT_VAL>0.0</PUSHED_OUT_VAL>
+      <PUSHED_IN_ANIMPOS>100.0</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0.0</PUSHED_OUT_ANIMPOS>
+      <VAR_NAME>H:P21_BTN</VAR_NAME>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+      <VAR_AUDIO_POS_X>L:P21_SND_GENERIC_POS_X</VAR_AUDIO_POS_X>
+      <VAR_AUDIO_POS_Y>L:P21_SND_GENERIC_POS_Y</VAR_AUDIO_POS_Y>
+      <VAR_AUDIO_POS_Z>L:P21_SND_GENERIC_POS_Z</VAR_AUDIO_POS_Z>
+    </DefaultTemplateParameters>
+
+    <OverrideTemplateParameters>
+      <Condition Check="NODE_ID">
+        <TOOLTIP_TITLE>(R:1:@TT_Package.#NODE_ID#)</TOOLTIP_TITLE>
+        <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      </Condition>
+    </OverrideTemplateParameters>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>#MouseFlags#</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <CALLBACKCODE>
+				(M:Event) 'LeftSingle' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;#VAR_AUDIO_POS_X#)
+					#AUDIO_POS_Y# (&gt;#VAR_AUDIO_POS_Y#)
+					#AUDIO_POS_Z# (&gt;#VAR_AUDIO_POS_Z#)
+
+					#PUSHED_IN_VAL# (&gt;#VAR_NAME#)
+					#PUSHED_IN_ANIMPOS# (&gt;O:ANIM_TARGET_POS)
+
+					#ONCHANGE_CODE#
+				} 
+				(M:Event) 'LeftRelease' scmi 0 == if{
+					#AUDIO_POS_X# (&gt;#VAR_AUDIO_POS_X#)
+					#AUDIO_POS_Y# (&gt;#VAR_AUDIO_POS_Y#)
+					#AUDIO_POS_Z# (&gt;#VAR_AUDIO_POS_Z#)
+
+					#PUSHED_OUT_VAL# (&gt;#VAR_NAME#)
+					#PUSHED_OUT_ANIMPOS# (&gt;O:ANIM_TARGET_POS)
+
+					#ONCHANGE_CODE#
+				}
+      </CALLBACKCODE>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="P21_GENERIC_SOUND_2">
+    <DefaultTemplateParameters>
+      <ANIM_NAME>ANIM_GENERIC_SOUND_BUTTON</ANIM_NAME>
+      <ANIM_POS_X>ANIM_GENERIC_SOUND_X</ANIM_POS_X>
+      <ANIM_POS_Y>ANIM_GENERIC_SOUND_Y</ANIM_POS_Y>
+      <ANIM_POS_Z>ANIM_GENERIC_SOUND_Z</ANIM_POS_Z>
+      <CODE_POS_X>(L:P21_SND_GENERIC_POS_X) 100 *</CODE_POS_X>
+      <CODE_POS_Y>(L:P21_SND_GENERIC_POS_Y) 100 *</CODE_POS_Y>
+      <CODE_POS_Z>(L:P21_SND_GENERIC_POS_Z) 100 *</CODE_POS_Z>
+      <CODE_PLAY>(L:P21_SND_GENERIC_PLAY) 100 *</CODE_PLAY>
+      <SOUND_TRIGGER_TIME>0.25</SOUND_TRIGGER_TIME>
+      <SOUND_TRIGGER_TIME_2>0.75</SOUND_TRIGGER_TIME_2>
+      <SOUND_TRIGGER_DIR>Forward</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_DIR_2>Backward</SOUND_TRIGGER_DIR_2>
+      <SOUND_EVENT>generic_button_push_on</SOUND_EVENT>
+      <SOUND_EVENT_2>generic_button_push_off</SOUND_EVENT_2>
+    </DefaultTemplateParameters>
+
+    <Condition Valid="CUSTOM_ANIM">
+      <True>
+        <UseTemplate Name="ASOBO_GT_Anim_Code">
+          <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+          <ANIM_LENGTH>100</ANIM_LENGTH>
+          <ANIM_DURATION>0.01</ANIM_DURATION>
+          <ANIM_CODE>#CODE_PLAY#</ANIM_CODE>
+          <ANIM_LAG>0</ANIM_LAG>
+        </UseTemplate>
+      </True>
+    </Condition>
+
+    <AnimationTriggers Animation="#ANIM_NAME#">
+      <EventTrigger NormalizedTime="#SOUND_TRIGGER_TIME#" Direction="#SOUND_TRIGGER_DIR#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT#" Action="Play" />
+      </EventTrigger>
+      <EventTrigger NormalizedTime="#SOUND_TRIGGER_TIME_2#" Direction="#SOUND_TRIGGER_DIR_2#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT_2#" Action="Play" />
+      </EventTrigger>
+    </AnimationTriggers>
+  </Template>
+
+  <Template Name="P21_BTN_MOMENTARY_CYCLE_MOUSERECT">
+    <DefaultTemplateParameters>
+      <MouseFlags>LeftAll+Lock+Unlock</MouseFlags>
+      <CURSOR>Hand</CURSOR>
+      <TOOLTIPID>Button Cycle Momentary</TOOLTIPID>
+      <TOOLTIP_TITLE>'Button Cycle Momentary'</TOOLTIP_TITLE>
+      <MAX_VALUE>2</MAX_VALUE>
+      <PUSHED_IN_ANIMPOS>100.0</PUSHED_IN_ANIMPOS>
+      <PUSHED_OUT_ANIMPOS>0.0</PUSHED_OUT_ANIMPOS>
+      <VAR_NAME>H:P21_BTN</VAR_NAME>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+      <VAR_AUDIO_POS_X>L:P21_SND_GENERIC_POS_X</VAR_AUDIO_POS_X>
+      <VAR_AUDIO_POS_Y>L:P21_SND_GENERIC_POS_Y</VAR_AUDIO_POS_Y>
+      <VAR_AUDIO_POS_Z>L:P21_SND_GENERIC_POS_Z</VAR_AUDIO_POS_Z>
+    </DefaultTemplateParameters>
+
+    <OverrideTemplateParameters>
+      <Condition Check="NODE_ID">
+        <!-- <TOOLTIP_TITLE>(R:1:@TT_Package.#NODE_ID#)</TOOLTIP_TITLE> -->
+        <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+        <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      </Condition>
+    </OverrideTemplateParameters>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>#MouseFlags#</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <CALLBACKCODE>
+				(M:Event) 'LeftSingle' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;#VAR_AUDIO_POS_X#)
+					#AUDIO_POS_Y# (&gt;#VAR_AUDIO_POS_Y#)
+					#AUDIO_POS_Z# (&gt;#VAR_AUDIO_POS_Z#)
+
+					(#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+					(#VAR_NAME#) #MAX_VALUE# == if{
+						0 (&gt;#VAR_NAME#)
+					}
+					#PUSHED_IN_ANIMPOS# (&gt;O:ANIM_TARGET_POS)
+
+					#ONCHANGE_CODE#
+				} els{
+					(O:ANIM_CUR_POS) (O:ANIM_TARGET_POS) == if{
+						#AUDIO_POS_X# (&gt;#VAR_AUDIO_POS_X#)
+						#AUDIO_POS_Y# (&gt;#VAR_AUDIO_POS_Y#)
+						#AUDIO_POS_Z# (&gt;#VAR_AUDIO_POS_Z#)
+						#PUSHED_OUT_ANIMPOS# (&gt;O:ANIM_TARGET_POS)
+
+						#ONCHANGE_CODE#
+					}
+				}
+      </CALLBACKCODE>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="P21_BTN_PUSH_TOGGLE_MOMENTARY">
+    <DefaultTemplateParameters>
+      <ANIM_DURATION>0.2</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_FRAME_REST>0</ANIM_FRAME_REST>
+      <ANIM_NAME>NO_ANIM_DEFINED</ANIM_NAME>
+
+      <SOUND_TRIGGER_TIME>0.2</SOUND_TRIGGER_TIME>
+      <SOUND_TRIGGER_TIME_2>0.8</SOUND_TRIGGER_TIME_2>
+      <SOUND_TRIGGER_DIR>Forward</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_DIR_2>Backward</SOUND_TRIGGER_DIR_2>
+      <SOUND_TRIGGER_ACTION>Play</SOUND_TRIGGER_ACTION>
+      <SOUND_EVENT>generic_button_push_on</SOUND_EVENT>
+      <SOUND_EVENT_2>generic_button_push_off</SOUND_EVENT_2>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+      <VAR_AUDIO_POS_X>L:P21_SND_GENERIC_POS_X</VAR_AUDIO_POS_X>
+      <VAR_AUDIO_POS_Y>L:P21_SND_GENERIC_POS_Y</VAR_AUDIO_POS_Y>
+      <VAR_AUDIO_POS_Z>L:P21_SND_GENERIC_POS_Z</VAR_AUDIO_POS_Z>
+
+      <CURSOR>Hand</CURSOR>
+      <VAR_NAME>H:P21_BTN_MOMENTARY</VAR_NAME>
+      <TOOLTIPID>Push Button Toggle Momentary</TOOLTIPID>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <TT_DESCRIPTION>'Click to Set'</TT_DESCRIPTION>
+      <TOOLTIP_TITLE_IS_DYNAMIC>true</TOOLTIP_TITLE_IS_DYNAMIC>
+      <TT_DESCRIPTION_IS_DYNAMIC>true</TT_DESCRIPTION_IS_DYNAMIC>
+      <TOOLTIP_VAL_CODE>'BTN'</TOOLTIP_VAL_CODE>
+      <MAX_VALUE>2</MAX_VALUE>
+
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <ONINIT_CODE></ONINIT_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+    </DefaultTemplateParameters>
+
+    <UseTemplate Name="P21_BUTTON_MOMENTARY"></UseTemplate>
+    <UseTemplate Name="P21_BTN_MOMENTARY_CYCLE_MOUSERECT"></UseTemplate>
+    <UseTemplate Name="P21_GENERIC_SOUND_2"></UseTemplate>
+  </Template>
+
+  <Template Name="P21_ROTARY_3STATE">
+    <DefaultTemplateParameters>
+      <ANIM_LENGTH>100</ANIM_LENGTH>
+      <ANIM_DURATION>1.0</ANIM_DURATION>
+      <ANIM_FRAME_MIN>0</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>100</ANIM_FRAME_MAX>
+      <ANIM_LAG>0</ANIM_LAG>
+      <WHEEL_REACTION>0.05</WHEEL_REACTION>
+      <ANIM_STEP>0.05</ANIM_STEP>
+      <ANIM_NAME>#NODE_ID#</ANIM_NAME>
+      <DRAG_REACTION>0.25</DRAG_REACTION>
+      <CURSOR>Grab</CURSOR>
+      <VAR_NAME>L:#NODE_ID#</VAR_NAME>
+      <TOOLTIPID>@TT_Package.#NODE_ID#</TOOLTIPID>
+      <SOUND_TRIGGER_DIR>Both</SOUND_TRIGGER_DIR>
+      <SOUND_TRIGGER_ACTION>Play</SOUND_TRIGGER_ACTION>
+      <SOUND_EVENT>generic_rotary_selector</SOUND_EVENT>
+      <TOOLTIP_VAL_CODE>(#VAR_NAME#)</TOOLTIP_VAL_CODE>
+      <TOOLTIP_TITLE_IS_DYNAMIC>True</TOOLTIP_TITLE_IS_DYNAMIC>
+      <!-- <TOOLTIP_TITLE>#TOOLTIP_VAL_CODE# (R:1:@TT_Package.#NODE_ID#) '%s = %s' (F:Format)</TOOLTIP_TITLE> -->
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <TOOLTIP_ENTRY_0>#NODE_ID#</TOOLTIP_ENTRY_0>
+      <ONCHANGE_CODE></ONCHANGE_CODE>
+      <ONUPDATE_CODE></ONUPDATE_CODE>
+      <ONINIT_CODE></ONINIT_CODE>
+      <ONANIMFINISHED></ONANIMFINISHED>
+      <ANIM_CODE>
+				(#VAR_NAME#) 50 * (&gt;O:ANIM_TARGET_POS)
+      </ANIM_CODE>
+      <AUDIO_POS_X>0.5</AUDIO_POS_X>
+      <AUDIO_POS_Z>0.5</AUDIO_POS_Z>
+      <AUDIO_POS_Y>0.5</AUDIO_POS_Y>
+    </DefaultTemplateParameters>
+
+    <UseInputEvent ID="P21_EVENT">
+      <PRESET_NAME>#NODE_ID#</PRESET_NAME>
+      <TT_ICON>ROTATE</TT_ICON>
+      <TT_INTERACTION>INCREASE+DECREASE</TT_INTERACTION>
+      <TT_INTERACTIONLOCKABLE>LOCK</TT_INTERACTIONLOCKABLE>
+      <TT_DESCRIPTION>'Mouse Wheel to Adjust'</TT_DESCRIPTION>
+      <TT_VALUE>#TOOLTIP_VAL_CODE#</TT_VALUE>
+      <VAL_LOCALVAR>#VAR_NAME#</VAL_LOCALVAR>
+    </UseInputEvent>
+
+    <UseTemplate Name="P21_ANIM">
+      <ANIM_DURATION>#ANIM_DURATION#</ANIM_DURATION>
+      <ANIM_FRAME_MIN>#ANIM_FRAME_MIN#</ANIM_FRAME_MIN>
+      <ANIM_FRAME_MAX>#ANIM_FRAME_MAX#</ANIM_FRAME_MAX>
+      <ANIM_LAG>#ANIM_LAG#</ANIM_LAG>
+      <ANIM_NAME>#ANIM_NAME#</ANIM_NAME>
+      <EXTRA_CODE>
+				(O:_INITED) 1 != if{
+					1 (&gt;O:_INITED)
+					#ONINIT_CODE#
+				}
+				#ANIM_CODE#
+				#ONUPDATE_CODE#
+      </EXTRA_CODE>
+      <ONANIMFINISHED>#ONANIMFINISHED#</ONANIMFINISHED>
+    </UseTemplate>
+
+    <UseTemplate Name="ASOBO_GT_MouseRect">
+      <MouseFlags>LeftAll+WheelUp+WheelDown</MouseFlags>
+      <CURSOR>#CURSOR#</CURSOR>
+      <TOOLTIPID>#TOOLTIPID#</TOOLTIPID>
+      <TOOLTIP_TITLE>#TOOLTIP_TITLE#</TOOLTIP_TITLE>
+      <CALLBACKCODE>    
+				(M:Event) 'LeftRelease' scmi 0 == if{ 
+					0 (&gt;O:_CurMove) 
+					0 (&gt;O:_LastMove) 
+				} els{
+		            (M:Event) 'LeftDrag' scmi 0 == if{ 
+						(M:RelativeX) (M:RelativeY) + (&gt;O:_CurMove) 
+						(O:_CurMove) (O:_LastMove) -  0.01 &gt; if{ 
+							#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+							#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+							#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+							(O:_CurMove) (&gt;O:_LastMove) 	
+							(#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+							(#VAR_NAME#) 2 &gt; if{
+								2 (&gt;#VAR_NAME#)
+							}
+							#ANIM_CODE# 
+							#ONCHANGE_CODE#
+							#ONUPDATE_CODE#												
+						} els{
+							(O:_LastMove) (O:_CurMove) - 0.01 &gt; if{ 
+								#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+								#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+								#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+								(O:_CurMove) (&gt;O:_LastMove) 
+								(#VAR_NAME#) 1 - (&gt;#VAR_NAME#)
+								(#VAR_NAME#) 0 &lt; if{
+									0 (&gt;#VAR_NAME#)
+								}
+								#ANIM_CODE# 								
+								#ONUPDATE_CODE#									
+							}
+						}
+						  
+		            }     
+	            }				
+	            (M:Event) 'WheelDown' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)
+	            	(#VAR_NAME#) 1 - (&gt;#VAR_NAME#)
+					(#VAR_NAME#) 0 &lt; if{
+						0 (&gt;#VAR_NAME#)						
+					}
+					#ANIM_CODE#
+					#ONCHANGE_CODE#
+					#ONUPDATE_CODE#
+	            }
+	            (M:Event) 'WheelUp' scmi 0 == if{ 
+					#AUDIO_POS_X# (&gt;L:P21_SND_GENERIC_POS_X)
+					#AUDIO_POS_Y# (&gt;L:P21_SND_GENERIC_POS_Y)
+					#AUDIO_POS_Z# (&gt;L:P21_SND_GENERIC_POS_Z)					
+	            	(#VAR_NAME#) 1 + (&gt;#VAR_NAME#)
+					(#VAR_NAME#) 2 &gt; if{
+						2 (&gt;#VAR_NAME#)
+					}
+					#ANIM_CODE#   
+					#ONCHANGE_CODE#
+					#ONUPDATE_CODE#					    	
+	            }	            
+      </CALLBACKCODE>
+    </UseTemplate>
+    <AnimationTriggers Animation="#ANIM_NAME#">
+      <EventTrigger Count="2" Direction="#SOUND_TRIGGER_DIR#">
+        <SoundEvent WwiseEvent="#SOUND_EVENT#" Action="#SOUND_TRIGGER_ACTION#" />
+      </EventTrigger>
+    </AnimationTriggers>
+  </Template>
+	<Template Name="BC350_FUEL_RunStop_Template">
+		<Parameters Type="Default">
+			<ID>1</ID>
+		</Parameters>
+		<UseTemplate Name="BC350_FUEL_RunStop_SubTemplate"/>
+	</Template>
+	<Template Name="BC350_FUEL_Switch_RunStop_Template">
+		<Parameters Type="Default">
+			<HAS_COVER>False</HAS_COVER>
+		</Parameters>
+		<UseTemplate Name="BC350_FUEL_RunStop_Template">
+			<INTERACTION_TYPE>Switch</INTERACTION_TYPE>
+		</UseTemplate>
+	</Template>
+<!-- Set/Cut mixture fuel valve & ignition AUTO if off -->
+<Template Name="BC350_FUEL_RunStop_SubTemplate">
+	<Parameters Type="Default">
+		<HAS_COVER>False</HAS_COVER>
+		<ENG_COUNT>2</ENG_COUNT>
+	</Parameters>
+	<Parameters Type="Default">
+		<NODE_ID>FUEL_#INTERACTION_TYPE#_RunStop_#ID#</NODE_ID>
+		<ANIM_NAME>FUEL_#INTERACTION_TYPE#_RunStop_#ID#</ANIM_NAME>
+		<PART_ID>FUEL_#INTERACTION_TYPE#_RunStop</PART_ID>
+		<Condition Valid="HAS_COVER">
+			<COVER_NODE_ID>FUEL_#INTERACTION_TYPE#_RunStop_#ID#_Cover</COVER_NODE_ID>
+			<COVER_ANIM_NAME>FUEL_#INTERACTION_TYPE#_RunStop_#ID#_Cover</COVER_ANIM_NAME>
+		</Condition>
+	</Parameters>
+	<Parameters Type="Default">
+		<Switch Param="INTERACTION_TYPE">
+			<Case Value="Push">
+				<WWISE_EVENT_1>fuel_push_runstop_button_on</WWISE_EVENT_1>
+				<WWISE_EVENT_2>fuel_push_runstop_button_off</WWISE_EVENT_2>
+			</Case>
+			<Case Value="Switch">
+				<WWISE_EVENT_1>fuel_push_runstop_button_on</WWISE_EVENT_1>
+				<WWISE_EVENT_2>fuel_push_runstop_button_off</WWISE_EVENT_2>
+			</Case>
+		</Switch>
+	</Parameters>
+	<Parameters Type="Override">
+		<Switch Param="ENG_COUNT">
+			<Case Value="2">
+				<ADDITIONAL_CHECK>(A:GENERAL ENG STARTER:1, Boolean) (A:GENERAL ENG STARTER:2, Boolean) or ! and</ADDITIONAL_CHECK>
+			</Case>
+			<Default>
+				<ADDITIONAL_CHECK/>
+			</Default>
+		</Switch>
+	</Parameters>
+	<Parameters Type="Default">
+		<TOOLTIP_TITLE>@TT_Package.FUEL_PUSH_RUNSTOP_TITLE</TOOLTIP_TITLE>
+		<TT_DESCRIPTION_ID>@TT_Package.FUEL_PUSH_RUNSTOP_ACTION</TT_DESCRIPTION_ID>
+		<TT_DESCRIPTION_INDEX>#ID#</TT_DESCRIPTION_INDEX>
+		<TT_ICON>MOVE_Y</TT_ICON>
+	</Parameters>
+	<Parameters Type="Override">
+		<SET_MIXTURE>l3 @16K * s0 l1 != if{ l0 (&gt;K:MIXTURE#ID#_SET) }</SET_MIXTURE>
+	</Parameters>
+	<Parameters Type="Override">
+		<ENUM_VAL_TO_POS_EXTERNAL>l0 sp3 #SET_MIXTURE# l3</ENUM_VAL_TO_POS_EXTERNAL>
+		<Switch Param="TYPE">
+			<Case Value="VALVE_SET">
+				<GET_STATE_EXTERNAL>(A:GENERAL ENG FUEL VALVE:#ID#, Bool) sp0 (A:GENERAL ENG MIXTURE LEVER POSITION:#ID#, position 16k) sp1</GET_STATE_EXTERNAL>
+				<SET_STATE_ON>@16K (&gt;K:MIXTURE#ID#_SET) 1 (&gt;K:SET_FUEL_VALVE_ENG#ID#)</SET_STATE_ON>
+				<SET_STATE_OFF>0 (&gt;K:MIXTURE#ID#_SET) 0 (&gt;K:SET_FUEL_VALVE_ENG#ID#)</SET_STATE_OFF>
+			</Case>
+			<Case Value="IGNITION_SET">
+				<GET_STATE_EXTERNAL>(A:TURB ENG IGNITION SWITCH EX1:#ID#, enum) 0 &gt; sp0 (A:GENERAL ENG MIXTURE LEVER POSITION:#ID#, position 16k) sp1</GET_STATE_EXTERNAL>
+				<SET_STATE_ON>@16K (&gt;K:MIXTURE#ID#_SET) 1 (&gt;K:TURBINE_IGNITION_SWITCH_SET#ID#)</SET_STATE_ON>
+				<SET_STATE_OFF>0 (&gt;K:MIXTURE#ID#_SET) 0 (&gt;K:TURBINE_IGNITION_SWITCH_SET#ID#)</SET_STATE_OFF>
+			</Case>
+		</Switch>
+	</Parameters>
+	<UseTemplate Name="BC350_FUEL_Base_Template">
+		<Switch Param="INTERACTION_TYPE">
+			<Case Value="Push">
+				<IS_AIRLINER>True</IS_AIRLINER>
+				<SEQ1_EMISSIVE_CODE>(B:FUEL_RunStop_#ID#, Bool)</SEQ1_EMISSIVE_CODE>
+				<SEQ2_EMISSIVE_CODE>(B:FUEL_RunStop_#ID#, Bool) ! #ADDITIONAL_CHECK#</SEQ2_EMISSIVE_CODE>				
+			</Case>
+			<Case Value="Switch">
+				<IS_AIRLINER>True</IS_AIRLINER>				
+			</Case>
+		</Switch>
+		<IE_NAME>RunStop_#ID#</IE_NAME>
+		<STR_STATE_ON>Run</STR_STATE_ON>
+		<STR_STATE_OFF>Stop</STR_STATE_OFF>
+		<TT_VALUE_ON>(R:1:@TT_Package.GT_STATE_RUN)</TT_VALUE_ON>
+		<TT_VALUE_OFF>(R:1:@TT_Package.GT_STATE_STOP)</TT_VALUE_OFF>
+		<SIMVAR_TO_WATCH_0>GENERAL ENG MIXTURE LEVER POSITION:#ID#</SIMVAR_TO_WATCH_0>
+		<Switch Param="TYPE">
+			<Case Value="VALVE_SET">
+				<SIMVAR_TO_WATCH_1>GENERAL ENG FUEL VALVE:#ID#</SIMVAR_TO_WATCH_1>
+			</Case>
+			<Case Value="IGNITION_SET">
+				<SIMVAR_TO_WATCH_1>TURB ENG IGNITION SWITCH EX1:#ID#</SIMVAR_TO_WATCH_1>
+			</Case>
+		</Switch>
+	</UseTemplate>
+</Template>
+	<Template Name="BC350_FUEL_Base_Template">
+		<Parameters Type="Default">
+			<INPUT_EVENT_ID_SOURCE>FUEL</INPUT_EVENT_ID_SOURCE>
+			<WWISE_PREFIX>FUEL</WWISE_PREFIX>
+		</Parameters>
+		<UseTemplate Name="ASOBO_Interaction_Base_Template">
+			<USE_INPUT_EVENT_ID>FUEL</USE_INPUT_EVENT_ID>
+		</UseTemplate>
+	</Template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<Template Name="BC350_HANDLING_Autobrakes_Template">
+		<Parameters Type="Default">
+			<ID>1</ID>
+		</Parameters>
+		<UseTemplate Name="BC350_HANDLING_Autobrakes_SubTemplate"/>
+	</Template>
+  
+	<Template Name="BC350_HANDLING_Knob_Autobrakes_Template">
+		<UseTemplate Name="BC350_HANDLING_Autobrakes_Template">
+			<INTERACTION_TYPE>Knob</INTERACTION_TYPE>
+		</UseTemplate>
+	</Template>
+	
+	
+	<Template Name="BC350_HANDLING_Autobrakes_SubTemplate">
+		<Parameters Type="Default">
+			<NODE_ID>HANDLING_#INTERACTION_TYPE#_Autobrake_#ID#</NODE_ID> 
+			<ANIM_NAME>HANDLING_#INTERACTION_TYPE#_Autobrake_#ID#</ANIM_NAME>
+			<PART_ID>HANDLING_#INTERACTION_TYPE#_Autobrake</PART_ID>
+			<Switch Param="INTERACTION_TYPE">
+				<Case Value="Push">
+					<TYPE>ON_OFF</TYPE>
+					<WWISE_PREFIX>autobrake</WWISE_PREFIX>
+					<AUTOBRAKE_LEVEL Process="Int">#ID# 1 +</AUTOBRAKE_LEVEL>
+					<AUTOBRAKE_RTO>0</AUTOBRAKE_RTO>
+					<AUTOBRAKE_OFF>1</AUTOBRAKE_OFF>
+					<Switch Param="ID">
+						<Case Value="1">
+							<TT_DESCRIPTION_ID>@TT_Package.LANDING_GEAR_PUSH_AUTOBKR_ACTION_LOW</TT_DESCRIPTION_ID>
+						</Case>
+						<Case Value="2">
+							<TT_DESCRIPTION_ID>@TT_Package.LANDING_GEAR_PUSH_AUTOBKR_ACTION_MED</TT_DESCRIPTION_ID>
+						</Case>
+						<Case Value="3">
+							<TT_DESCRIPTION_ID>@TT_Package.LANDING_GEAR_PUSH_AUTOBKR_ACTION_MAX</TT_DESCRIPTION_ID>
+						</Case>
+					</Switch>
+					<IS_AIRLINER>True</IS_AIRLINER>
+					<AUTODISABLE_COUNTDOWN>3</AUTODISABLE_COUNTDOWN>
+					<Condition Valid="DISABLED_IN_FLIGHT">
+						<True>
+							<TEST_DISABLED>(A:SIM ON GROUND, Bool) !</TEST_DISABLED>
+						</True>
+						<False>
+							<TEST_DISABLED>0</TEST_DISABLED>
+						</False>
+					</Condition>
+				</Case>
+				<Case Value="Knob">
+					<TYPE>X_STATES</TYPE>
+					<WWISE_PREFIX>autobrakes</WWISE_PREFIX>
+					<TT_DESCRIPTION_ID>@TT_Package.LANDING_GEAR_KNOB_ALT_AUTOBRAKE_ACTION</TT_DESCRIPTION_ID>
+					<Switch Param="AIRLINER_TYPE">
+						<Case Value="BOEING">
+							<POS_RTO>0</POS_RTO>
+							<POS_OFF>1</POS_OFF>
+							<POS_DISARM>2</POS_DISARM>
+							<POS_1>3</POS_1>
+							<POS_2>4</POS_2>
+							<POS_3>5</POS_3>
+							<POS_4>6</POS_4>
+							<POS_MAX_AUTO>7</POS_MAX_AUTO>
+							<NUM_STATES>8</NUM_STATES>
+						</Case>
+					</Switch>
+				</Case>
+			</Switch>
+			<TOOLTIP_TITLE>@TT_Package.LANDING_GEAR_PUSH_AUTOBKR_TITLE</TOOLTIP_TITLE>
+		</Parameters>
+		<Parameters Type="Override">
+			<Switch Param="TYPE">
+				<Case Value="ON_OFF">
+					<SET_SIMVAR_FROM_POSITION>
+						(* SwimVar pos is handled there for interactions + in update for automatic state switches *)
+						-1 sp0
+						(A:SIM ON GROUND, Bool) if{
+							(L:XMLVAR_Autobrake_Level_Armed) #AUTOBRAKE_OFF# == if{
+								#AUTOBRAKE_OFF# sp0
+							} els{
+								#AUTOBRAKE_RTO# sp0
+							}
+						} els{
+							(L:XMLVAR_Autobrake_Level_Armed) sp0
+						}
+						l0 -1 != l0 (A:AUTO BRAKE SWITCH CB, Enum) != and if{
+							l0 (&gt;K:SET_AUTOBRAKE_CONTROL)
+						}
+					</SET_SIMVAR_FROM_POSITION>
+				</Case>
+			</Switch>
+		</Parameters>
+		<Parameters Type="Override">
+			<Switch Param="TYPE">
+				<Case Value="ON_OFF">
+					<LOCAL_VAR_TO_WATCH_0>XMLVAR_Autobrake_Level_Armed</LOCAL_VAR_TO_WATCH_0>
+					<SIMVAR_TO_WATCH_0>ANTISKID BRAKES ACTIVE</SIMVAR_TO_WATCH_0>
+					<SIMVAR_TO_WATCH_1>BRAKE LEFT POSITION EX1</SIMVAR_TO_WATCH_1>
+					<SIMVAR_TO_WATCH_2>BRAKE RIGHT POSITION EX1</SIMVAR_TO_WATCH_2>
+					<SET_STATE_EXTERNAL>
+						#TEST_DISABLED# if{ 
+							0 (&gt;O:HANDLING_Autobrake_Level_#ID#_Position)
+						} els{
+							p0 if{ 
+								#AUTOBRAKE_LEVEL# (&gt;L:XMLVAR_Autobrake_Level_Armed) 
+							} els{ 
+								(L:XMLVAR_Autobrake_Level_Armed) #AUTOBRAKE_LEVEL# == if{
+									#AUTOBRAKE_OFF# (&gt;L:XMLVAR_Autobrake_Level_Armed)
+								} 
+							}
+						}
+						#SET_SIMVAR_FROM_POSITION#
+					</SET_STATE_EXTERNAL>
+					<!-- AUTOBRAKE system is disarmed: -->
+					<!-- 10 seconds after raising landing gear lever -->
+					<!-- When applying sufficient brake pedal deflection to one brake pedal -->
+					<GET_STATE_EXTERNAL>
+						(L:XMLVAR_Autobrake_Level_Armed) #AUTOBRAKE_LEVEL# == sp0
+						(A:ANTISKID BRAKES ACTIVE, Bool)
+						(A:BRAKE LEFT POSITION EX1, percent) 95 &gt; (A:BRAKE RIGHT POSITION EX1, percent) 95 &gt; or ! and sp1
+						l0 l1 ! and if{ #AUTOBRAKE_OFF# (&gt;L:XMLVAR_Autobrake_Level_Armed) } l0 l1 and sp0
+					</GET_STATE_EXTERNAL>
+					<Condition Check="ID" Match="1">
+						<COMP_INIT_CODE>(A:AUTO BRAKE SWITCH CB, Enum) (&gt;L:XMLVAR_Autobrake_Level_Armed) (A:GEAR HANDLE POSITION, Bool) (&gt;O:_Gear_Position) #SET_SIMVAR_FROM_POSITION#</COMP_INIT_CODE>
+						<COMP_UPDATE_CODE>
+							(* Handle disarming after landing gear up *)
+							(O:_Countdown_Disable_Autobrake) 0 &gt; if{
+								(O:_Countdown_Disable_Autobrake) 1 - (&gt;O:_Countdown_Disable_Autobrake)
+								(O:_Countdown_Disable_Autobrake) 0 &lt;= if{
+									1 (&gt;K:SET_AUTOBRAKE_CONTROL)
+									#AUTOBRAKE_OFF# (&gt;L:XMLVAR_Autobrake_Level_Armed)
+								}
+							}
+							(L:XMLVAR_Autobrake_Level_Armed) #AUTOBRAKE_OFF# &gt; if{
+								(A:GEAR HANDLE POSITION, Bool) s0 (O:_Gear_Position) != sp1 l0 (&gt;O:_Gear_Position)
+								l1 l0 ! and if{ 
+									#AUTODISABLE_COUNTDOWN# (&gt;O:_Countdown_Disable_Autobrake)
+								}
+							}
+						</COMP_UPDATE_CODE>
+					</Condition>
+					<Condition Valid="IS_AIRLINER">
+						<SEQ1_EMISSIVE_CODE>(B:HANDLING_Autobrake_Level_#ID#, Bool) (A:AUTOBRAKES ACTIVE, Bool) (A:REJECTED TAKEOFF BRAKES ACTIVE, Bool) or and</SEQ1_EMISSIVE_CODE>
+						<SEQ2_EMISSIVE_CODE>(B:HANDLING_Autobrake_Level_#ID#, Bool)</SEQ2_EMISSIVE_CODE>
+					</Condition>
+				</Case>
+				<Case Value="X_STATES">
+					<KNOB_TYPE>X_STATES</KNOB_TYPE>
+					<SIMVAR_TO_WATCH_0>AUTO BRAKE SWITCH CB</SIMVAR_TO_WATCH_0>
+					<Switch Param="AIRLINER_TYPE">
+						<Case Value="BOEING">
+							<STR_STATE_#POS_RTO#>RTO</STR_STATE_#POS_RTO#>
+							<STR_STATE_#POS_OFF#>Off</STR_STATE_#POS_OFF#>
+							<STR_STATE_#POS_DISARM#>Disarm</STR_STATE_#POS_DISARM#>
+							<STR_STATE_#POS_1#>Level_1</STR_STATE_#POS_1#>
+							<STR_STATE_#POS_2#>Level_2</STR_STATE_#POS_2#>
+							<STR_STATE_#POS_3#>Level_3</STR_STATE_#POS_3#>
+							<STR_STATE_#POS_4#>Level_4</STR_STATE_#POS_4#>
+							<STR_STATE_#POS_MAX_AUTO#>Max_Auto</STR_STATE_#POS_MAX_AUTO#>
+							<TT_VALUE_#POS_RTO#>@TT_Package.GT_STATE_RTO</TT_VALUE_#POS_RTO#>
+							<TT_VALUE_#POS_OFF#>@TT_Package.GT_STATE_OFF</TT_VALUE_#POS_OFF#>
+							<TT_VALUE_#POS_DISARM#>@TT_Package.GT_STATE_DISARM</TT_VALUE_#POS_DISARM#>
+							<TT_VALUE_#POS_1#>'1'</TT_VALUE_#POS_1#><TT_VALUE_#POS_1#_IS_DYNAMIC>True</TT_VALUE_#POS_1#_IS_DYNAMIC>
+							<TT_VALUE_#POS_2#>'2'</TT_VALUE_#POS_2#><TT_VALUE_#POS_2#_IS_DYNAMIC>True</TT_VALUE_#POS_2#_IS_DYNAMIC>
+							<TT_VALUE_#POS_3#>'3'</TT_VALUE_#POS_3#><TT_VALUE_#POS_3#_IS_DYNAMIC>True</TT_VALUE_#POS_3#_IS_DYNAMIC>
+							<TT_VALUE_#POS_4#>'4'</TT_VALUE_#POS_4#><TT_VALUE_#POS_4#_IS_DYNAMIC>True</TT_VALUE_#POS_4#_IS_DYNAMIC>
+							<TT_VALUE_#POS_MAX_AUTO#>@TT_Package.GT_STATE_MAXAUTO</TT_VALUE_#POS_MAX_AUTO#>
+							<SET_STATE_#POS_RTO#>0 (&gt;K:SET_AUTOBRAKE_CONTROL)</SET_STATE_#POS_RTO#>
+							<SET_STATE_#POS_OFF#>1 (&gt;K:SET_AUTOBRAKE_CONTROL)</SET_STATE_#POS_OFF#>
+							<SET_STATE_#POS_DISARM#>1 (&gt;K:SET_AUTOBRAKE_CONTROL)</SET_STATE_#POS_DISARM#>
+							<SET_STATE_#POS_1#>2 (&gt;K:SET_AUTOBRAKE_CONTROL)</SET_STATE_#POS_1#>
+							<SET_STATE_#POS_2#>3 (&gt;K:SET_AUTOBRAKE_CONTROL)</SET_STATE_#POS_2#>
+							<SET_STATE_#POS_3#>4 (&gt;K:SET_AUTOBRAKE_CONTROL)</SET_STATE_#POS_3#>
+							<SET_STATE_#POS_4#>5 (&gt;K:SET_AUTOBRAKE_CONTROL)</SET_STATE_#POS_4#>
+							<SET_STATE_#POS_MAX_AUTO#>6 (&gt;K:SET_AUTOBRAKE_CONTROL)</SET_STATE_#POS_MAX_AUTO#>
+							<GET_STATE_EXTERNAL>(A:AUTO BRAKE SWITCH CB, Number) sp0 (O:XMLVAR_Autobrake_Disarm) sp1</GET_STATE_EXTERNAL>
+							<ENUM_VAL_TO_POS_EXTERNAL>
+								l1 if{ #POS_DISARM# sp2 g2 }
+								els{
+									l0 0 == if{ #POS_RTO# sp2 g2 }
+									l0 1 == if{ #POS_OFF# sp2 g2 }
+									l0 2 == if{ #POS_1# sp2 g2 }
+									l0 3 == if{ #POS_2# sp2 g2 }
+									l0 4 == if{ #POS_3# sp2 g2 }
+									l0 5 == if{ #POS_4# sp2 g2 }
+									l0 6 == if{ #POS_MAX_AUTO# sp2 g2 }
+								} :2 l2
+							</ENUM_VAL_TO_POS_EXTERNAL>
+							<ON_STATE_CHANGED_EXTERNAL_CODE>p0 #POS_DISARM# == (&gt;O:XMLVAR_Autobrake_Disarm)</ON_STATE_CHANGED_EXTERNAL_CODE>
+						</Case>
+					</Switch>
+				</Case>
+			</Switch>
+		</Parameters>
+		<UseTemplate Name="ASOBO_HANDLING_Base_Template">
+			<Switch Param="TYPE">
+				<Case Value="ON_OFF">
+					<IE_NAME>Autobrake_Level_#ID#</IE_NAME>
+				</Case>
+				<Case Value="X_STATES">
+					<IE_NAME>Autobrake_#ID#</IE_NAME>
+				</Case>
+			</Switch>
+		</UseTemplate>
+	</Template>
+	<Template Name="BC350_SAFETY_ELT_Template">
+		<Parameters Type="Default">
+			<ID>1</ID>
+		</Parameters>
+		<UseTemplate Name="ASOBO_GT_Helper_Suffix_ID_Appender">
+			<TEMPLATE_TO_CALL>BC350_SAFETY_ELT_SubTemplate</TEMPLATE_TO_CALL>
+		</UseTemplate>
+	</Template>
+	<Template Name="BC350_SAFETY_Switch_ELT_Template">
+		<UseTemplate Name="BC350_SAFETY_ELT_Template">
+			<INTERACTION_TYPE>Switch</INTERACTION_TYPE>
+		</UseTemplate>
+	</Template>
+	
+	<Template Name="BC350_SAFETY_ELT_SubTemplate">
+		<Parameters Type="Default">
+			<TYPE>ON_ARM_TEST</TYPE>
+			<NODE_ID>SAFETY_Switch_ELT#SUFFIX_ID#</NODE_ID>
+			<ANIM_NAME>SAFETY_Switch_ELT#SUFFIX_ID#</ANIM_NAME>
+			<EMISSIVE_NODE_ID>SAFETY_Switch_ELT_Text#SUFFIX_ID#</EMISSIVE_NODE_ID>
+			<PART_ID>SWITCH_ELT</PART_ID>
+			<WWISE_EVENT>safety_elt_switch</WWISE_EVENT>		
+			<WWISE_EVENT_1>safety_elt_switch_on</WWISE_EVENT_1>	
+			<WWISE_EVENT_2>safety_elt_switch_off</WWISE_EVENT_2>
+			<!-- 0=OFF, 1=ARMED, 2=ON, 3=TEST/RESET -->
+			<ELT_VAR>XMLVAR_ELT_STATE</ELT_VAR>	
+			<ELT_ACTIVATED_VAR>XMLVAR_ELT_ACTIVATION_TIME</ELT_ACTIVATED_VAR>	
+			<ELT_TEST_VAR>XMLVAR_ELT_TEST_TIME</ELT_TEST_VAR>	
+			<ELT_SCOPE>L</ELT_SCOPE>
+			<!-- supposed to be around 3 blinks per second by default -->
+			<ELT_LED_BLINK>(E:SIMULATION TIME, second) 6 * 2 %</ELT_LED_BLINK>
+			<ELT_MIN_TIME_ON_FOR_TEST_RESET>1</ELT_MIN_TIME_ON_FOR_TEST_RESET>
+			<ELT_TEST_DURATION>1</ELT_TEST_DURATION>
+		</Parameters>
+		<Parameters Type="Override">
+			<ELT_OFF>0</ELT_OFF>
+			<ELT_ARM>1</ELT_ARM>
+			<ELT_ON>2</ELT_ON>
+			<ELT_TEST>3</ELT_TEST>
+		</Parameters>
+		<Parameters Type="Default">
+			<Switch Param="TYPE">
+				<Case Value="ON_ARM_TEST">
+					<POS_ON>0</POS_ON>
+					<POS_ARM>1</POS_ARM>
+					<POS_TEST>2</POS_TEST>
+				</Case>
+				<Case Value="ARM_ON">
+					<POS_ARM>0</POS_ARM>
+					<POS_ON>1</POS_ON>
+				</Case>
+				<Case Value="ARM_ON_OFF">
+					<POS_ARM>0</POS_ARM>
+					<POS_ON>1</POS_ON>
+					<POS_OFF>2</POS_OFF>
+				</Case>
+				<Case Value="ON_ARM_OFF">
+					<POS_ON>0</POS_ON>
+					<POS_ARM>1</POS_ARM>
+					<POS_OFF>2</POS_OFF>
+				</Case>
+			</Switch>
+			<USE_INPUT_EVENT>SAFETY</USE_INPUT_EVENT>
+			<INPUT_EVENT_ID_SOURCE>SAFETY</INPUT_EVENT_ID_SOURCE>
+			<BTN_ID>ELT#SUFFIX_ID#</BTN_ID>
+		</Parameters>
+		<Parameters Type="Default">
+			<TOOLTIP_TITLE>@TT_Package.ELT_SWITCH_TITLE</TOOLTIP_TITLE>
+			<TOOLTIP_ENTRY_0>#INPUT_EVENT_ID_SOURCE#_#BTN_ID#</TOOLTIP_ENTRY_0>
+			<TT_DESCRIPTION_ID>@TT_Package.ELT_SWITCH_ACTION_SET</TT_DESCRIPTION_ID>
+		</Parameters>
+		<Parameters Type="Override">
+			<Condition Check="#ELT_SCOPE#" Match="L">
+				<LOCAL_VAR_TO_WATCH_0>#ELT_VAR#</LOCAL_VAR_TO_WATCH_0>
+			</Condition>
+			<LED_ON_CHECK>(A:ELT ACTIVATED, Bool) #ELT_LED_BLINK# and (#ELT_SCOPE#:#ELT_VAR#) 3 == or</LED_ON_CHECK>
+			<ARM_TEST_RESET_CONDITION>(E:SIMULATION TIME, second) (#ELT_SCOPE#:#ELT_TEST_VAR#) - #ELT_MIN_TIME_ON_FOR_TEST_RESET# &gt; (A:ELT ACTIVATED, Bool) and</ARM_TEST_RESET_CONDITION>
+			<SET_STATE_ON>#ELT_ON# (&gt;#ELT_SCOPE#:#ELT_VAR#) (E:SIMULATION TIME, second) (&gt;#ELT_SCOPE#:#ELT_ACTIVATED_VAR#)</SET_STATE_ON>
+			<IS_STATE_ON>(#ELT_SCOPE#:#ELT_VAR#) #ELT_ON# ==</IS_STATE_ON>
+			<SET_STATE_ARM>#ELT_ARM# (&gt;#ELT_SCOPE#:#ELT_VAR#)</SET_STATE_ARM>
+			<IS_STATE_ARM>(#ELT_SCOPE#:#ELT_VAR#) #ELT_ARM# ==</IS_STATE_ARM>
+			<SET_STATE_OFF>#ELT_OFF# (&gt;#ELT_SCOPE#:#ELT_VAR#)</SET_STATE_OFF>
+			<IS_STATE_OFF>(#ELT_SCOPE#:#ELT_VAR#) #ELT_OFF# ==</IS_STATE_OFF>
+			<SET_STATE_TEST>#ELT_TEST# (&gt;#ELT_SCOPE#:#ELT_VAR#) (E:SIMULATION TIME, second) (&gt;#ELT_SCOPE#:#ELT_TEST_VAR#)</SET_STATE_TEST>
+			<IS_STATE_TEST>(#ELT_SCOPE#:#ELT_VAR#) #ELT_TEST# ==</IS_STATE_TEST>
+			<Condition Check="ID" Match="1">
+				<UPDATE_ELT_STATE>
+					(A:ELT ACTIVATED, Bool) if{
+						#ELT_ON# (&gt;#ELT_SCOPE#:#ELT_VAR#)
+					} els{
+						#ELT_ON# (#ELT_SCOPE#:#ELT_VAR#) == if{
+							#ELT_ARM# (&gt;#ELT_SCOPE#:#ELT_VAR#)
+						}
+						#ELT_TEST# (#ELT_SCOPE#:#ELT_VAR#) == if{
+							(E:SIMULATION TIME, second) (L:XMLVAR_ELT_TEST_TIME) - #ELT_TEST_DURATION# &gt; if{
+								#ELT_ARM# (&gt;#ELT_SCOPE#:#ELT_VAR#)
+							}
+						}
+					}
+				</UPDATE_ELT_STATE>
+				<ON_STATE_CHANGED_EXTERNAL_CODE>(#ELT_SCOPE#:#ELT_VAR#) #ELT_ON# == (A:ELT ACTIVATED, Bool) s0 != if{ l0 if{ (&gt;K:ELT_OFF) } els{ (&gt;K:ELT_ON) } } </ON_STATE_CHANGED_EXTERNAL_CODE>
+			</Condition>
+		</Parameters>
+		<Condition Valid="NO_EMISSIVE">
+			<False>
+				<Component ID="#EMISSIVE_NODE_ID#" Node="#EMISSIVE_NODE_ID#">
+					<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+						<EMISSIVE_CODE>#LED_ON_CHECK#</EMISSIVE_CODE>
+					</UseTemplate>
+				</Component>
+			</False>
+		</Condition>
+		<Component ID="#NODE_ID#" Node="#NODE_ID#">
+			<Condition NotEmpty="UPDATE_ELT_STATE">
+				<UseTemplate Name="ASOBO_GT_Update">
+					<UPDATE_CODE>#UPDATE_ELT_STATE#</UPDATE_CODE>
+				</UseTemplate>
+			</Condition>
+			<Switch Param="TYPE">
+				<Case Value="ON_ARM_TEST">
+					<UseInputEvent ID="#USE_INPUT_EVENT#">
+						<NUM_STATES>3</NUM_STATES>
+						<GET_STATE_EXTERNAL>(#ELT_SCOPE#:#ELT_VAR#) s0 #ELT_OFF# == if{ #ELT_ARM# (&gt;#ELT_SCOPE#:#ELT_VAR#) (#ELT_SCOPE#:#ELT_VAR#) sp0 }</GET_STATE_EXTERNAL>
+						<ENUM_VAL_TO_POS_EXTERNAL>l0 #ELT_ON# == if{ #POS_ON# sp1 } l0 #ELT_ARM# == if{ #POS_ARM# sp1 } l0 #ELT_TEST# == if{ #POS_TEST# sp1 } l1</ENUM_VAL_TO_POS_EXTERNAL>
+						<!-- ON -->
+						<TT_VALUE_#POS_ON#>@TT_Package.GT_STATE_ON</TT_VALUE_#POS_ON#>
+						<SET_STATE_#POS_ON#>#SET_STATE_ON#</SET_STATE_#POS_ON#>
+						<STR_STATE_#POS_ON#>On</STR_STATE_#POS_ON#>
+						<!-- ARM -->
+						<TT_VALUE_#POS_ARM#>@TT_Package.GT_STATE_ARM</TT_VALUE_#POS_ARM#>
+						<SET_STATE_#POS_ARM#>#SET_STATE_ARM#</SET_STATE_#POS_ARM#>
+						<STR_STATE_#POS_ARM#>Arm</STR_STATE_#POS_ARM#>
+						<!-- TEST -->
+						<TT_VALUE_#POS_TEST#>@TT_Package.GT_STATE_TEST</TT_VALUE_#POS_TEST#>
+						<SET_STATE_#POS_TEST#>#SET_STATE_TEST#</SET_STATE_#POS_TEST#>
+						<STR_STATE_#POS_TEST#>Test</STR_STATE_#POS_TEST#>
+					</UseInputEvent>
+					<UseTemplate Name="ASOBO_GT_Switch_3States">
+						<CODE_POS_#POS_ARM#>(&gt;B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#_Arm)</CODE_POS_#POS_ARM#>
+						<CODE_POS_#POS_ON#>(&gt;B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#_On)</CODE_POS_#POS_ON#>
+						<CODE_POS_#POS_TEST#>(&gt;B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#_Test)</CODE_POS_#POS_TEST#>
+						<STATE#POS_ARM#_TEST>(B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#) #POS_ARM# ==</STATE#POS_ARM#_TEST>
+						<STATE#POS_ON#_TEST>(B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#) #POS_ON# ==</STATE#POS_ON#_TEST>
+						<STATE#POS_TEST#_TEST>(B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#) #POS_TEST# ==</STATE#POS_TEST#_TEST>
+					</UseTemplate>
+				</Case>
+				<Case Value="ARM_ON">
+					<UseInputEvent ID="#USE_INPUT_EVENT#">
+						<SET_STATE_OFF>#ARM_TEST_RESET_CONDITION# if{ #SET_STATE_TEST# } els{ #SET_STATE_ARM# }</SET_STATE_OFF>
+						<SET_STATE_ON>#SET_STATE_ON#</SET_STATE_ON>
+						<GET_STATE_EXTERNAL>(A:ELT ACTIVATED, Bool) sp0</GET_STATE_EXTERNAL>
+						<STR_STATE_OFF>Arm</STR_STATE_OFF>
+						<STR_STATE_ON>On</STR_STATE_ON>
+						<TT_VALUE_OFF>(R:1:@TT_Package.GT_STATE_ARM)</TT_VALUE_OFF>
+						<TT_VALUE_ON>@TT_On</TT_VALUE_ON>
+						<SIM_STATE_IS_ON_EXTERNAL>l0</SIM_STATE_IS_ON_EXTERNAL>
+						<SIMVAR_TO_WATCH_0>ELT ACTIVATED</SIMVAR_TO_WATCH_0>
+					</UseInputEvent>
+					<UseTemplate Name="ASOBO_GT_Switch_Code">
+						<LEFT_SINGLE_CODE>(&gt;B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#_Toggle)</LEFT_SINGLE_CODE>
+						<ANIM_CODE>(A:ELT ACTIVATED, Percent)</ANIM_CODE>
+					</UseTemplate>
+				</Case>
+				<Case Value="ON_ARM_OFF">
+					<UseInputEvent ID="#USE_INPUT_EVENT#">
+						<NUM_STATES>3</NUM_STATES>
+						<GET_STATE_EXTERNAL>(#ELT_SCOPE#:#ELT_VAR#) s0 #ELT_TEST# == if{ #ELT_ARM# (&gt;#ELT_SCOPE#:#ELT_VAR#) (#ELT_SCOPE#:#ELT_VAR#) sp0 }</GET_STATE_EXTERNAL>
+						<ENUM_VAL_TO_POS_EXTERNAL>l0 #ELT_ARM# == l0 #ELT_TEST# == or if{ #POS_ARM# sp2 } l0 #ELT_ON# == if{ #POS_ON# sp2 } l0 #ELT_OFF# == if{ #POS_OFF# sp2 } l2</ENUM_VAL_TO_POS_EXTERNAL>
+						<!-- ARM -->
+						<TT_VALUE_#POS_ARM#>@TT_Package.GT_STATE_ARM</TT_VALUE_#POS_ARM#>
+						<SET_STATE_#POS_ARM#>#ARM_TEST_RESET_CONDITION# if{ #SET_STATE_TEST# } els{ #SET_STATE_ARM# }</SET_STATE_#POS_ARM#>
+						<STR_STATE_#POS_ARM#>Arm</STR_STATE_#POS_ARM#>
+						<!-- ON -->
+						<TT_VALUE_#POS_ON#>@TT_Package.GT_STATE_ON</TT_VALUE_#POS_ON#>
+						<SET_STATE_#POS_ON#>#SET_STATE_ON#</SET_STATE_#POS_ON#>
+						<STR_STATE_#POS_ON#>On</STR_STATE_#POS_ON#>
+						<!-- OFF -->
+						<TT_VALUE_#POS_OFF#>@TT_Package.GT_STATE_OFF</TT_VALUE_#POS_OFF#>
+						<SET_STATE_#POS_OFF#>#SET_STATE_OFF#</SET_STATE_#POS_OFF#>
+						<STR_STATE_#POS_OFF#>Off</STR_STATE_#POS_OFF#>
+					</UseInputEvent>
+					<UseTemplate Name="ASOBO_GT_Switch_3States">
+						<CODE_POS_#POS_ARM#>(&gt;B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#_Arm)</CODE_POS_#POS_ARM#>
+						<CODE_POS_#POS_ON#>(&gt;B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#_On)</CODE_POS_#POS_ON#>
+						<CODE_POS_#POS_OFF#>(&gt;B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#_Off)</CODE_POS_#POS_OFF#>
+						<STATE#POS_ARM#_TEST>(B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#) #POS_ARM# ==</STATE#POS_ARM#_TEST>
+						<STATE#POS_ON#_TEST>(B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#) #POS_ON# ==</STATE#POS_ON#_TEST>
+						<STATE#POS_OFF#_TEST>(B:#INPUT_EVENT_ID_SOURCE#_#BTN_ID#) #POS_OFF# ==</STATE#POS_OFF#_TEST>
+					</UseTemplate>
+				</Case>
+			</Switch>
+		</Component>
+	</Template>
+
+</ModelBehaviors>

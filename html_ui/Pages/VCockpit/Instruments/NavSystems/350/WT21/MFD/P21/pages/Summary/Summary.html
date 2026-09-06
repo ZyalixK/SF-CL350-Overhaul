@@ -1,0 +1,173 @@
+<link rel="stylesheet" href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Summary/Summary.css">
+
+
+<script type="text/html" id="summary-page-template">
+<div class="relative">
+  <div class="summary-page relative">
+    <div class="separator separator--h"></div>
+    <div class="summary-page__container">
+      <div class="summary-page__title text-xl text-grey text-center">SUMMARY</div>
+      <div class="summary-container text-grey">
+        <div class="section section--ecs">
+          <div id="ecs-table" class="summary-section">
+            <div class="summary-section__title text-center">ECS</div>
+
+            <table class="summary-section__table">
+              <tbody>
+                <tr>
+                  <td>OXY QTY</td>
+                  <td id="ecs-oxy-qty" class="text-green text-right">1200</td>
+                </tr>
+                <tr>
+                  <td>CAB ALT</td>
+                  <td id="ecs-cab-alt" class="text-green text-right">6200</td>
+                </tr>
+                <tr>
+                  <td>CAB RATE</td>
+                  <td class="text-green text-right">
+                    <span id="ecs-cab-rate-arrow" class="inline-block relative" style="transform: rotate(180deg); top: -0.5rem;">
+                      <svg width="13" height="18" viewBox="0 0 13 18">
+                        <path d="
+                            M6 1
+                            L6 10
+                            L1 10
+                            L6 17
+                            L12 10
+                            L6 10
+                            Z
+                          " class="stroke-green">
+                        </path>
+                      </svg>
+                    </span>
+                    <span id="ecs-cab-rate">1500</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CAB △P</td>
+                  <td id="ecs-cab-delta" class="text-green text-right">9.1</td>
+                </tr>
+                <tr>
+                  <td>LNDG ALT</td>
+                  <td id="ecs-landing-alt" class="text-cyan text-right">14000</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="summary-section__table summary-section__table--bleed">
+              <tbody>
+                <tr>
+                  <td class="text-center border-b">L</td>
+                  <td></td>
+                  <td class="text-center border-b">R</td>
+                </tr>
+                <tr>
+                  <td><span id="ecs-bleed-left" class="text-green">45</span></td>
+                  <td><span class="text-center block">BLEED PRESS</span></td>
+                  <td><span id="ecs-bleed-right" class="text-right text-green">60</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>        
+        </div>
+        <div id="el-table" class="section section--el">
+          <div class="summary-section">
+            <div class="summary-section__title text-center">ELECTRICAL</div>
+            <table class="summary-section__table">
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td class="text-center border-b">L</td>
+                  <td class="text-center border-b">APU</td>
+                  <td class="text-center border-b">R</td>
+                </tr>
+                <tr>
+                  <td>GEN AMPS</td>
+                  <td><span id="el-genamps-left" class="text-green text-right">20</span></td>
+                  <td><span id="el-genamps-apu" class="text-green text-right">0</span></td>
+                  <td><span id="el-genamps-right" class="text-green text-right">30</span></td>
+                </tr>
+                <tr>
+                  <td>GEN VOLTS</td>
+                  <td><span id="el-genvolts-left" class="text-green text-right">28.5</span></td>
+                  <td><span id="el-genvolts-apu" class="text-green text-right">0.0</span></td>
+                  <td><span id="el-genvolts-right" class="text-green text-right">28.0</span></td>
+                </tr>
+                <tr>
+                  <td>BATT VOLTS</td>
+                  <td><span id="el-batt-volts-left" class="text-green text-right">24.0</span></td>
+                  <td></td>
+                  <td><span id="el-batt-volts-right" class="text-green text-right">24.5</span></td>
+                </tr>
+                <tr>
+                  <td>BATT TEMP °C</td>
+                  <td><span id="el-batt-temp-left" class="text-green text-right">35</span></td>
+                  <td></td>
+                  <td><span id="el-batt-temp-right" class="text-green text-right">26</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="section section--hyd">
+          <div class="summary-section">
+            <div class="summary-section__title text-center">HYDRAULIC</div>
+
+            <table class="summary-section__table">
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td class="text-center border-b">L</td>
+                  <td class="text-center border-b">AUX</td>
+                  <td class="text-center border-b">R</td>
+                </tr>
+                <tr>
+                  <td>PRSSURE</td>
+                  <td id="hyd-prs-left" class="text-green text-right">2950</td>
+                  <td id="hyd-prs-aux" class="text-green text-right">3000</td>
+                  <td id="hyd-prs-right" class="text-green text-right">2900</td>
+                </tr>
+                <tr>
+                  <td>TEMP °C</td>
+                  <td id="hyd-temp-left" class="text-green text-right">40</td>
+                  <td id="hyd-temp-aux" class="text-green text-right">-35</td>
+                  <td id="hyd-temp-right" class="text-green text-right">-40</td>
+                </tr>
+                <tr>
+                  <td>QTY %</td>
+                  <td id="hyd-qty-left" class="text-green text-right">65</td>
+                  <td id="hyd-qty-aux" class="text-green text-right">75</td>
+                  <td id="hyd-qty-right" class="text-green text-right">70</td>
+                </tr>
+                <tr>
+                  <td>INBD BRAKES</td>
+                  <td id="hyd-inbd-brakes-left" class="text-yellow text-right">LOW</td>
+                  <td id="hyd-inbd-brakes-aux" class="text-green text-right"></td>
+                  <td id="hyd-inbd-brakes-right" class="text-green text-right"></td>
+                </tr>
+                <tr>
+                  <td>OUTBD BRAKES</td>
+                  <td id="hyd-outbd-brakes-left" class="text-green text-right"></td>
+                  <td id="hyd-outbd-brakes-aux" class="text-green text-right"></td>
+                  <td id="hyd-outbd-brakes-right" class="text-green text-right">NORM</td>
+                </tr>
+                <tr>
+                  <td>PK/EMER BRAKE</td>
+                  <td id="hyd-pk-brake-left" class="text-yellow text-right">1200</td>
+                  <td id="hyd-pk-brake-aux" class="text-green text-right"></td>
+                  <td id="hyd-pk-brake-right" class="text-green text-right"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+</script>
+
+<script type="text/javascript" src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Summary/Summary.js"></script>

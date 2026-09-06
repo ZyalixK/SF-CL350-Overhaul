@@ -1,0 +1,32 @@
+# EditorConfig configuration for Zyalixkbmd & Drag_Required Simfederation Challenger 350 Mod Project
+root = true
+
+# Default settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Flight Simulator CFG files use 4-space indents and standard layout
+[*.cfg]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = false
+
+# XML system files
+[*.xml]
+indent_style = space
+indent_size = 2
+
+# JSON layout and manifest files
+[*.json]
+indent_style = space
+indent_size = 2
+
+# HTML / JS / CSS for html_ui avionics
+[*.{js,html,css}]
+indent_style = space
+indent_size = 2

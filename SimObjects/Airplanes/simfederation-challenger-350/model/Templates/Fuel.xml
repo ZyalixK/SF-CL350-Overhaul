@@ -1,0 +1,207 @@
+<ModelBehaviors>
+
+
+	<Template Name="P21_FUEL_TEMPLATE">
+		<!-- XFLOW -->
+		<Component ID="P21_XFLOW_BTN" Node="FUEL_Switch_GravityFlow">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<NODE_ID>FUEL_Switch_GravityFlow</NODE_ID>
+				<ANIM_NAME>GRAVITY_XFLOW_BUTTON</ANIM_NAME>
+				<!-- <NODE_ID>GRAVITY_XFLOW_BUTTON</NODE_ID> -->
+				<VAR_NAME>L:P21_XFLOW_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_XFLOW_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'GRAVITY CROSSFLOW'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_XFLOW_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- XFER -->
+		<Component ID="P21_XFER_BUTTON" Node="FUEL_Switch_Crossfeed">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<NODE_ID>FUEL_Switch_Crossfeed</NODE_ID>
+				<ANIM_NAME>XFER_BUTTON</ANIM_NAME>
+				<VAR_NAME>L:P21_FUEL_XFER_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_FUEL_XFER_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'FUEL CROSSFEED'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_FUEL_XFER_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+					<!-- FUEL CROSS FEED ENUMS -->
+					<!--
+					0 = Closed 	
+					1 = Open
+					2 = Left to Right
+					3 = Right to Left
+					-->
+					(L:P21_FUEL_XFER_BTN) 0 = if{
+						0 3 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+						0 (&gt;A:FUEL CROSS FEED:1, Enum)
+						0 (&gt;A:FUEL CROSS FEED:2, Enum)
+					} els {
+						1 3 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+						1 (&gt;A:FUEL CROSS FEED:1, Enum)
+						1 (&gt;A:FUEL CROSS FEED:2, Enum)
+					}
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_PUMP_RIGHT" Node="FUEL_Knob_Pump_Right">
+			<PartID>P21_PUMP_RIGHT</PartID>
+			<CameraTitle>Pedestal</CameraTitle>
+			<UseTemplate Name="P21_ROTARY_3STATE">
+				<AUDIO_POS_X>0.450</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.441</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.924</AUDIO_POS_Z>
+				<NODE_ID>FUEL_Knob_Pump_Right</NODE_ID>
+				<ANIM_NAME>FUEL_Knob_Pump_Right</ANIM_NAME>
+				<VAR_NAME>L:P21_PUMP_RIGHT</VAR_NAME>
+				<TOOLTIP_TITLE>'RIGHT FUEL PUMP'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_PUMP_RIGHT) 0 == if{
+						'Off'
+					} els {
+						(L:P21_PUMP_RIGHT) 1 == if{
+							'Auto'
+						} else {
+							(L:P21_PUMP_RIGHT) 2 == if{
+								'On'
+							}
+						}
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+					(L:P21_PUMP_RIGHT) 0 == if{
+						1 (&gt;L:P21_CAS_FUEL_VAL)
+						1410304 (&gt;L:P21_CAS_FUEL_ID)
+					} els {
+						(L:P21_PUMP_RIGHT) 1 == if{
+							0 (&gt;L:P21_CAS_FUEL_VAL)
+							1410304 (&gt;L:P21_CAS_FUEL_ID)
+						} els{	
+							(L:P21_PUMP_RIGHT) 2 == if{                        
+								1 (&gt;L:P21_CAS_FUEL_VAL)
+								1410304 (&gt;L:P21_CAS_FUEL_ID)	
+							}
+						}
+					}			
+				</ONCHANGE_CODE>
+				<ONUPDATE_CODE>
+					(L:P21_PUMP_RIGHT) 0 == if{
+						(A:FUELSYSTEM VALVE SWITCH:3,number) 0 == if{
+								1 3 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+						}
+						(A:FUELSYSTEM PUMP SWITCH:4,number) 0 == if{
+								1 4 (&gt;K:2:FUELSYSTEM_PUMP_SET)
+						}
+						1 (&gt; L:P21_MFD_GV_FUEL_XFER_DIRECTION) 
+					}
+
+					(L:P21_PUMP_RIGHT) 1 == if{
+						(A:FUELSYSTEM VALVE SWITCH:3,number) 1 == if{
+							0 3 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+							0 (&gt; L:P21_MFD_GV_FUEL_XFER_DIRECTION) 
+						} 
+					}
+
+					(L:P21_PUMP_RIGHT) 2 == if{
+						(A:FUELSYSTEM VALVE SWITCH:3,number) 0 == if{
+							1 3 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+						}
+						(A:FUELSYSTEM PUMP SWITCH:3,number) 0 == if{
+							1 2 (&gt;K:2:FUELSYSTEM_PUMP_SET)
+						}
+						2 (&gt; L:P21_MFD_GV_FUEL_XFER_DIRECTION) 					
+					}
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_PUMP_LEFT" Node="FUEL_Knob_Pump_Left">
+			<PartID>P21_PUMP_LEFT</PartID>
+			<CameraTitle>Pedestal</CameraTitle>
+			<UseTemplate Name="P21_ROTARY_3STATE">
+				<AUDIO_POS_X>0.450</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.441</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.924</AUDIO_POS_Z>
+				<NODE_ID>FUEL_Knob_Pump_Left</NODE_ID>
+				<ANIM_NAME>FUEL_Knob_Pump_Left</ANIM_NAME>
+				<VAR_NAME>L:P21_PUMP_LEFT</VAR_NAME>
+				<TOOLTIP_TITLE>'LEFT FUEL PUMP'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_PUMP_LEFT) 0 == if{
+						'Off'
+					}
+					(L:P21_PUMP_LEFT) 1 == if{
+						'Auto'
+					}
+					(L:P21_PUMP_LEFT) 2 == if{
+						'On'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+					(L:P21_PUMP_LEFT) 0 == if{
+						1 (&gt;L:P21_CAS_FUEL_VAL)
+						1410304 (&gt;L:P21_CAS_FUEL_ID)
+					} els {
+						(L:P21_PUMP_LEFT) 1 == if{
+							0 (&gt;L:P21_CAS_FUEL_VAL)
+							1410304 (&gt;L:P21_CAS_FUEL_ID)
+						} els{	
+							(L:P21_PUMP_LEFT) 2 == if{                        
+								1 (&gt;L:P21_CAS_FUEL_VAL)
+								1410304 (&gt;L:P21_CAS_FUEL_ID)	
+							}
+						}
+					}			
+				</ONCHANGE_CODE>
+				<ONUPDATE_CODE>
+					(L:P21_PUMP_LEFT) 0 == if{
+						(A:FUELSYSTEM VALVE SWITCH:3,number) 0 == if{
+								1 3 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+						}
+						(A:FUELSYSTEM PUMP SWITCH:4,number) 0 == if{
+								1 4 (&gt;K:2:FUELSYSTEM_PUMP_SET)
+						}
+						1 (&gt; L:P21_MFD_GV_FUEL_XFER_DIRECTION) 
+					}
+
+					(L:P21_PUMP_LEFT) 1 == if{
+						(A:FUELSYSTEM VALVE SWITCH:3,number) 1 == if{
+							0 3 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+							0 (&gt; L:P21_MFD_GV_FUEL_XFER_DIRECTION) 
+						} 
+					}
+
+					(L:P21_PUMP_LEFT) 2 == if{
+						(A:FUELSYSTEM VALVE SWITCH:3,number) 0 == if{
+							1 3 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+						}
+						(A:FUELSYSTEM PUMP SWITCH:3,number) 0 == if{
+							1 2 (&gt;K:2:FUELSYSTEM_PUMP_SET)
+						}
+						2 (&gt; L:P21_MFD_GV_FUEL_XFER_DIRECTION) 					
+					}
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+	</Template>
+</ModelBehaviors>

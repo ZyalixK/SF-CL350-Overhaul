@@ -1,0 +1,30 @@
+
+.el-batt__readout {
+  font-size: var(--text-lg);
+}
+
+.el-batt {
+  min-width: 3.8rem;
+  min-height: 3rem;
+  display: inline-block;
+  position: relative;
+  background: var(--p21-color-black);
+  font-size: var(--text-sm);
+  border: 0.25rem solid var(--p21-color-green);
+  padding: 0.25rem;
+}
+
+.el-batt__temp {
+  position: absolute;
+  width: 100%;
+  top: -1.25rem;
+  left: 0;
+}
+
+.el-batt__label {
+  margin-bottom: 0.3rem;
+}
+
+.el-batt__temp {
+  line-height: 1;
+}

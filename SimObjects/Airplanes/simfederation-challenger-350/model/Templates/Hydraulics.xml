@@ -1,0 +1,221 @@
+<ModelBehaviors>
+  <Template Name="P21_HYDRAULICS_TEMPLATE">
+    <!-- L_SOV -->
+    <Component ID="P21_L_SOV_BTN" Node="Hydraulic_SOV_1">
+      <UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+        <AUDIO_POS_X>0.479</AUDIO_POS_X>
+        <AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+        <AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+        <NODE_ID>Hydraulic_SOV_1</NODE_ID>
+        <ANIM_NAME>Hydraulic_SOV_1</ANIM_NAME>
+        <VAR_NAME>L:P21_HYD_L_SOV_BTN</VAR_NAME>
+        <TOOLTIPID>L:P21_HYD_L_SOV_BTN</TOOLTIPID>
+        <TOOLTIP_TITLE>'LEFT HYDRAULIC SOV'</TOOLTIP_TITLE>
+        <TOOLTIP_VAL_CODE>
+					(L:P21_HYD_L_SOV_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+        </TOOLTIP_VAL_CODE>
+        <ONUPDATE_CODE>
+          (L:P21_HYD_L_SOV_BTN) 1 == if{						
+            (A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+              0 (&gt;L:P21_HYD_L_SOV_BTN)
+            }
+          }
+        </ONUPDATE_CODE>
+      </UseTemplate>
+    </Component>
+
+    <!-- R_SOV -->
+    <Component ID="P21_R_SOV_BTN" Node="Hydraulic_SOV_2">
+      <UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+        <AUDIO_POS_X>0.479</AUDIO_POS_X>
+        <AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+        <AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+        <NODE_ID>Hydraulic_SOV_2</NODE_ID>
+        <ANIM_NAME>Hydraulic_SOV_2</ANIM_NAME>
+        <VAR_NAME>L:P21_HYD_R_SOV_BTN</VAR_NAME>
+        <TOOLTIPID>L:P21_HYD_R_SOV_BTN</TOOLTIPID>
+        <TOOLTIP_TITLE>'RIGHT HYDRAULIC SOV'</TOOLTIP_TITLE>
+        <TOOLTIP_VAL_CODE>
+					(L:P21_HYD_R_SOV_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+        </TOOLTIP_VAL_CODE>
+        <ONUPDATE_CODE>
+          (L:P21_HYD_R_SOV_BTN) 1 == if{
+            (A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+              0 (&gt;L:P21_HYD_R_SOV_BTN)
+            }
+          }
+        </ONUPDATE_CODE>
+      </UseTemplate>
+    </Component>
+
+    <!-- L_PUMP_KNOB -->
+    <Component ID="P21_HYD_L_PUMP_KNOB" Node="ASOBO_ENGINE_Switch_Hydraulic_1">
+      <PartID>P21_HYD_L_PUMP_KNOB</PartID>
+      <CameraTitle>Pedestal</CameraTitle>
+      <UseTemplate Name="P21_ROTARY_3STATE">
+        <AUDIO_POS_X>0.450</AUDIO_POS_X>
+        <AUDIO_POS_Y>0.441</AUDIO_POS_Y>
+        <AUDIO_POS_Z>0.924</AUDIO_POS_Z>
+        <NODE_ID>ASOBO_ENGINE_Switch_Hydraulic_1</NODE_ID>
+        <ANIM_NAME>ASOBO_ENGINE_Switch_Hydraulic_1</ANIM_NAME>
+        <VAR_NAME>L:P21_HYD_L_PUMP_KNOB</VAR_NAME>
+        <TOOLTIP_TITLE>'LEFT PUMP KNOB'</TOOLTIP_TITLE>
+        <TOOLTIP_VAL_CODE>
+					(L:P21_HYD_L_PUMP_KNOB) 0 == if{
+						'Off'
+					}
+					(L:P21_HYD_L_PUMP_KNOB) 1 == if{
+						'Auto'
+					}
+					(L:P21_HYD_L_PUMP_KNOB) 2 == if{
+						'On'
+					}
+        </TOOLTIP_VAL_CODE>
+        <ONCHANGE_CODE></ONCHANGE_CODE>
+        <ONUPDATE_CODE>
+          (L:P21_HYD_L_PUMP_KNOB) 0 == if{
+						(L:P21_HYD_R_PUMP_KNOB) 0 == if{
+							1 (A:HYDRAULIC SWITCH:3,Number) == if{
+								3 (&gt;K:HYDRAULIC_SWITCH_TOGGLE)
+							}
+						}
+
+						(L:P21_HYD_L_PUMP_KNOB) 0 == if{
+							(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+								1 (&gt;L:P21_HYD_L_PUMP_KNOB)
+							}
+						}
+					}
+					els{
+						0 (A:HYDRAULIC SWITCH:3,Number) == if{
+							3 (&gt;K:HYDRAULIC_SWITCH_TOGGLE)
+						}
+					}
+        </ONUPDATE_CODE>
+      </UseTemplate>
+    </Component>
+
+    <!-- R_PUMP_KNOB -->
+    <Component ID="P21_HYD_R_PUMP_KNOB" Node="ASOBO_ENGINE_Switch_Hydraulic_2">
+      <PartID>P21_HYD_R_PUMP_KNOB</PartID>
+      <CameraTitle>Pedestal</CameraTitle>
+      <UseTemplate Name="P21_ROTARY_3STATE">
+        <AUDIO_POS_X>0.450</AUDIO_POS_X>
+        <AUDIO_POS_Y>0.441</AUDIO_POS_Y>
+        <AUDIO_POS_Z>0.924</AUDIO_POS_Z>
+        <NODE_ID>ASOBO_ENGINE_Switch_Hydraulic_2</NODE_ID>
+        <ANIM_NAME>ASOBO_ENGINE_Switch_Hydraulic_2</ANIM_NAME>
+        <VAR_NAME>L:P21_HYD_R_PUMP_KNOB</VAR_NAME>
+        <TOOLTIP_TITLE>'RIGHT PUMP KNOB'</TOOLTIP_TITLE>
+        <TOOLTIP_VAL_CODE>
+					(L:P21_HYD_R_PUMP_KNOB) 0 == if{
+						'Off'
+					}
+					(L:P21_HYD_R_PUMP_KNOB) 1 == if{
+						'Auto'
+					}
+					(L:P21_HYD_R_PUMP_KNOB) 2 == if{
+						'On'
+					}
+        </TOOLTIP_VAL_CODE>
+        <ONCHANGE_CODE></ONCHANGE_CODE>
+        <ONUPDATE_CODE>
+          (L:P21_HYD_R_PUMP_KNOB) 0 == if{
+						(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+							1 (&gt;L:P21_HYD_R_PUMP_KNOB)
+						}						
+					}
+					els{
+						0 (A:HYDRAULIC SWITCH:3,Number) == if{
+							3 (&gt;K:HYDRAULIC_SWITCH_TOGGLE)
+						}				
+
+            (L:P21_HYD_R_PUMP_KNOB) 2 == if{
+							(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+								1 (&gt;L:P21_HYD_R_PUMP_KNOB)
+							}
+            }						
+					}
+        </ONUPDATE_CODE>
+      </UseTemplate>
+    </Component>
+
+    <!-- PTU_KNOB -->
+    <Component ID="P21_HYD_PTU_KNOB" Node="Hydraulic_Knob_PTU">
+      <PartID>P21_HYD_PTU_KNOB</PartID>
+      <CameraTitle>Pedestal</CameraTitle>
+      <UseTemplate Name="P21_ROTARY_3STATE">
+        <NODE_ID>Hydraulic_Knob_PTU</NODE_ID>
+        <ANIM_NAME>Hydraulic_Knob_PTU</ANIM_NAME>
+        <VAR_NAME>L:P21_HYD_PTU_KNOB</VAR_NAME>
+        <TOOLTIP_TITLE>'PTU KNOB'</TOOLTIP_TITLE>
+        <TOOLTIP_VAL_CODE>
+					(L:P21_HYD_PTU_KNOB) 0 == if{
+						'Off'
+					}
+					(L:P21_HYD_PTU_KNOB) 1 == if{
+						'Auto'
+					}
+					(L:P21_HYD_PTU_KNOB) 2 == if{
+						'On'
+					}
+        </TOOLTIP_VAL_CODE>
+        <ONCHANGE_CODE></ONCHANGE_CODE>
+        <ONUPDATE_CODE>
+          (L:P21_HYD_L_PUMP_KNOB) 0 == if{
+						(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+							1 (&gt;L:P21_HYD_L_PUMP_KNOB)
+						}						
+					}
+					els{
+						0 (A:HYDRAULIC SWITCH:3,Number) == if{
+							3 (&gt;K:HYDRAULIC_SWITCH_TOGGLE)
+						}				
+
+            (L:P21_HYD_L_PUMP_KNOB) 2 == if{
+							(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+								1 (&gt;L:P21_HYD_L_PUMP_KNOB)
+							}
+            }						
+					}
+        </ONUPDATE_CODE>
+      </UseTemplate>
+    </Component>
+
+    <!-- AUX_KNOB -->
+    <Component ID="P21_HYD_AUX_KNOB" Node="Hydraulic_Knob_AUX">
+      <PartID>P21_HYD_AUX_KNOB</PartID>
+      <CameraTitle>Pedestal</CameraTitle>
+      <UseTemplate Name="P21_ROTARY_3STATE">
+        <AUDIO_POS_X>0.450</AUDIO_POS_X>
+        <AUDIO_POS_Y>0.441</AUDIO_POS_Y>
+        <AUDIO_POS_Z>0.924</AUDIO_POS_Z>
+        <NODE_ID>Hydraulic_Knob_AUX</NODE_ID>
+        <ANIM_NAME>Hydraulic_Knob_AUX</ANIM_NAME>
+        <VAR_NAME>L:P21_HYD_AUX_KNOB</VAR_NAME>
+        <TOOLTIP_TITLE>'AUX KNOB'</TOOLTIP_TITLE>
+        <TOOLTIP_VAL_CODE>
+					(L:P21_HYD_AUX_KNOB) 0 == if{
+						'Off'
+					}
+					(L:P21_HYD_AUX_KNOB) 1 == if{
+						'Auto'
+					}
+					(L:P21_HYD_AUX_KNOB) 2 == if{
+						'On'
+					}
+        </TOOLTIP_VAL_CODE>
+        <ONCHANGE_CODE></ONCHANGE_CODE>
+        <ONUPDATE_CODE></ONUPDATE_CODE>
+      </UseTemplate>
+    </Component>
+  </Template>
+</ModelBehaviors>

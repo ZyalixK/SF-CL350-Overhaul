@@ -1,0 +1,521 @@
+html {
+  /* Color Styling */
+  --p21-color-red: #ff0000;
+  --p21-color-amber: #ffff00;
+  --p21-color-yellow: #ffff00;
+
+
+  --p21-color-green: #00ff00;
+  --p21-color-cyan: #00ffff;
+  --p21-color-black: #000000;
+  --p21-color-grey: #808080;
+  --p21-color-white: #ffffff;
+  --p21-color-magenta: magenta;
+
+  --wt21-colors-black: black;
+  --wt21-colors-black-translucent: rgba(0, 0, 0, 0.35);
+  --wt21-colors-white: white;
+  --wt21-colors-gray: hsl(0, 0%, 70%);
+  --wt21-colors-dark-gray: hsl(0, 0%, 60%);
+  --wt21-colors-lightblue: hsl(210, 100%, 50%);
+  --wt21-colors-blue: hsl(230, 100%, 51%);
+  --wt21-colors-red: red;
+  --wt21-colors-amber: orange;
+  --wt21-colors-yellow: yellow;
+
+
+  --wt21-colors-green: #00ff00;
+  --wt21-colors-magenta: magenta;
+  --wt21-colors-cyan: hsl(195, 100%, 50%);
+
+  /* Font Styling */
+  --wt21-fonts-family-general: "WT21";
+  --wt21-fonts-family-fmc: "WT21 FMC";
+  --wt21-fonts-weight-bold: 700;
+  --wt21-fonts-weight-normal: 400;
+  --wt21-fonts-weight-light: 300;
+  --wt21-fonts-shadow-normal: 1px 1px var(--wt21-colors-black),
+    -1px -1px var(--wt21-colors-black), 1px -1px var(--wt21-colors-black),
+    -1px 1px var(--wt21-colors-black);
+  --wt21-fonts-shadow-light: 1px 1px var(--wt21-colors-black-translucent),
+    -1px -1px var(--wt21-colors-black-translucent),
+    1px -1px var(--wt21-colors-black-translucent),
+    -1px 1px var(--wt21-colors-black-translucent);
+  /* Border Styling */
+  --wt21-borders-xlight: 1px solid var(--wt21-colors-grey);
+  --wt21-borders-light: 1px solid var(--wt21-colors-white);
+  --wt21-borders-normal: 2px solid var(--wt21-colors-white);
+  --wt21-borders-strong: 3px solid var(--wt21-colors-white);
+
+  --text-xl: 1.5rem;
+  --text-lg: 1.25rem;
+  --text-md: 1.125rem;
+  --text-base: 20px;
+  --text-msm: 0.9376rem; /* Medium Small */
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+  --text-2xs: 0.625rem;
+}
+
+body {
+  font-family: var(--wt21-fonts-family-general);
+  font-size: var(--text-base);
+  font-weight: var(--wt21-fonts-shadow-normal);
+  color: var(--p21-color-white);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-initial {
+  flex: 0 1 auto;
+}
+
+flex-none {
+  flex: none;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.relative {
+  position: relative;
+}
+
+.none {
+  position: hidden;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.justify-center {
+  justify-content: center;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.items-center {
+  align-items: center;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+
+.text-body,
+.text-base {
+  font-size: var(--text-base);
+  line-height: 1.1;
+}
+.text-md {
+  font-size: var(--text-md);
+}
+.text-msm {
+  font-size: var(--text-msm);
+}
+.text-sm {
+  font-size: var(--text-sm);
+}
+.text-xs {
+  font-size: var(--text-xs);
+}
+.text-2xs {
+  font-size: var(--text-2xs);
+}
+.text-lg {
+  font-size: var(--text-lg);
+}
+.text-xl {
+  font-size: var(--text-xl);
+}
+
+/** HINT: Don't show the white highlight since the instruments is in general not interactive */
+#vignettage {
+  display: none;
+  visibility: hidden;
+}
+
+#highlight {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visibility-hidden {
+  visibility: hidden !important;
+}
+
+.menudisabled {
+  color: var(--wt21-colors-dark-gray);
+}
+
+.text-magenta {
+  color: var(--wt21-colors-magenta);
+}
+
+.text-cyan {
+  color: var(--wt21-colors-cyan);
+}
+
+
+.text-red {
+  color: var(--p21-color-red);
+}
+
+.text-yellow {
+  color: var(--wt21-colors-yellow);
+}
+
+.text-green {
+  color: var(--p21-color-green);
+}
+.text-grey {
+  color: var(--p21-color-grey);
+}
+
+.text-white {
+  color: var(--p21-color-white);
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.dev-label {
+  position: absolute;
+  left: 2%;
+  top: 2%;
+}
+
+.bg-black {
+  background-color: var(--p21-color-black);
+}
+.fill-white {
+  fill: var(--p21-color-white);
+}
+.fill-grey {
+  fill: var(--p21-color-grey);
+}
+.fill-green {
+  fill: var(--p21-color-green);
+}
+.fill-black {
+  fill: var(--p21-color-black);
+}
+.fill-cyan {
+  fill: var(--p21-color-cyan);
+}
+.fill-red {
+  fill: var(--p21-color-red);
+}
+.gauge-component {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+.stroke-green {
+  stroke: var(--p21-color-green);
+}
+.stroke-white {
+  stroke: var(--p21-color-white);
+}
+.stroke-red {
+  stroke: var(--p21-color-red);
+}
+.stroke-cyan {
+  stroke: var(--p21-color-cyan);
+}
+.stroke-grey {
+  stroke: var(--p21-color-grey);
+}
+.stroke-magenta {
+  stroke: var(--p21-color-magenta);
+}
+.stroke-transparent {
+  stroke: transparent;
+}
+
+
+.stroke-amber {
+  stroke: var(--p21-color-amber);
+}
+.fill-amber {
+  fill: var(--p21-color-amber);
+}
+
+.transition-transform {
+  transition: transform 1s;
+}
+
+.text-black {
+  color: var(--p21-color-black);
+}
+
+.no-markers .tick-markers {
+  stroke: transparent !important;
+}
+
+.component-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.component-container > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pl-1 {
+  padding-left: 0.25rem;
+}
+
+p-1 {
+  padding: 0.25rem;
+}
+p-4 {
+  padding: 1rem;
+}
+p-5 {
+  padding: 1.25rem;
+}
+p-8 {
+  padding: 2rem;
+}
+
+.mb-2p {
+  margin-bottom: 2%;
+}
+.mb-1p {
+  margin-bottom: 1%;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-9 {
+  margin-top: 2.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mb-9 {
+  margin-bottom: 2.5rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
+}
+.ml-3 {
+  margin-left: 0.75rem;
+}
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.mr-3 {
+  margin-right: 0.75rem;
+}
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.pt-02 {
+  padding-top: 0.2rem;
+}
+.pt-04 {
+  padding-top: 0.4rem;
+}
+
+.separator {
+  display: block;
+  position: absolute;
+  height: 82%;
+  width: 0.5%;
+  background-color: var(--p21-color-grey);
+  border-radius: 4px;
+  top: 9.25%;
+  right: 0;
+}
+
+.separator--h {
+  width: 90%;
+  height: 0.5%;
+  top: 2%;
+  left: 5.25%;
+}
+
+/* Margins */
+.mb-lg {
+  margin-bottom: var(--text-lg);
+}
+.mb-2xs {
+  margin-bottom: 0.125rem;
+}
+.mb-xs {
+  margin-bottom: 0.75rem;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Borders */
+.border-green {
+  border-color: var(--p21-color-green) !important;
+}
+.border-white {
+  border-color: var(--p21-color-white) !important;
+}
+.border-grey {
+  border-color: var(--p21-color-grey) !important;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+.rounded-2xl {
+  border-radius: 2rem;
+}
+.rounded-xl {
+  border-radius: 1rem;
+}
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+.rounded {
+  border-radius: 0.375rem;
+}
+.rounded-sm {
+  border-radius: 0.25rem;
+}
+
+.border-0-5 {
+  border: 0.125rem solid;
+}
+
+.border {
+  border: 0.25rem solid;
+}
+.border-b {
+  border-bottom: 0.25rem solid;
+}
+.border-l {
+  border-left: 0.25rem solid;
+}
+.border-r {
+  border-right: 0.25rem solid;
+}
+.border-t {
+  border-top: 0.25rem solid;
+}
+.border-2 {
+  border: 0.5rem solid;
+}
+.border-3 {
+  border: 0.75rem solid;
+}
+.border-4 {
+  border: 1rem solid;
+}
+
+.border-white {
+  border-color: var(--p21-color-white);
+}
+.border-grey {
+  border-color: var(--p21-color-grey);
+}
+.border-green {
+  border-color: var(--p21-color-green);
+}
+.border-red {
+  border-color: var(--p21-color-red);
+}
+.border-cyan {
+  border-color: var(--p21-color-cyan);
+}
+.border-amber {
+  border-color: var(--p21-color-amber);
+}
+.border-yellow {
+  border-color: var(--p21-color-yellow);
+}
+
+.font-bold {
+  font-weight: 700;
+}
+.font-semibold {
+  font-weight: 600;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.leading-1 {
+  line-height: 1.1;
+}

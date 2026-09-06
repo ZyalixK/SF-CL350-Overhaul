@@ -1,0 +1,8 @@
+
+.ail-in-band {
+  stroke: var(--p21-color-green);
+}
+
+.ail-out-of-band {
+  stroke: var(--p21-color-white);
+}

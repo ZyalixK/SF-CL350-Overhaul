@@ -1,0 +1,55 @@
+<ModelBehaviors>
+  <Include ModelBehaviorFile="ASOBO\Inputs\Helpers.xml"/>
+  <!-- INPUT TEMPLATE-->
+  <InputEvent ID="CJ4_AVIONICS">
+    <Presets>
+      <Extend Target="ASOBO_GIE_Anim_Handling">
+        <Parameters Type="Default">
+          <INPUT_EVENT_ID_SOURCE>CJ4_AVIONICS</INPUT_EVENT_ID_SOURCE>
+        </Parameters>
+      </Extend>
+    </Presets>
+  </InputEvent>
+
+  <Template Name="WT_CJ4_Engine_Base_Template">
+    <Parameters Type="Default">
+      <INPUT_EVENT_ID_SOURCE>ENGINE</INPUT_EVENT_ID_SOURCE>
+      <WWISE_PREFIX>ENGINE</WWISE_PREFIX>
+      <!-- <NO_SEQ2 /> -->
+    </Parameters>
+    <UseTemplate Name="ASOBO_Interaction_Base_Template">
+      <USE_INPUT_EVENT_ID>ENGINE</USE_INPUT_EVENT_ID>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="WT_CJ4_Safety_Base_Template">
+    <Parameters Type="Default">
+      <INPUT_EVENT_ID_SOURCE>SAFETY</INPUT_EVENT_ID_SOURCE>
+      <WWISE_PREFIX>SAFETY</WWISE_PREFIX>
+      <NO_SEQ2 />
+    </Parameters>
+    <UseTemplate Name="ASOBO_Interaction_Base_Template">
+      <USE_INPUT_EVENT_ID>SAFETY</USE_INPUT_EVENT_ID>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="WT_CJ4_Elec_Base_Template">
+    <Parameters Type="Default">
+      <INPUT_EVENT_ID_SOURCE>ELECTRICAL</INPUT_EVENT_ID_SOURCE>
+      <WWISE_PREFIX>ELECTRICAL</WWISE_PREFIX>
+    </Parameters>
+    <UseTemplate Name="ASOBO_Interaction_Base_Template">
+      <USE_INPUT_EVENT_ID>ELECTRICAL</USE_INPUT_EVENT_ID>
+    </UseTemplate>
+  </Template>
+
+  <Template Name="WT_CJ4_Avionics_Base_Template">
+    <Parameters Type="Default">
+      <INPUT_EVENT_ID_SOURCE>CJ4_AVIONICS</INPUT_EVENT_ID_SOURCE>
+      <WWISE_PREFIX>CJ4_AVIONICS</WWISE_PREFIX>
+    </Parameters>
+    <UseTemplate Name="ASOBO_Interaction_Base_Template">
+      <USE_INPUT_EVENT_ID>CJ4_AVIONICS</USE_INPUT_EVENT_ID>
+    </UseTemplate>
+  </Template>
+</ModelBehaviors>

@@ -1,0 +1,25 @@
+<script type="text/html" import-script="/JS/common.js"></script>
+<link
+  rel="stylesheet"
+  href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/fuel/ValveIcon/ValveIcon.css" />
+<script type="text/html" id="valve-icon-template">
+  <div class="valve-icon__container">
+    <svg width="26" height="26" viewBox="-13 -13 26 26" class="w-full h-full">
+
+      <g id="valve-group" stroke-width="4" class="stroke-white">
+        <circle id="circle" cx="0" cy="0" r="10" stroke-width="2" />
+        <line
+          id="pipe"
+          x1="-11.5"
+          y1="0"
+          x2="11.5"
+          y2="0"
+          stroke-width="4"
+          class="stroke-white" />
+      </g>
+    </svg>
+  </div>
+  <div id="annunciator" class="hidden">LOW 1</div>
+  <div id="label" class="hidden">Label</div>
+</script>
+<script src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/fuel/ValveIcon/ValveIcon.js"></script>

@@ -1,0 +1,181 @@
+ecs-page #jet-left {
+  position: absolute;
+  left: 5.5%;
+  top: 68.4%;
+}
+
+ecs-page #jet-right {
+  position: absolute;
+  left: 83.9%;
+  top: 68.4%;
+}
+
+ecs-page #ecs-summary-table {
+  position: absolute;
+  left: 75.5%;
+  top: 4.85%;
+}
+
+ecs-page #temp-control-cockpit {
+  position: absolute;
+  left: 29.5%;
+  top: 26.3%;
+}
+
+ecs-page #temp-control-cabin {
+  position: absolute;
+  left: 60.6%;
+  top: 26.3%;
+}
+
+ecs-page #temp-target-cockpit {
+  position: absolute;
+  left: 32.77%;
+  top: 19.4%;
+}
+
+ecs-page #temp-target-cabin {
+  position: absolute;
+  left: 64.12%;
+  top: 19.4%;
+}
+
+ecs-page #cockpit-box {
+  position: absolute;
+  left: 28.46%;
+  top: 9.3%;
+}
+
+ecs-page #cabin-box {
+  position: absolute;
+  left: 59.8%;
+  top: 9%;
+}
+
+ecs-page #pack-box {
+  position: absolute;
+  left: 29.92%;
+  top: 42.16%;
+  width: 17.23%;
+  height: 12.8%;
+}
+
+ecs-page #air-box {
+  position: absolute;
+  left: 51.55%;
+  top: 42.16%;
+  width: 17.23%;
+  height: 12.8%;
+}
+
+ecs-page #apu-box {
+  position: absolute;
+  left: 50.91%;
+  top: 89.82%;
+  width: 8.76%;
+  height: 6%;
+}
+
+ecs-page #cockpit-box,
+ecs-page #cabin-box {
+  width: 10.23%;
+  height: 10.2%;
+}
+
+ecs-page #press-left {
+  position: absolute;
+  left: 28.5%;
+  top: 72.2%;
+}
+
+ecs-page #press-right {
+  position: absolute;
+  left: 66.3%;
+  top: 72.2%;
+}
+
+ecs-page #valve-ram-air {
+  position: absolute;
+  left: 20.85%;
+  top: 34.66%;
+}
+
+ecs-page #valve-check-left {
+  position: absolute;
+  left: 36.7%;
+  top: 65.6%;
+}
+
+ecs-page #valve-check-top {
+  position: absolute;
+  left: 47.47%;
+  top: 58.32%;
+}
+
+ecs-page #valve-check-right {
+  position: absolute;
+  left: 58.38%;
+  top: 65.6%;
+}
+
+ecs-page #valve-check-bottom {
+  position: absolute;
+  left: 47.47%;
+  top: 72.37%;
+}
+
+ecs-page #valve-ip-left {
+  position: absolute;
+  left: 17.12%;
+  top: 72.37%;
+}
+
+ecs-page #valve-ip-right {
+  position: absolute;
+  left: 77.53%;
+  top: 72.37%;
+}
+
+ecs-page #valve-apu-bleed {
+  position: absolute;
+  left: 53.27%;
+  top: 79.67%;
+}
+
+ecs-page #ecs-line-network {
+  position: absolute;
+  top: -1%;
+  left: -2%;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+ecs-page #label-ram-air {
+  position: absolute;
+  left: 18.65%;
+  top: 27.15%;
+}
+
+ecs-page #label-manual {
+  position: absolute;
+  left: 45.47%;
+  top: 22.52%;
+}
+
+ecs-page #label-xbleed {
+  position: absolute;
+  left: 45.73%;
+  top: 67.77%;
+}
+
+
+ecs-page #temp-control-cockpit .digital-readout,
+ecs-page #temp-control-cabin .digital-readout {
+  border-color: var(--p21-color-grey);
+}
+
+ecs-page #temp-control-cockpit .digital-readout__value,
+ecs-page #temp-control-cabin .digital-readout__value {
+  color: var(--p21-color-green);
+}

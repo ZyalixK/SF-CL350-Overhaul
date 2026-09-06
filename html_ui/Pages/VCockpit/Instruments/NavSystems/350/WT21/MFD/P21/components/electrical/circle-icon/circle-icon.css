@@ -1,0 +1,30 @@
+
+.circle-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 50%;
+  position: relative;
+  background: var(--p21-color-black);
+  font-size: var(--text-sm);
+  border: 0.25rem solid var(--p21-color-grey);
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+circle-icon .circle-icon__value-container {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  white-space: nowrap;
+}
+
+circle-icon.value-top .circle-icon__value-container {
+  top: -1.45rem;
+}
+
+circle-icon.value-bottom .circle-icon__value-container {
+  bottom: -1.55rem;
+}

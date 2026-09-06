@@ -1,0 +1,114 @@
+<link
+  rel="stylesheet"
+  href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/ecs/ecs.css" />
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/electrical/el-jet/el-jet.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/ecs/summary-table/summary-table.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/electrical/digital-readout/digital-readout.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/hydraulics/press-readout/press-readout.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/fuel/ValveIcon/ValveIcon.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/ecs/ecs-line-network/ecs-line-network.html"></script>
+
+<script type="text/html" id="ecs-page-template">
+  <div class="mfd-page relative">
+    <div class="mfd-page__container">
+      <div class="mfd-page__title text-xl text-white text-center">ECS</div>
+      <div class="mfd-container text-grey">
+        <ecs-line-network id="ecs-line-network"></ecs-line-network>
+        <div id="label-ram-air" class="text-grey">RAM AIR</div>
+        <div id="label-manual" class="text-white">MANUAL</div>
+        <div id="label-xbleed" class="text-grey">XBLEED</div>
+
+        <el-jet id="jet-left"></el-jet>
+        <el-jet id="jet-right"></el-jet>
+        <summary-table no-title id="ecs-summary-table"></summary-table>
+
+        <div
+          id="cockpit-box"
+          class="flex flex-col justify-center items-center border border-grey text-sm bg-black">
+          <div id="cockpit-box-label" class="text-center">COCKPIT</div>
+          <div class="flex flex-row">
+            <span id="cockpit-box-value" class="text-green text-center">
+              22
+            </span>
+            <span id="cockpit-box-unit" class="">°C</span>
+          </div>
+        </div>
+
+        <div
+          id="cabin-box"
+          class="flex flex-col justify-center items-center border border-grey text-sm bg-black">
+          <div id="cabin-box-label" class="text-center">CABIN</div>
+          <div class="flex flex-row">
+            <span id="cabin-box-value" class="text-green text-center">24</span>
+            <span id="cabin-box-unit" class="">°C</span>
+          </div>
+        </div>
+
+        <digital-readout
+          id="temp-target-cockpit"
+          unit="°C"
+          no-border
+          text-cyan></digital-readout>
+        <digital-readout
+          id="temp-target-cabin"
+          unit="°C"
+          no-border
+          text-cyan></digital-readout>
+        <digital-readout id="temp-control-cockpit" unit="°C"></digital-readout>
+        <digital-readout id="temp-control-cabin" unit="°C"></digital-readout>
+
+        <div
+          id="pack-box"
+          class="text-center border border-grey text-grey absolute items-center flex flex-col justify-center bg-black pt-04">
+          PACK
+        </div>
+        <div
+          id="air-box"
+          class="text-center border border-grey text-grey absolute items-center flex flex-col justify-center bg-black pt-04">
+          TRIM AIR
+        </div>
+        <div
+          id="apu-box"
+          class="text-center border border-grey text-grey absolute items-center flex flex-col justify-center bg-black pt-04">
+          APU
+        </div>
+
+        <press-readout id="press-left" label="PSI"></press-readout>
+        <press-readout id="press-right" label="PSI"></press-readout>
+
+        <!-- RAM AIR -->
+        <valve-icon id="valve-ram-air" disabled magenta></valve-icon>
+
+        <!-- Check Valves -->
+        <valve-icon id="valve-check-left"></valve-icon>
+        <valve-icon id="valve-check-top" horizontal></valve-icon>
+        <valve-icon id="valve-check-right"></valve-icon>
+        <valve-icon id="valve-check-bottom" horizontal></valve-icon>
+
+        <!-- Intermediate Pressure Valve -->
+        <!-- The High Pressure Valve is controlled in anti-ice panel -->
+        <valve-icon id="valve-ip-left" horizontal></valve-icon>
+        <valve-icon id="valve-ip-right" horizontal></valve-icon>
+
+        <!-- APU Bleed Valve -->
+        <valve-icon id="valve-apu-bleed"></valve-icon>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script
+  type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/ecs/ecs.js"></script>

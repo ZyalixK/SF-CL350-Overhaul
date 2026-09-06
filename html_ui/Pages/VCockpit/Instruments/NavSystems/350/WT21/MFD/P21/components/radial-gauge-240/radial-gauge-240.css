@@ -1,0 +1,47 @@
+.line-marker {
+  stroke: var(--p21-color-white);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.stroke-red {
+  stroke: var(--p21-color-red);
+}
+
+.svg {
+  background-color: black;
+}
+
+.circle-240 {
+  fill: transparent;
+}
+
+radial-gauge-240 {
+  display: block;
+}
+
+.rg-needle {
+  stroke: #3dff3d;
+  stroke-width: 5.7;
+  stroke-linecap: butt;
+}
+
+
+.rg-redline {
+  stroke: #ff5b5b;
+  stroke-width: 6;
+  stroke-linecap: butt;
+}
+
+
+.rg-target {
+  transition: transform 1s linear;
+}
+
+
+.rg-fadec-target {
+  fill: transparent;
+  stroke: var(--p21-color-cyan);
+  stroke-width: 1.5;
+  transition: transform 1s linear;
+}

@@ -1,0 +1,157 @@
+
+p21-mfd .container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 200px;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  padding: 3.4% 2.4%;
+}
+
+p21-mfd .section {
+  position: relative;
+}
+
+
+p21-mfd #MFD-upper-section {
+  display: flex;
+  /* background-color: var(--p21-color-blue); */
+  height: 49.5%;
+}
+
+p21-mfd #MFD-body-section {
+  /* background-color: var(--p21-color-red); */
+  flex: 1;
+  overflow: scroll;
+}
+
+p21-mfd #MFD-bottom-section {
+  background-color: var(--p21-color-black);
+  /* height: 8.6%; */
+  height: 11.6%;
+  bottom: -3%;
+}
+
+p21-mfd #eicas-page > .section:first-child {
+  width: 39%;
+  background-color: var(--p21-color-black);
+}
+
+p21-mfd #eicas-page > .section:nth-child(2) {
+  width: 32%;
+  background-color: var(--p21-color-black);
+}
+
+p21-mfd #eicas-page > .section:nth-child(3) {
+  width: 29%;
+  background-color: var(--p21-color-black);
+}
+
+p21-mfd #eicas-page .separator {
+  display: block;
+  position: absolute;
+  height: 82%;
+  width: 0.5%;
+  background-color: white;
+  border-radius: 4px;
+  top: 9.25%;
+  right: 0;
+}
+
+.instrument-reference {
+  position: absolute;
+  z-index: 20;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3% 2%; /* this padding should be the same with container to provide correct position*/
+  pointer-events: none;
+  display: none;
+}
+
+.instrument-reference > img {
+  width: 100%;
+  object-fit: cover;
+}
+
+p21-mfd #navcom-page {
+  position: relative;
+  top: -1rem;
+}
+
+.mfd-page__container {
+  /* background-color: magenta; */
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+
+  height: 107.1%;
+}
+
+valve-icon {
+  width: 115%;
+}
+
+.mfd-container {
+  /* background-color: magenta; */
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.mfd-container .section {
+  margin-left: 2.07%;
+  min-height: 54.9%;
+  /* background-color: yellow; */
+}
+
+.mfd-container .section:first-child {
+  margin-left: 3.89%;
+}
+
+.cas-container {
+  transform: rotateX(0);
+  width: 210px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(50, minmax(25px, 25px));
+  grid-column-gap: 12px;
+  grid-auto-flow: column;
+  margin-top: -22.5%;
+  margin-left: -15%;
+  transform: scale(0.7);
+  overflow: hidden;
+}
+
+.cas-container>div {
+  position: relative;
+  width: 210px;
+  overflow: hidden;
+}
+
+/* CAS container in dispatch mode positioning */
+#HSIMap>.cas-container {
+  position: relative;
+  top: 460px;
+  border-top: 2px solid white;
+}
+
+p21-mfd.copilot-mfd #MFD-upper-section {
+  display: none;
+}
+
+
+p21-mfd.copilot-mfd .mfd-page__container {
+  height: 51.3%;
+  top: 24.35%;
+}
+
+p21-mfd.copilot-mfd #MFD-body-section > .separator--h {
+  display: none;
+}

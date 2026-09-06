@@ -1,0 +1,42 @@
+<script type="text/html" id="flaps-gauge-template">
+  <div class="component-container">
+    <svg width="200" height="164" viewBox="-50 -41 100 82" class="bg-black">
+      <!-- Title -->
+      <text class="text-sm fill-grey">
+        <tspan x="-27" y="-22">FLAPS</tspan>
+        <tspan id="flaps-index-readout" x="32" y="-22" class="fill-green text-md">0</tspan>
+      </text>
+
+      <g stroke="white" style="transform: translate(-15px, -11px);">
+        <path d="
+          M 43 0
+          A43 43, 0, 0 1, 7 43"></path>
+        <line x1="37" y1="0" x2="43" y2="0"></line>
+        <line x1="37" y1="0" x2="43" y2="0" style="transform: rotate(24deg);"></line>
+        <line x1="37" y1="0" x2="43" y2="0" style="transform: rotate(48deg);"></line>
+        <line x1="37" y1="0" x2="43" y2="0" style="transform: rotate(80deg);"></line>
+
+        <!-- Pointer -->
+        <path d="
+          M 32 0
+          L 0 2
+          L 0 -2
+          Z
+          " 
+          id="flaps-pointer" 
+          class="stroke-green" 
+          stroke-linejoin="round"
+          style="transform: rotate(0deg)">
+        </path>
+
+        <g id="flaps-commanded" class="stroke-cyan" style="transform: rotate(0deg)">
+          <line x1="43" y1="0" x2="49" y2="0"></line>
+          <line x1="49" y1="-3" x2="49" y2="3"></line>
+        </g>
+        <circle cx="0" yx="0" r="2" class="fill-green" stroke="transparent"></circle>
+      </g>
+    </svg>
+  </div>
+</script>
+
+<script type="text/javascript" src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/flaps-gauge/flaps-gauge.js"></script>

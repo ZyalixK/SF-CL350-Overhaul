@@ -1,0 +1,113 @@
+<script type="text/html" import-script="/JS/SimPlane.js"></script>
+<script type="text/html" import-script="/JS/simvar.js"></script>
+<script type="text/javascript" src="/JS/coherent.js"></script>
+<script type="text/javascript" src="/JS/common.js"></script>
+<!-- <script type="text/javascript" src="/JS/debug.js"></script> -->
+<script type="text/javascript" src="/JS/Types.js"></script>
+
+<script type="text/html" import-script="/JS/NetBingMap.js"></script>
+<script type="text/html" import-script="/JS/dataStorage.js"></script>
+<script
+  type="text/html"
+  import-script="/Pages/VCockpit/Instruments/NavSystems/Shared/Templates/Highlight/Highlight.js"></script>
+<script
+  type="text/html"
+  import-script="/Pages/VCockpit/Instruments/WT21/Libraries/msfssdk.js"></script>
+
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/EICAS/EICAS.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Summary/Summary.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Navcom/Navcom.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Electrical/Electrical.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Fuel/Fuel.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/FlightControls/FlightControls.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Hydraulics/Hydraulics.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/ECS/ECS.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Anti-ice/Anti-ice.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Checklist/Checklist.html"></script>
+
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/HsiMap/HsiMap.html"></script>
+
+<link rel="stylesheet" href="fonts.css" />
+<link rel="stylesheet" href="base.css" />
+<link rel="stylesheet" href="WT21_MFD.css" />
+
+<script type="text/html" id="P21-MFD">
+<div id="Mainframe">
+  <div id="Electricity" state="off">
+    <div class="container">
+      <div id="MFD-upper-section" class="page-container">
+        <eicas-page id="eicas-page"></eicas-page>
+        <div id="EngineInstruments" class="section"></div>
+      </div>
+
+      <div id="MFD-body-section" class="section">
+        <div class="separator separator--h"></div>
+        <summary-page
+          id="summary-page"
+          class="block w-full h-full"></summary-page>
+        <electrical-page
+          id="electrical-page"
+          class="block w-full h-full"></electrical-page>
+        <fuel-page id="fuel-page" class="block w-full h-full"></fuel-page>
+        <flight-controls-page
+          id="flight-controls-page"
+          class="block w-full h-full"></flight-controls-page>
+        <hydraulics-page
+          id="hydraulics-page"
+          class="block w-full h-full"></hydraulics-page>
+        <ecs-page id="ecs-page" class="block w-full h-full"></ecs-page>
+        <anti-ice-page
+          id="anti-ice-page"
+          class="block w-full h-full"></anti-ice-page>
+        <hsi-map-page
+          id="hsi-map-page"
+          class="block w-full h-full"></hsi-map-page>
+        <checklist-page
+          id="checklist-page"
+          class="block w-full h-full"></checklist-page>
+      </div>
+      <div id="MFD-bottom-section" class="section">
+        <navcom-page id="navcom-page"></navcom-page>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+
+<script
+  type="text/html"
+  import-script="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/helpers.js"></script>
+<script
+  type="text/html"
+  import-script="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/MFD.js"></script>
+
+  <script type="text/html" import-script="/JS/SimPlane.js"></script>
+  <script type="text/html" import-script="/JS/NetBingMap.js"></script>
+  <script type="text/html" import-script="/JS/dataStorage.js"></script>
+  <script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/Shared/Templates/Highlight/Highlight.js">
+  </script>
+  <script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/350/WT21/Libraries/msfssdk.js">
+  </script>
+  <script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/350/WT21/MFD/WT21_MFD.js"></script>

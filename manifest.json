@@ -1,0 +1,16 @@
+{
+  "dependencies": [],
+  "content_type": "AIRCRAFT",
+  "title": "Challenger 350 Flight Model & Avionics Overhaul",
+  "manufacturer": "Bombardier",
+  "creator": "KaeybMD",
+  "package_version": "0.3.0",
+  "minimum_game_version": "1.37.19",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "",
+      "OlderHistory": ""
+    }
+  },
+  "total_package_size": "00000000000015927529"
+}

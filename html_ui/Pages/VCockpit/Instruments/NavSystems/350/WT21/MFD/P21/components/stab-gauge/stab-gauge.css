@@ -1,0 +1,16 @@
+stab-gauge {
+}
+
+
+.stab-in-band {
+  stroke: var(--p21-color-green);
+}
+
+.stab-out-of-band {
+  stroke: var(--p21-color-white);
+}
+
+
+.stab-readout {
+  font-size: 1.35rem;
+}

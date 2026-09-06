@@ -1,0 +1,33 @@
+
+.cab-readout__title {
+  text-align: center;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin-bottom: 1%;
+}
+
+.cab-readout__grid {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cab-readout__half {
+  width: 48%;
+  border-collapse: collapse;
+}
+
+.cab-readout__label {
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.cab-readout__value {
+  position: relative;
+  top: 0.1rem;
+  line-height: 1;
+}
+
+.cab-readout__half tr td:nth-child(2) {
+  padding-left: 0.4rem;
+}

@@ -1,0 +1,77 @@
+<link
+  rel="stylesheet"
+  href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/flight-controls/rudder-gauge/rudder-gauge.css" />
+
+<script type="text/html" id="rudder-gauge-template">
+  <div class="component-container">
+    <!-- <div class="rudder__text text-sm">RUDDER</div> -->
+    <svg width="106" height="106" viewBox="-53 -53 106 106">
+      <!-- circle with radius 53 -->
+      <!-- <circle
+          cx="0"
+          cy="0"
+          r="52"
+          fill="none"
+          stroke="var(--p21-color-green)"
+          stroke-width="2" /> -->
+      <text x="0" y="-10" text-anchor="middle" class="text-base fill-grey">
+        RUDDER
+      </text>
+
+      <path
+        d="
+          M-45 26 A52 52, 0, 0 0, 45 26"
+        class="stroke-white"
+        stroke-width="2" />
+      <line
+        x1="-52"
+        x2="-42"
+        stroke-linecap="round"
+        stroke-width="2"
+        class="stroke-white"
+        style="transform: rotate(-30deg)" />
+      <line
+        x1="-52"
+        x2="-40"
+        stroke-linecap="round"
+        stroke-width="2"
+        class="stroke-white"
+        style="transform: rotate(-60deg)" />
+      <line
+        x1="-52"
+        x2="-40"
+        stroke-linecap="round"
+        stroke-width="2"
+        class="stroke-white"
+        style="transform: rotate(-90deg)" />
+      <line
+        x1="-52"
+        x2="-40"
+        stroke-linecap="round"
+        stroke-width="2"
+        class="stroke-white"
+        style="transform: rotate(-120deg)" />
+      <line
+        x1="-52"
+        x2="-42"
+        stroke-linecap="round"
+        stroke-width="2"
+        class="stroke-white"
+        style="transform: rotate(-150deg)" />
+
+
+      <g id="pointer">
+        <circle cx="0" cy="0" r="3" fill="var(--p21-color-green)" />
+        <path
+          d="M-2 0 L0 36 L2 0"
+          class="stroke-green fill-transparent"
+          stroke-width="2"
+          stroke-linejoin="round" />
+      </g>
+    </svg>
+  </div>
+</script>
+
+<script
+  type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/flight-controls/rudder-gauge/rudder-gauge.js"></script>

@@ -1,0 +1,15 @@
+
+.bus-readout {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  min-width: 5.9rem;
+  min-height: 1.6rem;
+  border-radius: 2rem;
+  background: var(--p21-color-black);
+  font-size: var(--text-sm);
+  border: 0.125rem solid var(--p21-color-white);
+  padding: 0.125rem;
+  line-height: 1;
+}

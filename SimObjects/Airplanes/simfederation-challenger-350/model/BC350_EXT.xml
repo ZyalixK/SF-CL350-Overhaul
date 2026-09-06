@@ -1,0 +1,267 @@
+<!-- LOD #################################### -->
+<ModelInfo>
+	<LODS>
+		<LOD minSize="100" ModelFile="BC350_Ext_LOD00.gltf"/>
+		<LOD minSize="40" ModelFile="BC350_Ext_LOD00.gltf"/>
+	</LODS>
+	<Behaviors>
+		<Include ModelBehaviorFile="Asobo\Exterior.xml"/>
+		<Include ModelBehaviorFile="Asobo\Generic\FX.xml"/>
+		<Component ID="HANDLING">
+			<UseTemplate Name="ASOBO_HANDLING_Elevator_Template">
+				<ANIM_NAME>Elevator_PCT</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_DEPRECATED_ElevatorTrim_Template">
+				<ANIM_NAME>Elevator_Trim_PCT</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Aileron_Template">
+				<ANIM_NAME_LEFT>Aileron_L_PCT</ANIM_NAME_LEFT>
+				<ANIM_NAME_RIGHT>Aileron_R_PCT</ANIM_NAME_RIGHT>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_DEPRECATED_AileronTrim_Template">
+				<ANIM_NAME>Aileron_Trim_PCT</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Rudder_Template">
+				<ANIM_NAME>Rudder_PCT</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_DEPRECATED_RudderTrim_Template">
+				<ANIM_NAME>Rudder_Trim_PCT</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Flaps_Template">
+				<ANIM_NAME_LEFT>Flaps_L_PCT</ANIM_NAME_LEFT>
+				<ANIM_NAME_RIGHT>Flaps_R_PCT</ANIM_NAME_RIGHT>
+			</UseTemplate>
+		<UseTemplate Name="ASOBO_HANDLING_Spoilers_Template">
+			<!-- <USE_GROUND_SPOILER>FULL_SPOILER</USE_GROUND_SPOILER> -->
+			<ANIM_NAME_LEFT>HANDLING_Spoiler_L</ANIM_NAME_LEFT>
+			<ANIM_NAME_RIGHT>HANDLING_Spoiler_R</ANIM_NAME_RIGHT>
+			<MAX_VALUE>60</MAX_VALUE>
+		</UseTemplate>
+			<UseTemplate Name="ASOBO_GT_Recursive_AnimEvents">
+				<ANIM_EVENT_ID>1</ANIM_EVENT_ID>
+				<ANIM_NAME>HANDLING_Flaps_R</ANIM_NAME>
+				<ANIM_EVENT_EFFECT_NAME_1>CAM_FLAPS01</ANIM_EVENT_EFFECT_NAME_1>
+				<ANIM_EVENT_EFFECT_NAME_2>CAM_FLAPS02</ANIM_EVENT_EFFECT_NAME_2>
+				<ANIM_EVENT_EFFECT_NAME_3>CAM_FLAPS03</ANIM_EVENT_EFFECT_NAME_3>
+				<ANIM_EVENT_EFFECT_NAME_4>CAM_FLAPS01_Backward</ANIM_EVENT_EFFECT_NAME_4>
+				<ANIM_EVENT_EFFECT_NAME_5>CAM_FLAPS02_Backward</ANIM_EVENT_EFFECT_NAME_5>
+				<ANIM_EVENT_EFFECT_NAME_6>CAM_FLAPS03_Backward</ANIM_EVENT_EFFECT_NAME_6>
+				<NORMALIZED_TIME_1>0</NORMALIZED_TIME_1>
+				<NORMALIZED_TIME_2>20</NORMALIZED_TIME_2>
+				<NORMALIZED_TIME_3>50</NORMALIZED_TIME_3>
+				<NORMALIZED_TIME_4>20</NORMALIZED_TIME_4>
+				<NORMALIZED_TIME_5>50</NORMALIZED_TIME_5>
+				<NORMALIZED_TIME_6>100</NORMALIZED_TIME_6>
+				<DIRECTION_1>Forward</DIRECTION_1>
+				<DIRECTION_2>Forward</DIRECTION_2>
+				<DIRECTION_3>Forward</DIRECTION_3>
+				<DIRECTION_4>Backward</DIRECTION_4>
+				<DIRECTION_5>Backward</DIRECTION_5>
+				<DIRECTION_6>Backward</DIRECTION_6>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GT_Recursive_AnimEvents">
+				<ANIM_EVENT_ID>1</ANIM_EVENT_ID>
+				<ANIM_NAME>HANDLING_Spoilers_L</ANIM_NAME>
+				<ANIM_EVENT_EFFECT_NAME_1>CAM_SPOILERS</ANIM_EVENT_EFFECT_NAME_1>
+				<ANIM_EVENT_EFFECT_NAME_2>CAM_SPOILERS_Backward</ANIM_EVENT_EFFECT_NAME_2>
+				<NORMALIZED_TIME_1>0</NORMALIZED_TIME_1>
+				<NORMALIZED_TIME_2>100</NORMALIZED_TIME_2>
+				<DIRECTION_1>Forward</DIRECTION_1>
+				<DIRECTION_2>Backward</DIRECTION_2>
+			</UseTemplate>
+		</Component>
+		<Component ID="GEARS">
+			<UseTemplate Name="ASOBO_GEAR_Center_Template"/>
+			<UseTemplate Name="ASOBO_GEAR_Left_Template"/>
+			<UseTemplate Name="ASOBO_GEAR_Right_Template"/>
+
+			<UseTemplate Name="ASOBO_GEAR_Center_Tire_Template">
+				<ANIM_NAME>c_tire_key</ANIM_NAME>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GEAR_Left_Tire_Template">
+				<ANIM_NAME>l_tire_key</ANIM_NAME>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GEAR_Right_Tire_Template">
+				<ANIM_NAME>r_tire_key</ANIM_NAME>
+			</UseTemplate>
+
+			<!-- <UseTemplate Name="ASOBO_GEAR_Center_Tire_Template">
+				<ANIM_NAME>c_tire_key</ANIM_NAME>
+				<NODE_ID_STILL>WHEELS_C</NODE_ID_STILL>
+				<NODE_ID_BLURRED>C_WHEELS_BLURRED</NODE_ID_BLURRED>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Left_Tire_Template">
+				<ANIM_NAME>l_tire_key/ANIM_NAME>
+				<NODE_ID_STILL>WHEEL_LEFT</NODE_ID_STILL>
+				<NODE_ID_BLURRED>WHEEL_LEFT_BLURRED</NODE_ID_BLURRED>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Right_Tire_Template">
+				<ANIM_NAME>r_tire_key</ANIM_NAME>
+				<NODE_ID_STILL>WHEEL_RIGHT</NODE_ID_STILL>
+				<NODE_ID_BLURRED>WHEEL_RIGHT_BLURRED</NODE_ID_BLURRED>
+			</UseTemplate> -->
+
+		<UseTemplate Name="ASOBO_GEAR_Steering_Template">
+				<ANIM_NAME>GEAR_Steering</ANIM_NAME>
+		</UseTemplate>
+			<UseTemplate Name="ASOBO_GT_Recursive_AnimEvents">
+				<ANIM_EVENT_ID>1</ANIM_EVENT_ID>
+				<ANIM_NAME>GEAR_Right</ANIM_NAME>
+				<ANIM_EVENT_EFFECT_NAME_1>CAM_LANDINGGEARS</ANIM_EVENT_EFFECT_NAME_1>
+				<ANIM_EVENT_EFFECT_NAME_2>CAM_LANDINGGEARS_Backward</ANIM_EVENT_EFFECT_NAME_2>
+				<NORMALIZED_TIME_1>0</NORMALIZED_TIME_1>
+				<NORMALIZED_TIME_2>50</NORMALIZED_TIME_2>
+				<DIRECTION_1>Forward</DIRECTION_1>
+				<DIRECTION_2>Backward</DIRECTION_2>
+			</UseTemplate>
+		</Component>
+		<Component ID="ENGINE">
+			<UseTemplate Name="ASOBO_ENGINE_Turbine_Template">
+				<ID>1</ID>
+				<ANIM_NODE_ID>N1_1_anim</ANIM_NODE_ID>
+				<ANIM_NAME>N1_1_anim</ANIM_NAME>
+				<STILL_NODE_ID>ENGINE_Turbine_Still_1</STILL_NODE_ID>
+				<SLOW_NODE_ID>ENGINE_Turbine_Slow_1</SLOW_NODE_ID>
+				<BLURRED_NODE_ID>ENGINE_Turbine_Blurred_1</BLURRED_NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_ENGINE_Turbine_Template">
+				<ID>2</ID>
+				<ANIM_NODE_ID>N1_2_anim</ANIM_NODE_ID>
+				<ANIM_NAME>N1_2_anim</ANIM_NAME>
+				<STILL_NODE_ID>ENGINE_Turbine_Still_2</STILL_NODE_ID>
+				<SLOW_NODE_ID>ENGINE_Turbine_Slow_2</SLOW_NODE_ID>
+				<BLURRED_NODE_ID>ENGINE_Turbine_Blurred_2</BLURRED_NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_ENGINE_Turbine_ReverseThrust_Template">
+				<ID>1</ID>
+				<ANIM_NAME>thrust_rev_1</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_ENGINE_Turbine_ReverseThrust_Template">
+				<ID>2</ID>
+				<ANIM_NAME>thrust_rev_2</ANIM_NAME>
+			</UseTemplate>
+		</Component>
+		<Component ID="INTERACTIVE_POINTS">
+			<UseTemplate Name="ASOBO_FuelHose_InteractivePoint_Template">
+				<ID>0</ID>
+				<NODE_ID>GROUND_FUELPIPE</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_FuelHose_InteractivePoint_Template">
+				<ID>1</ID>
+				<NODE_ID>GROUND_GPUPIPE</NODE_ID>
+			</UseTemplate>
+		</Component>
+		<Component ID="FX_CONTRAIL_QUAD">
+			<OverrideTemplateParameters>
+				<FX_CODE>(A:CONTRAILS CONDITIONS MET:1, Keyframe) 0 &gt;</FX_CODE>
+				<FX_OFFSET_X>0</FX_OFFSET_X>
+				<FX_OFFSET_Y>0</FX_OFFSET_Y>
+				<FX_OFFSET_Z>0</FX_OFFSET_Z>
+				<FX_GUID>{F42CE638-11EB-4FC8-B9B0-111A220D681F}</FX_GUID>
+				<FX_NAME>FX_CONTRAILS</FX_NAME>
+			</OverrideTemplateParameters>
+			<Component ID="FX_CONTRAIL_QUAD_LEFT_IN" Node="FX_ENGINE_LEFT">
+				<UseTemplate Name="ASOBO_GT_FX"/>
+			</Component>
+			<Component ID="FX_CONTRAIL_QUAD_LEFT_OUT" Node="FX_ENGINE_RIGHT">
+				<UseTemplate Name="ASOBO_GT_FX"/>
+			</Component>
+		</Component>
+		<Component ID="FX_CONTRAIL_RIBBON">
+			<OverrideTemplateParameters>
+				<FX_CODE>(A:CONTRAILS CONDITIONS MET:1, Keyframe) 0 &gt;</FX_CODE>
+				<FX_OFFSET_X>0</FX_OFFSET_X>
+				<FX_OFFSET_Y>0</FX_OFFSET_Y>
+				<FX_OFFSET_Z>0</FX_OFFSET_Z>
+				<FX_GUID>{904EC2CE-F8DD-4480-99E7-B33F7CF6E114}</FX_GUID>
+				<FX_NAME>FX_CONTRAILS_RIBBON</FX_NAME>
+			</OverrideTemplateParameters>
+			<Component ID="FX_CONTRAIL_RIBBON_LEFT_OUT" Node="FX_ENGINE_LEFT">
+				<UseTemplate Name="ASOBO_GT_FX"/>
+			</Component>
+			<Component ID="FX_CONTRAIL_RIBBON_RIGHT_OUT" Node="FX_ENGINE_RIGHT">
+				<UseTemplate Name="ASOBO_GT_FX"/>
+			</Component>
+		</Component>
+		<Component ID="LANDING_FX">
+			<UseTemplate Name="ASOBO_LANDING_MD_FX"/>
+		</Component>
+		<Component ID="LIGHTING_Emissives">
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_TaxiLeft_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT TAXI ON:1, Bool) 200 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_TaxiRight_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT TAXI ON:1, Bool) 200 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_LandingLeft_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT LANDING ON:1, Bool) 200 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_LandingRight_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT LANDING ON:1, Bool) 200 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_WingLeft_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT WING ON:1, Bool) 1 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_WingRight_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT WING ON:1, Bool) 1 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_NavigationRed_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT NAV ON:1, Bool) 1 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_NavigationGreen_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT NAV ON:1, Bool) 1 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<!-- <UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_StrobeLeft_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT STROBE ON:1, Bool) 1 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_StrobeRight_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT STROBE ON:1, Bool) 1 *</EMISSIVE_CODE>
+			</UseTemplate> -->
+					<Component ID="LIGHT_ASOBO_StrobeLeft_Emissive_Visibility" Node="LIGHT_ASOBO_StrobeLeft_Emissive">
+						<UseTemplate Name="ASOBO_GT_Visibility_Code">
+							<VISIBILITY_CODE>(A:LIGHT STROBE ON:1, Bool)</VISIBILITY_CODE>
+						</UseTemplate>
+					</Component>
+					<Component ID="LIGHT_ASOBO_StrobeRight_Emissive_Visibility" Node="LIGHT_ASOBO_StrobeRight_Emissive">
+						<UseTemplate Name="ASOBO_GT_Visibility_Code">
+							<VISIBILITY_CODE>(A:LIGHT STROBE ON:1, Bool)</VISIBILITY_CODE>
+						</UseTemplate>
+					</Component>
+					<Component ID="LIGHT_ASOBO_StrobeLeft_Emissive_1_Visibility" Node="LIGHT_ASOBO_StrobeLeft_Emissive_1">
+						<UseTemplate Name="ASOBO_GT_Visibility_Code">
+							<VISIBILITY_CODE>(A:LIGHT STROBE ON:1, Bool) 0 ==</VISIBILITY_CODE>
+						</UseTemplate>
+					</Component>
+					<Component ID="LIGHT_ASOBO_StrobeRight_Emissive_1_Visibility" Node="LIGHT_ASOBO_StrobeRight_Emissive_1">
+						<UseTemplate Name="ASOBO_GT_Visibility_Code">
+							<VISIBILITY_CODE>(A:LIGHT STROBE ON:1, Bool) 0 ==</VISIBILITY_CODE>
+						</UseTemplate>
+					</Component>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_StrobeBelly_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT STROBE ON:1, Bool) 1 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_StrobeTail_Emissive</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT STROBE ON:1, Bool) 1 *</EMISSIVE_CODE>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Potentiometer_Emissive_Template">
+				<NODE_ID>LIGHT_ASOBO_Beacon</NODE_ID>
+				<EMISSIVE_CODE>(A:LIGHT BEACON ON:1, Bool) 100 *</EMISSIVE_CODE>
+			</UseTemplate>
+		</Component>
+	</Behaviors>
+</ModelInfo>
+

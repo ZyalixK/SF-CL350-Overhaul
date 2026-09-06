@@ -1,0 +1,275 @@
+<ModelBehaviors>
+
+	<Template Name="P21_FIRE_TEMPLATE">
+
+
+		<Component ID="P21_FIRE_L_ENG_BTN" Node="L_ENG_FIRE_BTN">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>L_ENG_FIRE_BTN</NODE_ID>
+				<VAR_NAME>L:P21_FIRE_L_ENG</VAR_NAME>
+				<TOOLTIPID>L:P21_FIRE_L_ENG</TOOLTIPID>
+				<TOOLTIP_TITLE>'L ENG FIRE'</TOOLTIP_TITLE>
+				<TT_DESCRIPTION>'SHUT DOWN AND ISOLATE THE LEFT ENGINE, ARM BOTH BOTTLES'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_FIRE_L_ENG) 0 == if{
+							'Normal'
+					} els{
+							'PUSHED - L engine isolated, bottles armed'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+					(L:P21_FIRE_L_ENG) 1 ==
+					if{
+						(L:P21_FIRE_L_ENG_DONE) 0 ==
+						if{
+							1 (&gt;L:P21_FIRE_L_ENG_DONE)
+							(A:GENERAL ENG FUEL VALVE:1, Bool) if{ (&gt;K:TOGGLE_FUEL_VALVE_ENG1) }
+							0 (&gt;K:MIXTURE1_SET)
+							0 (&gt;L:P21_LBLEED_BTN)
+							0 (&gt;L:P21_HYD_L_SOV_BTN)
+							(A:GENERAL ENG MASTER ALTERNATOR:1, Bool) if{ 1 (&gt;K:TOGGLE_MASTER_ALTERNATOR) }
+						}
+					} els{
+
+						(L:P21_FIRE_L_ENG_DONE) 1 ==
+						if{
+							1 (&gt;L:P21_FIRE_L_ENG)
+						}
+					}
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_FIRE_R_ENG_BTN" Node="R_ENG_FIRE_BTN">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>R_ENG_FIRE_BTN</NODE_ID>
+				<VAR_NAME>L:P21_FIRE_R_ENG</VAR_NAME>
+				<TOOLTIPID>L:P21_FIRE_R_ENG</TOOLTIPID>
+				<TOOLTIP_TITLE>'R ENG FIRE'</TOOLTIP_TITLE>
+				<TT_DESCRIPTION>'SHUT DOWN AND ISOLATE THE RIGHT ENGINE, ARM BOTH BOTTLES'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_FIRE_R_ENG) 0 == if{
+							'Normal'
+					} els{
+							'PUSHED - R engine isolated, bottles armed'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+					(L:P21_FIRE_R_ENG) 1 ==
+					if{
+						(L:P21_FIRE_R_ENG_DONE) 0 ==
+						if{
+							1 (&gt;L:P21_FIRE_R_ENG_DONE)
+							(A:GENERAL ENG FUEL VALVE:2, Bool) if{ (&gt;K:TOGGLE_FUEL_VALVE_ENG2) }
+							0 (&gt;K:MIXTURE2_SET)
+							0 (&gt;L:P21_RBLEED_BTN)
+							0 (&gt;L:P21_HYD_R_SOV_BTN)
+							(A:GENERAL ENG MASTER ALTERNATOR:2, Bool) if{ 2 (&gt;K:TOGGLE_MASTER_ALTERNATOR) }
+						}
+					} els{
+
+						(L:P21_FIRE_R_ENG_DONE) 1 ==
+						if{
+							1 (&gt;L:P21_FIRE_R_ENG)
+						}
+					}
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_FIRE_APU_BTN" Node="APU_FIRE_BTN">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>APU_FIRE_BTN</NODE_ID>
+				<VAR_NAME>L:P21_FIRE_APU</VAR_NAME>
+				<TOOLTIPID>L:P21_FIRE_APU</TOOLTIPID>
+				<TOOLTIP_TITLE>'APU FIRE'</TOOLTIP_TITLE>
+				<TT_DESCRIPTION>'SHUT DOWN AND ISOLATE THE APU, ARM BOTTLE 2'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_FIRE_APU) 0 == if{
+							'Normal'
+					} els{
+							'PUSHED - APU isolated, bottle 2 armed'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+					(L:P21_FIRE_APU) 1 ==
+					if{
+						(L:P21_FIRE_APU_DONE) 0 ==
+						if{
+							1 (&gt;L:P21_FIRE_APU_DONE)
+							(&gt;K:APU_OFF_SWITCH)
+							0 (&gt;K:APU_GENERATOR_SWITCH_SET)
+							0 (&gt;L:P21_APU_BTN)
+						}
+					} els{
+						0 (&gt;L:P21_FIRE_APU_DONE)
+					}
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_FIRE_EXT_1_BTN" Node="FIRE_EXT_BTN_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE_MOMENTARY">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FIRE_EXT_BTN_1</NODE_ID>
+				<VAR_NAME>L:P21_FIREX_EXT_1_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_FIREX_EXT_1_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'FIRE EXT 1'</TOOLTIP_TITLE>
+				<TT_DESCRIPTION>'DISCHARGE BOTTLE 1 INTO THE SELECTED ENGINE'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_FIREX_BTL1_SPENT) 1 == if{
+							'DISCHARGED'
+					} els{
+						(L:P21_FIRE_L_ENG) (L:P21_FIRE_R_ENG) or 1 == if{
+								'ARMED'
+						} els{
+								'Not armed'
+						}
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+					(L:P21_FIREX_EXT_1_BTN) 1 ==
+					(L:P21_FIREX_BTL1_SPENT) 0 == and
+					(L:P21_FIRE_L_ENG) (L:P21_FIRE_R_ENG) or 1 == and
+					if{
+						1 (&gt;L:P21_FIREX_BTL1_SPENT)
+					}
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_FIRE_EXT_2_BTN" Node="FIRE_EXT_BTN_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE_MOMENTARY">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FIRE_EXT_BTN_2</NODE_ID>
+				<VAR_NAME>L:P21_FIREX_EXT_2_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_FIREX_EXT_2_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'FIRE EXT 2'</TOOLTIP_TITLE>
+				<TT_DESCRIPTION>'DISCHARGE BOTTLE 2 - THE ONLY BOTTLE THAT REACHES THE APU'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_FIREX_BTL2_SPENT) 1 == if{
+							'DISCHARGED'
+					} els{
+						(L:P21_FIRE_L_ENG) (L:P21_FIRE_R_ENG) or (L:P21_FIRE_APU) or 1 == if{
+								'ARMED'
+						} els{
+								'Not armed'
+						}
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+					(L:P21_FIREX_EXT_2_BTN) 1 ==
+					(L:P21_FIREX_BTL2_SPENT) 0 == and
+					(L:P21_FIRE_L_ENG) (L:P21_FIRE_R_ENG) or (L:P21_FIRE_APU) or 1 == and
+					if{
+						1 (&gt;L:P21_FIREX_BTL2_SPENT)
+					}
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_FIREX_APU_GROUND_MODE" Node="APU_FIRE_BTN">
+			<UseTemplate Name="ASOBO_GT_Update">
+				<UPDATE_CODE>
+					(L:P21_FIRE_APU_DETECTED) 1 ==
+					(A:SIM ON GROUND, Bool) and
+					(L:P21_FIREX_BTL2_SPENT) 0 == and
+					if{
+						(L:P21_FIREX_APU_AUTO_T) (E:SIMULATION DELTA TIME, seconds) + (&gt;L:P21_FIREX_APU_AUTO_T)
+						(L:P21_FIREX_APU_AUTO_T) 5 &gt;
+						if{
+							1 (&gt;L:P21_FIREX_BTL2_SPENT)
+							1 (&gt;L:P21_FIRE_APU)
+						}
+					} els{
+						0 (&gt;L:P21_FIREX_APU_AUTO_T)
+					}
+				</UPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_SYS_TEST_KNOB" Node="SYS_TEST_KNOB">
+			<UseTemplate Name="P21_ROTARY_INFINITE_CLICKY">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>SYS_TEST_KNOB</NODE_ID>
+				<VAR_NAME>L:P21_SYS_TEST_KNOB</VAR_NAME>
+
+				<STEP_COUNT>8</STEP_COUNT>
+				<VAL_MULT>8</VAL_MULT>
+				<VAL_MIN>0</VAL_MIN>
+				<VAL_MAX>7</VAL_MAX>
+				<VAL_CLAMP>1</VAL_CLAMP>
+				<TOOLTIPID>L:P21_SYS_TEST_KNOB</TOOLTIPID>
+				<TOOLTIP_TITLE>'SYSTEMS TEST'</TOOLTIP_TITLE>
+				<TT_DESCRIPTION>'WHEEL TO SELECT, CLICK TO TEST'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_SYS_TEST_KNOB) 1 == if{ 'ANNUN A' } els{
+					(L:P21_SYS_TEST_KNOB) 2 == if{ 'ANNUN B' } els{
+					(L:P21_SYS_TEST_KNOB) 3 == if{ 'PROBES' } els{
+					(L:P21_SYS_TEST_KNOB) 4 == if{ 'STALL/RUD LIM' } els{
+					(L:P21_SYS_TEST_KNOB) 5 == if{ 'ICE DET' } els{
+					(L:P21_SYS_TEST_KNOB) 6 == if{
+						(L:P21_FIRE_TEST_RUN) 1 == if{ 'FIRE DET - TESTING' } els{
+						(L:P21_FIRE_TEST_OK) 1 == if{ 'FIRE DET - TEST OK' } els{ 'FIRE DET - click to test' } }
+					} els{
+					(L:P21_SYS_TEST_KNOB) 7 == if{ 'TAWS' } els{ 'OFF' } } } } } } }
+				</TOOLTIP_VAL_CODE>
+
+				<LEFT_SINGLE_CODE>
+					(L:P21_SYS_TEST_KNOB) 6 ==
+					(L:P21_FIRE_TEST_RUN) 0 == and
+					if{
+						1 (&gt;L:P21_FIRE_TEST_RUN)
+						0 (&gt;L:P21_FIRE_TEST_T)
+						0 (&gt;L:P21_FIRE_TEST_OK)
+					}
+				</LEFT_SINGLE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_FIRE_TEST_CLOCK" Node="SYS_TEST_KNOB">
+			<UseTemplate Name="ASOBO_GT_Update">
+				<UPDATE_CODE>
+					(L:P21_SYS_TEST_KNOB) 6 !=
+					if{
+						0 (&gt;L:P21_FIRE_TEST_RUN)
+						0 (&gt;L:P21_FIRE_TEST_OK)
+						0 (&gt;L:P21_FIRE_TEST_T)
+					} els{
+						(L:P21_FIRE_TEST_RUN) 1 ==
+						if{
+							(L:P21_FIRE_TEST_T) (E:SIMULATION DELTA TIME, seconds) + (&gt;L:P21_FIRE_TEST_T)
+							(L:P21_FIRE_TEST_T) 10 &gt;
+							if{
+								0 (&gt;L:P21_FIRE_TEST_RUN)
+								1 (&gt;L:P21_FIRE_TEST_OK)
+							}
+						}
+					}
+				</UPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+	</Template>
+</ModelBehaviors>

@@ -1,0 +1,736 @@
+<ModelBehaviors>
+	<Template Name="P21_MCP_TEMPLATE">
+		<Component ID="FMC_ELEC_1" Node="FMC_ELEC_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_ELEC_1</NODE_ID>
+				<ANIM_NAME>FMC_ELEC_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_ELEC_1</VAR_NAME>
+				<TOOLTIPID>Turn on Electrical</TOOLTIPID>
+				<TOOLTIP_TITLE>'Electrical Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_ELEC_1) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_ELEC_1) 1 == if{
+								0 (>L:P21_MCP_FUEL_1)
+                0 (>L:P21_MCP_SUMRY_1)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_1)
+								0 (>L:P21_MCP_HYDRAULICS_1)
+								0 (>L:P21_MCP_ECS_1)
+								0 (>L:P21_MCP_ANTI_ICE_1)
+								0 (>L:P21_MCP_CKLST_1)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_SUMRY_1" Node="FMC_SUMRY_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_SUMRY_1</NODE_ID>
+				<ANIM_NAME>FMC_SUMRY_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_SUMRY_1</VAR_NAME>
+				<TOOLTIPID>Turn on Summary</TOOLTIPID>
+				<TOOLTIP_TITLE>'Summary Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_SUMRY_1) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_SUMRY_1) 1 == if{
+								0 (>L:P21_MCP_FUEL_1)
+                0 (>L:P21_MCP_ELEC_1)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_1)
+								0 (>L:P21_MCP_HYDRAULICS_1)
+								0 (>L:P21_MCP_ECS_1)
+								0 (>L:P21_MCP_ANTI_ICE_1)
+								0 (>L:P21_MCP_CKLST_1)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_FUEL_1" Node="FMC_FUEL_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_FUEL_1</NODE_ID>
+				<ANIM_NAME>FMC_FUEL_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_FUEL_1</VAR_NAME>
+				<TOOLTIPID>Turn on Fuel</TOOLTIPID>
+				<TOOLTIP_TITLE>'Fuel Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_FUEL_1) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_FUEL_1) 1 == if{
+                0 (>L:P21_MCP_ELEC_1)
+								0 (>L:P21_MCP_SUMRY_1)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_1)
+								0 (>L:P21_MCP_HYDRAULICS_1)
+								0 (>L:P21_MCP_ECS_1)
+								0 (>L:P21_MCP_ANTI_ICE_1)
+								0 (>L:P21_MCP_CKLST_1)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_FLT_1" Node="FMC_FLT_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_FLT_1</NODE_ID>
+				<ANIM_NAME>FMC_FLT_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_FLIGHT_CONTROLS_1</VAR_NAME>
+				<TOOLTIPID>Turn on Flight Controls</TOOLTIPID>
+				<TOOLTIP_TITLE>'Flight Controls Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_FLIGHT_CONTROLS_1) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_FLIGHT_CONTROLS_1) 1 == if{
+								0 (>L:P21_MCP_FUEL_1)
+                0 (>L:P21_MCP_ELEC_1)
+								0 (>L:P21_MCP_SUMRY_1)
+								0 (>L:P21_MCP_HYDRAULICS_1)
+								0 (>L:P21_MCP_ECS_1)
+								0 (>L:P21_MCP_ANTI_ICE_1)
+								0 (>L:P21_MCP_CKLST_1)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_HTD_1" Node="FMC_HTD_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_HTD_1</NODE_ID>
+				<ANIM_NAME>FMC_HTD_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_HYDRAULICS_1</VAR_NAME>
+				<TOOLTIPID>Turn on Hydraulics</TOOLTIPID>
+				<TOOLTIP_TITLE>'Hydraulics Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_HYDRAULICS_1) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_HYDRAULICS_1) 1 == if{
+								0 (>L:P21_MCP_FUEL_1)
+                0 (>L:P21_MCP_ELEC_1)
+								0 (>L:P21_MCP_SUMRY_1)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_1)
+								0 (>L:P21_MCP_ECS_1)
+								0 (>L:P21_MCP_ANTI_ICE_1)
+								0 (>L:P21_MCP_CKLST_1)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_ESC_1" Node="FMC_ESC_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_ESC_1</NODE_ID>
+				<ANIM_NAME>FMC_ESC_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_ECS_1</VAR_NAME>
+				<TOOLTIPID>Turn on ECS</TOOLTIPID>
+				<TOOLTIP_TITLE>'ECS Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_ECS_1) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_ECS_1) 1 == if{
+								0 (>L:P21_MCP_FUEL_1)
+                0 (>L:P21_MCP_ELEC_1)
+								0 (>L:P21_MCP_SUMRY_1)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_1)
+								0 (>L:P21_MCP_HYDRAULICS_1)
+								0 (>L:P21_MCP_ANTI_ICE_1)
+								0 (>L:P21_MCP_CKLST_1)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_ESC_2" Node="FMC_ESC_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_ESC_2</NODE_ID>
+				<ANIM_NAME>FMC_ESC_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_ECS_2</VAR_NAME>
+				<TOOLTIPID>Turn on ECS</TOOLTIPID>
+				<TOOLTIP_TITLE>'ECS Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_ECS_2) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_ECS_2) 1 == if{
+								0 (>L:P21_MCP_FUEL_2)
+                0 (>L:P21_MCP_ELEC_2)
+								0 (>L:P21_MCP_SUMRY_2)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_2)
+								0 (>L:P21_MCP_HYDRAULICS_2)
+								0 (>L:P21_MCP_ANTI_ICE_2)
+								0 (>L:P21_MCP_CKLST_2)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_A-ICE_1" Node="FMC_A-ICE_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_A-ICE_1</NODE_ID>
+				<ANIM_NAME>FMC_A-ICE_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_ANTI_ICE_1</VAR_NAME>
+				<TOOLTIPID>Turn on A/ICE</TOOLTIPID>
+				<TOOLTIP_TITLE>'A/ICE Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_ANTI_ICE_1) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_ANTI_ICE_1) 1 == if{
+								0 (>L:P21_MCP_FUEL_1)
+                0 (>L:P21_MCP_ELEC_1)
+								0 (>L:P21_MCP_SUMRY_1)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_1)
+								0 (>L:P21_MCP_HYDRAULICS_1)
+								0 (>L:P21_MCP_ECS_1)
+								0 (>L:P21_MCP_CKLST_1)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+		<Component ID="CCP_Push_cklst_1" Node="CCP_Push_cklst_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>CCP_Push_cklst_1</NODE_ID>
+				<ANIM_NAME>CCP_Push_cklst_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_CKLST_1</VAR_NAME>
+				<TOOLTIPID>Turn on CKLST</TOOLTIPID>
+				<TOOLTIP_TITLE>'Checklist Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_CKLST_1) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+            (L:P21_MCP_CKLST_1) 1 == if{
+								0 (>L:P21_MCP_FUEL_1)
+                0 (>L:P21_MCP_ELEC_1)
+								0 (>L:P21_MCP_SUMRY_1)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_1)
+								0 (>L:P21_MCP_HYDRAULICS_1)
+								0 (>L:P21_MCP_ECS_1)
+								0 (>L:P21_MCP_ANTI_ICE_1)
+            }
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_MCP_SKIP_BTN_1" Node="FMC_SKIP_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE_MOMENTARY">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_SKIP_1</NODE_ID>
+
+				<ANIM_NAME>FMC_SKIP_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_SKIP_BTN_1</VAR_NAME>
+				<TOOLTIPID>P21_MCP_SKIP_BTN_1</TOOLTIPID>
+				<TOOLTIP_TITLE>SKIP</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+						(L:P21_MCP_SKIP_BTN_1) 0 == if{
+								'Disabled'
+						} els{
+								'Enabled'
+						}
+				</TOOLTIP_VAL_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_MCP_ENTER_BTN_1" Node="FMC_ENTER_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE_MOMENTARY">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_ENTER_1</NODE_ID>
+
+				<ANIM_NAME>FMC_ENTER_1</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_ENTER_BTN_1</VAR_NAME>
+				<TOOLTIPID>P21_MCP_ENTER_BTN_1</TOOLTIPID>
+				<TOOLTIP_TITLE>SKIP</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+						(L:P21_MCP_ENTER_BTN_1) 0 == if{
+								'Disabled'
+						} els{
+								'Enabled'
+						}
+				</TOOLTIP_VAL_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="CCP_Joystick_L_R_1" Node="CCP_Joystick_L_R_1">
+			<UseTemplate Name="P21_ROTARY_3STATE">
+				<AUDIO_POS_X>0.305</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.698</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.310</AUDIO_POS_Z>
+				<NODE_ID>CCP_Joystick_L_R_1</NODE_ID>
+				<ANIM_NAME>CCP_Joystick_L_R_1</ANIM_NAME>
+				<VAR_NAME>L:P21_CCP_JOYSTICK_L_R_1</VAR_NAME>
+				<TOOLTIPID>LEFT/RIGHT</TOOLTIPID>
+				<TOOLTIP_TITLE>LEFT/RIGHT</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_CCP_JOYSTICK_L_R_1) 0 == if{								
+									'Left'
+							} els{
+								(L:P21_CCP_JOYSTICK_L_R_1) 1 == if{
+									' '
+								}
+								(L:P21_CCP_JOYSTICK_L_R_1) 2 == if{
+									'Right'
+								}
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+							(L:P21_CCP_JOYSTICK_L_R_MANUAL) abs 0.1 if{
+									(L:P21_CCP_JOYSTICK_L_R_MANUAL) &gt; 0.0 if{
+											2 (&gt;L:P21_CCP_JOYSTICK_L_R_1)
+									}
+									(L:P21_CCP_JOYSTICK_L_R_MANUAL) &lt; 0.0 if{
+											0 (&gt;L:P21_CCP_JOYSTICK_L_R_1)
+									}
+							}                        
+				</ONUPDATE_CODE>
+				<ONANIMFINISHED>
+							1 (&gt;L:P21_CCP_JOYSTICK_L_R_1)
+				</ONANIMFINISHED>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="CCP_Joystick_DN_UP_1" Node="CCP_Joystick_DN_UP_1">
+			<UseTemplate Name="P21_ROTARY_3STATE">
+				<AUDIO_POS_X>0.305</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.698</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.310</AUDIO_POS_Z>
+				<NODE_ID>CCP_Joystick_DN_UP_1</NODE_ID>
+				<ANIM_NAME>CCP_Joystick_DN_UP_1</ANIM_NAME>
+				<VAR_NAME>L:P21_CCP_Joystick_DN_UP_1</VAR_NAME>
+				<TOOLTIPID>DOWN/UP</TOOLTIPID>
+				<TOOLTIP_TITLE>DOWN/UP</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_CCP_Joystick_DN_UP_1) 0 == if{								
+									'Down'
+							} els{
+								(L:P21_CCP_Joystick_DN_UP_1) 1 == if{
+									' '
+								}
+								(L:P21_CCP_Joystick_DN_UP_1) 2 == if{
+									'Up'
+								}
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+							(L:P21_CCP_JOYSTICK_DN_UP_MANUAL) abs 0.1 if{
+									(L:P21_CCP_JOYSTICK_DN_UP_MANUAL) &gt; 0.0 if{
+											2 (&gt;L:P21_CCP_Joystick_DN_UP_1)
+									}
+									(L:P21_CCP_JOYSTICK_DN_UP_MANUAL) &lt; 0.0 if{
+											0 (&gt;L:P21_CCP_Joystick_DN_UP_1)
+									}
+							}                        
+				</ONUPDATE_CODE>
+
+				<ONANIMFINISHED>
+							1 (&gt;L:P21_CCP_Joystick_DN_UP_1)
+				</ONANIMFINISHED>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_ELEC_2" Node="FMC_ELEC_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_ELEC_2</NODE_ID>
+				<ANIM_NAME>FMC_ELEC_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_ELEC_2</VAR_NAME>
+				<TOOLTIPID>Turn on Electrical</TOOLTIPID>
+				<TOOLTIP_TITLE>'Electrical Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_ELEC_2) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+						(L:P21_MCP_ELEC_2) 1 == if{
+								0 (>L:P21_MCP_SUMRY_2)
+								0 (>L:P21_MCP_FUEL_2)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_2)
+								0 (>L:P21_MCP_HYDRAULICS_2)
+								0 (>L:P21_MCP_ECS_2)
+								0 (>L:P21_MCP_ANTI_ICE_2)
+								0 (>L:P21_MCP_CKLST_2)
+						}
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_SUMRY_2" Node="FMC_SUMRY_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_SUMRY_2</NODE_ID>
+				<ANIM_NAME>FMC_SUMRY_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_SUMRY_2</VAR_NAME>
+				<TOOLTIPID>Turn on Summary</TOOLTIPID>
+				<TOOLTIP_TITLE>'Summary Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_SUMRY_2) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+						(L:P21_MCP_SUMRY_2) 1 == if{
+								0 (>L:P21_MCP_ELEC_2)
+								0 (>L:P21_MCP_FUEL_2)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_2)
+								0 (>L:P21_MCP_HYDRAULICS_2)
+								0 (>L:P21_MCP_ECS_2)
+								0 (>L:P21_MCP_ANTI_ICE_2)
+								0 (>L:P21_MCP_CKLST_2)
+						}
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_FUEL_2" Node="FMC_FUEL_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_FUEL_2</NODE_ID>
+				<ANIM_NAME>FMC_FUEL_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_FUEL_2</VAR_NAME>
+				<TOOLTIPID>Turn on Fuel</TOOLTIPID>
+				<TOOLTIP_TITLE>'Fuel Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_FUEL_2) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+						(L:P21_MCP_FUEL_2) 1 == if{
+								0 (>L:P21_MCP_ELEC_2)
+								0 (>L:P21_MCP_SUMRY_2)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_2)
+								0 (>L:P21_MCP_HYDRAULICS_2)
+								0 (>L:P21_MCP_ECS_2)
+								0 (>L:P21_MCP_ANTI_ICE_2)
+								0 (>L:P21_MCP_CKLST_2)
+						}
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_FLT_2" Node="FMC_FLT_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_FLT_2</NODE_ID>
+				<ANIM_NAME>FMC_FLT_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_FLIGHT_CONTROLS_2</VAR_NAME>
+				<TOOLTIPID>Turn on Flight Controls</TOOLTIPID>
+				<TOOLTIP_TITLE>'Flight Controls Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_FLIGHT_CONTROLS_2) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+						(L:P21_MCP_FLIGHT_CONTROLS_2) 1 == if{
+								0 (>L:P21_MCP_ELEC_2)
+								0 (>L:P21_MCP_SUMRY_2)
+								0 (>L:P21_MCP_FUEL_2)
+								0 (>L:P21_MCP_HYDRAULICS_2)
+								0 (>L:P21_MCP_ECS_2)
+								0 (>L:P21_MCP_ANTI_ICE_2)
+								0 (>L:P21_MCP_CKLST_2)
+						}
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_HTD_2" Node="FMC_HTD_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_HTD_2</NODE_ID>
+				<ANIM_NAME>FMC_HTD_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_HYDRAULICS_2</VAR_NAME>
+				<TOOLTIPID>Turn on Hydraulics</TOOLTIPID>
+				<TOOLTIP_TITLE>'Hydraulics Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_HYDRAULICS_2) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+						(L:P21_MCP_HYDRAULICS_2) 1 == if{
+								0 (>L:P21_MCP_ELEC_2)
+								0 (>L:P21_MCP_SUMRY_2)
+								0 (>L:P21_MCP_FUEL_2)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_2)
+								0 (>L:P21_MCP_ECS_2)
+								0 (>L:P21_MCP_ANTI_ICE_2)
+								0 (>L:P21_MCP_CKLST_2)
+						}
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="FMC_A-ICE_2" Node="FMC_A-ICE_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_A-ICE_2</NODE_ID>
+				<ANIM_NAME>FMC_A-ICE_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_ANTI_ICE_2</VAR_NAME>
+				<TOOLTIPID>Turn on A/ICE</TOOLTIPID>
+				<TOOLTIP_TITLE>'A/ICE Synoptic Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_ANTI_ICE_2) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+						(L:P21_MCP_ANTI_ICE_2) 1 == if{
+								0 (>L:P21_MCP_ELEC_2)
+								0 (>L:P21_MCP_SUMRY_2)
+								0 (>L:P21_MCP_FUEL_2)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_2)
+								0 (>L:P21_MCP_HYDRAULICS_2)
+								0 (>L:P21_MCP_ECS_2)
+								0 (>L:P21_MCP_CKLST_2)
+						}
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="CCP_Push_cklst_2" Node="CCP_Push_cklst_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>CCP_Push_cklst_2</NODE_ID>
+				<ANIM_NAME>CCP_Push_cklst_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_CKLST_2</VAR_NAME>
+				<TOOLTIPID>Turn on CKLST</TOOLTIPID>
+				<TOOLTIP_TITLE>'Checklist Page'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_MCP_CKLST_2) 0 == if{
+									'Disabled'
+							} els{
+									'Enabled'
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+						(L:P21_MCP_CKLST_2) 1 == if{
+								0 (>L:P21_MCP_ELEC_2)
+								0 (>L:P21_MCP_SUMRY_2)
+								0 (>L:P21_MCP_FUEL_2)
+								0 (>L:P21_MCP_FLIGHT_CONTROLS_2)
+								0 (>L:P21_MCP_HYDRAULICS_2)
+								0 (>L:P21_MCP_ECS_2)
+								0 (>L:P21_MCP_ANTI_ICE_2)
+						}
+				</ONCHANGE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_MCP_SKIP_BTN_2" Node="FMC_SKIP_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE_MOMENTARY">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_SKIP_2</NODE_ID>
+
+				<ANIM_NAME>FMC_SKIP_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_SKIP_BTN_2</VAR_NAME>
+				<TOOLTIPID>P21_MCP_SKIP_BTN_2</TOOLTIPID>
+				<TOOLTIP_TITLE>SKIP</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+						(L:P21_MCP_SKIP_BTN_2) 0 == if{
+								'Disabled'
+						} els{
+								'Enabled'
+						}
+				</TOOLTIP_VAL_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_MCP_ENTER_BTN_2" Node="FMC_ENTER_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE_MOMENTARY">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>FMC_ENTER_2</NODE_ID>
+
+				<ANIM_NAME>FMC_ENTER_2</ANIM_NAME>
+				<VAR_NAME>L:P21_MCP_ENTER_BTN_2</VAR_NAME>
+				<TOOLTIPID>P21_MCP_ENTER_BTN_2</TOOLTIPID>
+				<TOOLTIP_TITLE>ENTER</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+						(L:P21_MCP_ENTER_BTN_2) 0 == if{
+								'Disabled'
+						} els{
+								'Enabled'
+						}
+				</TOOLTIP_VAL_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="CCP_Joystick_L_R_2" Node="CCP_Joystick_L_R_2">
+			<UseTemplate Name="P21_ROTARY_3STATE">
+				<AUDIO_POS_X>0.305</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.698</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.310</AUDIO_POS_Z>
+				<NODE_ID>CCP_Joystick_L_R_2</NODE_ID>
+				<ANIM_NAME>CCP_Joystick_L_R_2</ANIM_NAME>
+				<VAR_NAME>L:P21_CCP_JOYSTICK_L_R_2</VAR_NAME>
+				<TOOLTIPID>LEFT/RIGHT</TOOLTIPID>
+				<TOOLTIP_TITLE>LEFT/RIGHT</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_CCP_JOYSTICK_L_R_2) 0 == if{
+									'Left'
+							} els{
+								(L:P21_CCP_JOYSTICK_L_R_2) 1 == if{
+									' '
+								}
+								(L:P21_CCP_JOYSTICK_L_R_2) 2 == if{
+									'Right'
+								}
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+							(L:P21_CCP_JOYSTICK_L_R_MANUAL_2) abs 0.1 if{
+									(L:P21_CCP_JOYSTICK_L_R_MANUAL_2) &gt; 0.0 if{
+											2 (&gt;L:P21_CCP_JOYSTICK_L_R_2)
+									}
+									(L:P21_CCP_JOYSTICK_L_R_MANUAL_2) &lt; 0.0 if{
+											0 (&gt;L:P21_CCP_JOYSTICK_L_R_2)
+									}
+							}
+				</ONUPDATE_CODE>
+				<ONANIMFINISHED>
+							1 (&gt;L:P21_CCP_JOYSTICK_L_R_2)
+				</ONANIMFINISHED>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="CCP_Joystick_DN_UP_2" Node="CCP_Joystick_DN_UP_2">
+			<UseTemplate Name="P21_ROTARY_3STATE">
+				<AUDIO_POS_X>0.305</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.698</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.310</AUDIO_POS_Z>
+				<NODE_ID>CCP_Joystick_DN_UP_2</NODE_ID>
+				<ANIM_NAME>CCP_Joystick_DN_UP_2</ANIM_NAME>
+				<VAR_NAME>L:P21_CCP_Joystick_DN_UP_2</VAR_NAME>
+				<TOOLTIPID>DOWN/UP</TOOLTIPID>
+				<TOOLTIP_TITLE>DOWN/UP</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+							(L:P21_CCP_Joystick_DN_UP_2) 0 == if{
+									'Down'
+							} els{
+								(L:P21_CCP_Joystick_DN_UP_2) 1 == if{
+									' '
+								}
+								(L:P21_CCP_Joystick_DN_UP_2) 2 == if{
+									'Up'
+								}
+							}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+							(L:P21_CCP_JOYSTICK_DN_UP_MANUAL_2) abs 0.1 if{
+									(L:P21_CCP_JOYSTICK_DN_UP_MANUAL_2) &gt; 0.0 if{
+											2 (&gt;L:P21_CCP_Joystick_DN_UP_2)
+									}
+									(L:P21_CCP_JOYSTICK_DN_UP_MANUAL_2) &lt; 0.0 if{
+											0 (&gt;L:P21_CCP_Joystick_DN_UP_2)
+									}
+							}
+				</ONUPDATE_CODE>
+				<ONANIMFINISHED>
+							1 (&gt;L:P21_CCP_Joystick_DN_UP_2)
+				</ONANIMFINISHED>
+			</UseTemplate>
+		</Component>
+
+</Template>
+</ModelBehaviors>

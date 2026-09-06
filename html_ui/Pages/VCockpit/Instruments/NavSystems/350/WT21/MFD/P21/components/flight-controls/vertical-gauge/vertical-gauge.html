@@ -1,0 +1,47 @@
+<link
+  rel="stylesheet"
+  href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/flight-controls/vertical-gauge/vertical-gauge.css" />
+
+<script type="text/html" id="vertical-gauge-template">
+  <div class="component-container">
+    <div id="label" class="vertical-gauge__label text-base text-grey">
+      ELEVATOR
+    </div>
+    <svg width="36" height="82" viewBox="-18 0 36 82">
+      <g
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        class="stroke-white"
+        >
+
+        <g id="left">
+          <line x1="2" x2="2" y1="7" y2="75"></line>
+          <line x1="2" x2="14" y1="7" y2="7"></line>
+          <line x1="2" x2="9" y1="45" y2="45"></line>
+          <line x1="2" x2="14" y1="75" y2="75"></line>
+          <path
+            id="pointer-left"
+            d="M-2 45 L-16 39 L-16 51 Z"
+            class="stroke-green fill-black"
+            style="transform: translateY(0px)"></path>
+        </g>
+        <g id="right">
+          <line x1="-2" x2="-2" y1="7" y2="75"></line>
+          <line x1="-2" x2="-14" y1="7" y2="7"></line>
+          <line x1="-2" x2="-9" y1="45" y2="45"></line>
+          <line x1="-2" x2="-14" y1="75" y2="75"></line>
+          <path
+            id="pointer-right"
+            d="M2 45 L16 39 L16 51 Z"
+            class="stroke-green fill-black"
+            style="transform: translateY(0px)"></path>
+        </g>
+      </g>
+    </svg>
+  </div>
+</script>
+
+<script
+  type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/flight-controls/vertical-gauge/vertical-gauge.js"></script>

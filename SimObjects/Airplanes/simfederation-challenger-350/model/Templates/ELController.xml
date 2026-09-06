@@ -1,0 +1,432 @@
+<ModelBehaviors>
+	<Template Name="P21_EL_CONTROLLER_TEMPLATE">
+		<!-- APU GEN -->
+		<!-- <Component ID="P21_EL_APU_GEN" Node="ELECTRICAL_Push_APU_Generator">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>ELECTRICAL_Push_APU_Generator</NODE_ID>
+				<ANIM_NAME>ELECTRICAL_Push_APU_Generator</ANIM_NAME>
+				<VAR_NAME>L:P21_EL_APU_GEN</VAR_NAME>
+				<TOOLTIPID>APU GEN</TOOLTIPID>
+				<TOOLTIP_TITLE>'APU GEN'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_EL_APU_GEN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+					(L:P21_EL_APU_GEN) 0 == if{                        
+						0 (&gt;K:APU_STARTER)
+						0 4 (&gt;K:2:FUELSYSTEM_VALVE_SET)    
+						0 (&gt;O:_LAST_VALUE_GEN) 
+						0 (&gt;O:_LAST_VALUE_STARTER) 
+						0 (&gt;K:APU_GENERATOR_SWITCH_SET)
+					} els{
+						1 (&gt;K:APU_STARTER)
+						1 4 (&gt;K:2:FUELSYSTEM_VALVE_SET)
+						1 (&gt;O:_LAST_VALUE_GEN) 
+						1 (&gt;O:_LAST_VALUE_STARTER) 
+						1 (&gt;K:APU_GENERATOR_SWITCH_SET)
+					}
+				</ONCHANGE_CODE>
+				<ONUPDATE_CODE>
+					(L:P21_EL_APU_GEN) 0 == if{
+							1 (&gt;A:BUS LOOKUP INDEX, Number)
+							(A:ALTERNATOR CONNECTION ON:1, number) 1 == if{
+									1 1 (&gt;K:2:ELECTRICAL_BUS_TO_ALTERNATOR_CONNECTION_TOGGLE)
+							} 
+							3 (&gt;A:BUS LOOKUP INDEX, Number)
+							(A:ALTERNATOR CONNECTION ON:1, number) 1 == if{
+									1 3 (&gt;K:2:ELECTRICAL_BUS_TO_ALTERNATOR_CONNECTION_TOGGLE)
+							}
+					} els{
+							1 (&gt;A:BUS LOOKUP INDEX, Number)
+							(A:ALTERNATOR CONNECTION ON:1, number) 0 == if{
+									1 1 (&gt;K:2:ELECTRICAL_BUS_TO_ALTERNATOR_CONNECTION_TOGGLE)
+							} 
+							3 (&gt;A:BUS LOOKUP INDEX, Number)
+							(A:ALTERNATOR CONNECTION ON:1, number) 0 == if{
+									1 3 (&gt;K:2:ELECTRICAL_BUS_TO_ALTERNATOR_CONNECTION_TOGGLE)
+							}
+					}
+					(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+							1 (&gt;L:P21_EL_APU_GEN)
+					}
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component> -->
+
+		<!-- BUS TIE -->
+		<!-- <Component ID="P21_EL_BUS_TIE" Node="ELECTRICAL_Push_BusTie">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.401</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.407</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.947</AUDIO_POS_Z>
+				<NODE_ID>ELECTRICAL_Push_BusTie</NODE_ID>
+				<ANIM_NAME>ANIM_DC_BUS_TIES</ANIM_NAME>
+				<VAR_NAME>L:P21_X_ELEC_BUS_TIE</VAR_NAME>
+				<TOOLTIP_TITLE>'BUS TIE'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_X_ELEC_BUS_TIE) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+			</UseTemplate>
+		</Component> -->
+
+		<!-- L GEN -->
+		<!-- <Component ID="P21_EL_GEN_LEFT" Node="ELECTRICAL_Switch_Alternator_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.401</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.407</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.947</AUDIO_POS_Z>
+				<NODE_ID>ELECTRICAL_Switch_Alternator_1</NODE_ID>
+				<VAR_NAME>L:P21_X_ELEC_GEN_LEFT</VAR_NAME>
+				<TOOLTIP_TITLE>'L GEN'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_X_ELEC_GEN_LEFT) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+					(L:P21_X_ELEC_GEN_LEFT) 2 == if{
+						2 (&gt;K:TOGGLE_MASTER_ALTERNATOR)
+					} els{
+							(A:GENERAL ENG MASTER ALTERNATOR:2,Number) 1 == if{
+									2 (&gt;K:TOGGLE_MASTER_ALTERNATOR)
+							}    						
+							0 (&gt;O:_LAST_VALUE)						
+					}
+				</ONCHANGE_CODE>
+				<ONUPDATE_CODE>
+					(O:_LAST_VALUE) (A:GENERAL ENG MASTER ALTERNATOR:2,Number) != if{
+							(A:GENERAL ENG MASTER ALTERNATOR:2,Number) 1 == if{
+									2 (&gt;L:P21_X_ELEC_GEN_LEFT)
+									1 (&gt;O:_LAST_VALUE)
+							}                      
+					} 
+
+					(L:P21_X_ELEC_GEN_LEFT) 2 &lt; if{
+							(A:GENERAL ENG MASTER ALTERNATOR:2,Number) 1 == if{
+									2 (&gt;K:TOGGLE_MASTER_ALTERNATOR)
+							} 
+							0 (&gt;O:_LAST_VALUE)                        
+					} els{
+							(A:GENERAL ENG COMBUSTION:1,number) 0 &gt; if{
+									(A:GENERAL ENG MASTER ALTERNATOR:2,Number) 0 == if{
+											2 (&gt;K:TOGGLE_MASTER_ALTERNATOR)
+									}
+									1 (&gt;O:_LAST_VALUE)
+							}
+					}
+					(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+							2 (&gt;L:P21_X_ELEC_GEN_LEFT)
+							1 (&gt;O:_LAST_VALUE)
+					}	
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component> -->
+
+		<!-- R GEN -->
+		<!-- <Component ID="P21_EL_GEN_RIGHT" Node="ELECTRICAL_Switch_Alternator_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.401</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.407</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.947</AUDIO_POS_Z>
+				<NODE_ID>ELECTRICAL_Switch_Alternator_2</NODE_ID>
+				<VAR_NAME>L:P21_X_ELEC_GEN_RIGHT</VAR_NAME>
+				<TOOLTIP_TITLE>'R GEN'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_X_ELEC_GEN_RIGHT) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+					(L:P21_X_ELEC_GEN_RIGHT) 2 == if{
+						3 (&gt;K:TOGGLE_MASTER_ALTERNATOR)
+					} els{
+							(A:GENERAL ENG MASTER ALTERNATOR:2,Number) 1 == if{
+									3 (&gt;K:TOGGLE_MASTER_ALTERNATOR)
+							}    						
+							0 (&gt;O:_LAST_VALUE)						
+					}
+				</ONCHANGE_CODE>
+				<ONUPDATE_CODE>
+					(O:_LAST_VALUE) (A:GENERAL ENG MASTER ALTERNATOR:2,Number) != if{
+							(A:GENERAL ENG MASTER ALTERNATOR:2,Number) 1 == if{
+									2 (&gt;L:P21_X_ELEC_GEN_RIGHT)
+									1 (&gt;O:_LAST_VALUE)
+							}                      
+					} 
+
+					(L:P21_X_ELEC_GEN_RIGHT) 2 &lt; if{
+							(A:GENERAL ENG MASTER ALTERNATOR:2,Number) 1 == if{
+									3 (&gt;K:TOGGLE_MASTER_ALTERNATOR)
+							} 
+							0 (&gt;O:_LAST_VALUE)                        
+					} els{
+							(A:GENERAL ENG COMBUSTION:1,number) 0 &gt; if{
+									(A:GENERAL ENG MASTER ALTERNATOR:2,Number) 0 == if{
+											3 (&gt;K:TOGGLE_MASTER_ALTERNATOR)
+									}
+									1 (&gt;O:_LAST_VALUE)
+							}
+					}
+					(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+							2 (&gt;L:P21_X_ELEC_GEN_RIGHT)
+							1 (&gt;O:_LAST_VALUE)
+					}	
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component> -->
+
+		<!-- L BATT -->
+		<!-- <Component ID="P21_EL_L_BATT" Node="ELECTRICAL_Switch_Battery_Master_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.401</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.407</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.947</AUDIO_POS_Z>
+				<NODE_ID>ELECTRICAL_Switch_Battery_Master_1</NODE_ID>
+				<ANIM_NAME>ELECTRICAL_Switch_Battery_Master_1</ANIM_NAME>
+				<VAR_NAME>L:P21_X_ELEC_BATT_LEFT</VAR_NAME>
+				<TOOLTIP_TITLE>'L BATT'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_X_ELEC_BATT_LEFT) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+					(L:P21_X_ELEC_BATT_LEFT) 0 == if{
+						0 (&gt;K:BATTERY1_SET)
+						0 (&gt;O:_LAST_VALUE)
+					} els{
+						1 (&gt;K:BATTERY1_SET)
+						1 (&gt;O:_LAST_VALUE)
+					}
+				</ONCHANGE_CODE>
+				<ONUPDATE_CODE>
+					(O:_LAST_VALUE) (A:ELECTRICAL MASTER BATTERY:1,Number) != if{
+							(A:ELECTRICAL MASTER BATTERY:1,Number) (&gt;L:P21_X_ELEC_BATT_LEFT)
+							(A:ELECTRICAL MASTER BATTERY:1,Number) (&gt;O:_LAST_VALUE)
+					} els{
+							(O:_LAST_VALUE) (L:P21_X_ELEC_BATT_LEFT) != if{
+									(L:P21_X_ELEC_BATT_LEFT) (&gt;K:BATTERY1_SET)
+									(L:P21_X_ELEC_BATT_LEFT) (&gt;O:_LAST_VALUE)
+							}
+					}
+					(L:P21_X_ELEC_BATT_LEFT) 0 == if{
+							(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+									1 (&gt;L:P21_X_ELEC_BATT_LEFT)
+									1 (&gt;O:_LAST_VALUE)
+									1 (&gt;K:BATTERY1_SET)
+							}
+					}
+					(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+							1 (&gt;L:P21_X_ELEC_BATT_LEFT)
+							1 (&gt;O:_LAST_VALUE)
+							1 (&gt;K:BATTERY1_SET)
+					}
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component> -->
+
+		<!-- R BATT -->
+		<!-- <Component ID="P21_EL_R_BATT" Node="ELECTRICAL_Switch_Battery_Master_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.401</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.407</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.947</AUDIO_POS_Z>
+				<NODE_ID>ELECTRICAL_Switch_Battery_Master_2</NODE_ID>
+				<ANIM_NAME>ELECTRICAL_Switch_Battery_Master_2</ANIM_NAME>
+				<VAR_NAME>L:P21_X_ELEC_BATT_RIGHT</VAR_NAME>
+				<TOOLTIP_TITLE>'R BATT'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_X_ELEC_BATT_RIGHT) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+					(L:P21_X_ELEC_BATT_RIGHT) 0 == if{
+						0 (&gt;K:BATTERY2_SET)
+						0 (&gt;O:_LAST_VALUE)
+					} els{
+						1 (&gt;K:BATTERY2_SET)
+						1 (&gt;O:_LAST_VALUE)
+					}
+				</ONCHANGE_CODE>
+				<ONUPDATE_CODE>
+					(O:_LAST_VALUE) (A:ELECTRICAL MASTER BATTERY:2,Number) != if{
+							(A:ELECTRICAL MASTER BATTERY:2,Number) (&gt;L:P21_X_ELEC_BATT_RIGHT)
+							(A:ELECTRICAL MASTER BATTERY:2,Number) (&gt;O:_LAST_VALUE)
+					} els{
+							(O:_LAST_VALUE) (L:P21_X_ELEC_BATT_RIGHT) != if{
+									(L:P21_X_ELEC_BATT_RIGHT) (&gt;K:BATTERY2_SET)
+									(L:P21_X_ELEC_BATT_RIGHT) (&gt;O:_LAST_VALUE)
+							}
+					}
+					(L:P21_X_ELEC_BATT_RIGHT) 0 == if{
+							(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+									1 (&gt;L:P21_X_ELEC_BATT_RIGHT)
+									1 (&gt;O:_LAST_VALUE)
+									1 (&gt;K:BATTERY2_SET)
+							}
+					}
+					(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+							1 (&gt;L:P21_X_ELEC_BATT_RIGHT)
+							1 (&gt;O:_LAST_VALUE)
+							1 (&gt;K:BATTERY2_SET)
+					}
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component> -->
+
+		<!-- STBY -->
+		<Component ID="P21_EL_STBY" Node="ELECTRICAL_Switch_Battery_STBY_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<NODE_ID>ELECTRICAL_Switch_Battery_STBY_1</NODE_ID>
+				<ANIM_NAME>ELECTRICAL_Switch_Battery_STBY_1</ANIM_NAME>
+				<VAR_NAME>L:P21_X_STBY_BATT</VAR_NAME>
+				<TOOLTIP_TITLE>'STANDBY BATTERY'</TOOLTIP_TITLE>
+      			<TT_DESCRIPTION>'SET STANDBY BATTERY POSITION'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_X_STBY_BATT) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+
+				<ONCHANGE_CODE>
+					(L:P21_X_STBY_BATT) 100 * (&gt;O:ANIM_TARGET_POS)
+					(L:P21_X_STBY_BATT) 0 == if{
+						0 (&gt;K:BATTERY3_SET)
+						0 (&gt;O:_LAST_VALUE)
+					} els{
+						1 (&gt;K:BATTERY3_SET)
+						1 (&gt;O:_LAST_VALUE)
+					}
+				</ONCHANGE_CODE>
+
+				<ONUPDATE_CODE>
+					(L:P21_X_STBY_BATT) 100 * (&gt;O:ANIM_TARGET_POS)
+					(O:_LAST_VALUE) (L:P21_X_STBY_BATT) != if{
+							(L:P21_X_STBY_BATT) (&gt;K:BATTERY3_SET)
+							(L:P21_X_STBY_BATT) (&gt;O:_LAST_VALUE)
+					}
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- EXT PWR -->
+		<!-- <Component ID="P21_EL_EXT_PWR" Node="ELECTRICAL_Switch_ExternalPower_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.401</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.407</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.947</AUDIO_POS_Z>
+				<NODE_ID>OVHD_EXT_PWR_BTN</NODE_ID>
+				<ANIM_NAME>ANIM_EXT_PWR_BTN</ANIM_NAME>
+				<VAR_NAME>L:P21_X_EXT_PWR_BTN</VAR_NAME>
+				<TOOLTIP_TITLE>'EXT PWR'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_X_EXT_PWR_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE>
+					(L:P21_X_EXT_PWR_BTN) 0 == if{
+						1 (A:EXTERNAL POWER ON:1,Number) == if{
+							1 (&gt;K:TOGGLE_EXTERNAL_POWER)
+						}
+						0 (&gt;O:_LAST_VALUE)
+					} els{
+						0 (A:EXTERNAL POWER ON:1,Number) == if{
+							1 (&gt;K:TOGGLE_EXTERNAL_POWER)
+						}
+							1 (&gt;O:_LAST_VALUE)
+					}
+				</ONCHANGE_CODE>
+				<ONUPDATE_CODE>
+					(O:_LAST_VALUE) (A:EXTERNAL POWER ON:1,Number) != if{
+							(A:EXTERNAL POWER ON:1,Number) (&gt;L:P21_X_ELEC_GPU_BTN)
+							(A:EXTERNAL POWER ON:1,Number) (&gt;O:_LAST_VALUE)
+					} els{
+							(O:_LAST_VALUE) (L:P21_X_ELEC_GPU_BTN) != if{
+								(L:P21_X_ELEC_GPU_BTN) (&gt;K:TOGGLE_EXTERNAL_POWER)
+								(L:P21_X_ELEC_GPU_BTN) (&gt;O:_LAST_VALUE)
+							}
+					}
+					(L:P21_X_ELEC_GPU_BTN) 0 == if{
+							(A:FUELSYSTEM TRIGGER STATUS:1,number) 1 == if{
+									1 (&gt;L:P21_X_ELEC_GPU_BTN)
+							}
+					} 
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component> -->
+
+
+		<Component ID="P21_GEN_AUTO_L" Node="ELECTRICAL_Switch_Alternator_1">
+			<UseTemplate Name="ASOBO_GT_Update">
+				<UPDATE_CODE>
+					(A:TURB ENG N1:1, percent) 15 &gt;
+					if{
+						(L:P21_GEN_AUTO_L_DONE) 0 ==
+						if{
+							1 (&gt;L:P21_GEN_AUTO_L_DONE)
+							(A:GENERAL ENG MASTER ALTERNATOR:1, Bool) !
+							if{ 1 (&gt;K:TOGGLE_MASTER_ALTERNATOR) }
+						}
+					} els{
+						0 (&gt;L:P21_GEN_AUTO_L_DONE)
+					}
+				</UPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_GEN_AUTO_R" Node="ELECTRICAL_Switch_Alternator_2">
+			<UseTemplate Name="ASOBO_GT_Update">
+				<UPDATE_CODE>
+					(A:TURB ENG N1:2, percent) 15 &gt;
+					if{
+						(L:P21_GEN_AUTO_R_DONE) 0 ==
+						if{
+							1 (&gt;L:P21_GEN_AUTO_R_DONE)
+							(A:GENERAL ENG MASTER ALTERNATOR:2, Bool) !
+							if{ 2 (&gt;K:TOGGLE_MASTER_ALTERNATOR) }
+						}
+					} els{
+						0 (&gt;L:P21_GEN_AUTO_R_DONE)
+					}
+				</UPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+	</Template>
+
+  <Template Name="WT_BC350_Elec_Base_Template">
+    <Parameters Type="Default">
+      <INPUT_EVENT_ID_SOURCE>ELECTRICAL</INPUT_EVENT_ID_SOURCE>
+      <WWISE_PREFIX>ELECTRICAL</WWISE_PREFIX>
+    </Parameters>
+    <UseTemplate Name="ASOBO_Interaction_Base_Template">
+      <USE_INPUT_EVENT_ID>ELECTRICAL</USE_INPUT_EVENT_ID>
+    </UseTemplate>
+  </Template>
+</ModelBehaviors>

@@ -1,0 +1,8 @@
+
+.rud-in-band {
+  stroke: var(--p21-color-green);
+}
+
+.rud-out-of-band {
+  stroke: var(--p21-color-white);
+}

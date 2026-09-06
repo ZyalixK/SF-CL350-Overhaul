@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/radial-gauge-240/radial-gauge-240.css">
+<script type="text/html" id="radial-gauge-240-template">
+  <div class="component-container">
+    <svg id="" class="svg" width="100" height="100" viewBox="-100 -100 200 200">
+      <path
+      fill="transparent"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      d="
+      M 82 0
+      A 82 82 0 1 1 -82 0
+      A 82 82 0 0 1 -42 -71
+      "
+      />
+
+      <line class="line-marker" x1="74" y1="0" x2="82" y2="0" />
+
+      <line class="rg-redline" x1="72" y1="0" x2="84" y2="0" style="transform: rotate(240deg)" />
+
+      <!-- TO Set Marker -->
+
+      <g id="rpm-needle" style="transform: rotate(220deg)">
+        <line class="rg-needle" x1="6" y1="0" x2="82" y2="0"></line>
+      </g>
+
+      <!-- Target Pointer -->
+
+      <g id="target-pointer" class="rg-target" style="transform: rotate(0deg);">
+        <line x1="80" y1="0" x2="93" y2="0" stroke="var(--p21-color-cyan)" stroke-width="5.3"
+          stroke-linecap="butt" />
+      </g>
+
+
+      <g id="fadec-target-marker" class="rg-fadec-target hidden" style="transform: rotate(0deg);">
+
+        <circle id="fadec-target-circle" cx="90" cy="0" r="6" />
+
+        <line id="fadec-target-line" class="hidden" x1="84" y1="0" x2="94" y2="0"
+          stroke-linecap="round" />
+      </g>
+
+
+      <text x="94" y="-27.5%" text-anchor="end">
+        <tspan id="rg-v2" fill="var(--p21-color-cyan)" style="font-size: 1.5rem;">85.0 TO</tspan>
+      </text>
+      <text x="9" y="-6%">
+        <tspan id="rg-v1" fill="var(--p21-color-green)" style="font-size: 2.75rem;">93.0</tspan>
+      </text>
+
+
+      <text id="rg-fire" x="10" y="14%" class="hidden">
+        <tspan fill="var(--p21-color-red)" style="font-size: 1.75rem;">FIRE</tspan>
+      </text>
+
+
+      <text id="rg-rev" x="0" y="4%" text-anchor="middle" class="hidden">
+        <tspan id="rg-rev-text" fill="var(--p21-color-green)" style="font-size: 1.5rem;">REV</tspan>
+      </text>
+    </svg>
+  </div>
+</script>
+
+<script type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/radial-gauge-240/radial-gauge-240.js"></script>

@@ -1,0 +1,224 @@
+<ModelBehaviors>
+
+
+	<Template Name="P21_AIRCOND_TEMPLATE">
+		<!-- MAN TEMP -->
+		<Component ID="P21_MAN_TEMP_BUTTON" Node="MAN_TEMP_BUTTON">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>MAN_TEMP_BUTTON</NODE_ID>
+				<ANIM_NAME>MAN_TEMP_BUTTON</ANIM_NAME>
+				<VAR_NAME>L:P21_MAN_TEMP_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_MAN_TEMP_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'MANUAL TEMPERATURE'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_MAN_TEMP_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- RAM AIR -->
+		<Component ID="P21_RAM_AIR_BTN" Node="RAM_AIR_BUTTON">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>RAM_AIR_BUTTON</NODE_ID>
+				<ANIM_NAME>RAM_AIR_BUTTON</ANIM_NAME>
+				<VAR_NAME>L:P21_RAM_AIR_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_RAM_AIR_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'RAM AIR'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_RAM_AIR_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<!-- LBLEED -->
+		<Component ID="P21_LBLEED_BUTTON" Node="PRESSURIZATION_Push_Bleed_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>PRESSURIZATION_Push_Bleed_1</NODE_ID>
+				<ANIM_NAME>PRESSURIZATION_Push_Bleed_1</ANIM_NAME>
+				<VAR_NAME>L:P21_LBLEED_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_LBLEED_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'Intermediated Pressure Left'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_LBLEED_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- RBLEED -->
+		<Component ID="P21_RBLEED_BUTTON" Node="PRESSURIZATION_Push_Bleed_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>PRESSURIZATION_Push_Bleed_2</NODE_ID>
+				<ANIM_NAME>PRESSURIZATION_Push_Bleed_2</ANIM_NAME>
+				<VAR_NAME>L:P21_RBLEED_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_RBLEED_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'Intermediated Pressure Right'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_RBLEED_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- XBLEED -->
+		<Component ID="XBLEED_BUTTON" Node="XBLEED_BUTTON">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>XBLEED_BUTTON</NODE_ID>
+				<ANIM_NAME>XBLEED_BUTTON</ANIM_NAME>
+				<VAR_NAME>L:P21_XBLEED_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_XBLEED_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'XBLEED'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_XBLEED_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- APU -->
+		<Component ID="APU_BUTTON" Node="PRESSURIZATION_Push_Bleed_APU">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>PRESSURIZATION_Push_Bleed_APU</NODE_ID>
+				<ANIM_NAME>PRESSURIZATION_Push_Bleed_APU</ANIM_NAME>
+				<VAR_NAME>L:P21_APU_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_APU_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'APU BLEED'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_APU_BTN) 0 == if{
+							'Closed'
+					} els{
+							'Open'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- https://docs.flightsimulator.com/html/Additional_Information/Reverse_Polish_Notation.htm -->
+		<!-- CKPT TEMP -->
+		<Component ID="Cockpit_Temp_Knob" Node="Cockpit_Temp_Knob">
+			<UseTemplate Name="P21_ROTARY_INFINITE_CLICKY">
+				<STEP_COUNT>36</STEP_COUNT>
+				<ANIM_NAME>Cockpit_Temp_Knob</ANIM_NAME>
+				<VAR_NAME>L:P21_CKPT_TEMP_KNOB</VAR_NAME>
+				<TOOLTIP_TITLE>'COCKPIT TEMP'</TOOLTIP_TITLE>
+				<!-- <TOOLTIP_TITLE>
+					(L:P21_CKPT_TEMP_KNOB) 'COCKPIT TEMP' (F:Format)
+				</TOOLTIP_TITLE> -->
+				<TOOLTIP_VAL_CODE>(L:P21_CKPT_TEMP_KNOB)</TOOLTIP_VAL_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- CABIN TEMP -->
+		<Component ID="Cabin_Temp_Knob" Node="Cabin_Temp_Knob">
+			<UseTemplate Name="P21_ROTARY_INFINITE_CLICKY">
+				<STEP_COUNT>36</STEP_COUNT>
+				<ANIM_NAME>Cabin_Temp_Knob</ANIM_NAME>
+				<VAR_NAME>L:P21_CABIN_TEMP_KNOB</VAR_NAME>
+				<TOOLTIP_TITLE>'CABIN TEMP'</TOOLTIP_TITLE>
+				<!-- <TOOLTIP_TITLE>
+					(L:P21_CABIN_TEMP_KNOB) 'CABIN TEMP' (F:Format)
+				</TOOLTIP_TITLE> -->
+				<TOOLTIP_VAL_CODE>(L:P21_CABIN_TEMP_KNOB)</TOOLTIP_VAL_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- <Component ID="CCD_LEFT_Rotary_Outer" Node="CCD_LEFT_ROTARY_OUTER">
+			<UseTemplate Name="FSS_ROTARY_INFINITE_CLICKY">
+					<AUDIO_POS_X>0.443</AUDIO_POS_X>
+					<AUDIO_POS_Y>0.619</AUDIO_POS_Y>
+					<AUDIO_POS_Z>0.272</AUDIO_POS_Z>
+					<ANIM_NAME>ANIM_CCD_L_ROTARY_OUTER</ANIM_NAME>
+					<NODE_ID>CCD_LEFT_ROTARY_OUTER</NODE_ID>
+					<VAR_NAME>L:FSS_EXX_CCD_LEFT_BV_ROTARY_OUTER</VAR_NAME>
+					<TOOLTIP_VAL_CODE>(L:FSS_EXX_CCD_LEFT_BV_ROTARY_OUTER)</TOOLTIP_VAL_CODE>
+			</UseTemplate>
+	</Component> -->
+
+		<!-- AIR SOURCE SELECTION -->
+		<Component ID="AIR_SOURCE_SELECTION_1" Node="Air_Source_Knob">
+			<PartID>CL_Dashboard_055</PartID>
+			<CameraTitle>Pilot</CameraTitle>
+			<UseTemplate Name="P21_ROTARY_4STATE">
+				<AUDIO_POS_X>0.263</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.776</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.348</AUDIO_POS_Z>
+				<NODE_ID>Air_Source_Knob</NODE_ID>
+				<ANIM_NAME>Air_Source_Knob</ANIM_NAME>
+				<VAR_NAME>L:P21_AIR_SOURCE_KNOB</VAR_NAME>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_AIR_SOURCE_KNOB) 0 == if{
+							'OFF'
+					} 
+					(L:P21_AIR_SOURCE_KNOB) 1 == if{
+							'NORM'
+					}
+					(L:P21_AIR_SOURCE_KNOB) 2 == if{
+							'PACK ONLY'
+					}
+					(L:P21_AIR_SOURCE_KNOB) 3 == if{
+							'TRIM AIR ONLY'
+					}
+					(L:P21_AIR_SOURCE_KNOB) 4 == if{
+							'UNUSED'
+					}
+				</TOOLTIP_VAL_CODE>
+				<TOOLTIP_TITLE>'AIR SOURCE'</TOOLTIP_TITLE>
+			</UseTemplate>
+		</Component>
+
+	</Template>
+</ModelBehaviors>

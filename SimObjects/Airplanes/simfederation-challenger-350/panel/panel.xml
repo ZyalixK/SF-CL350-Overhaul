@@ -1,0 +1,1497 @@
+<PlaneHTMLConfig>
+  <AOASystem>
+    <Flaps index="1" zeroLift="-6.5" stall="10.25" correctionFactor="1" />
+    <Flaps index="2" zeroLift="-8" stall="10.25" correctionFactor="1" />
+  </AOASystem>
+  <Instrument>
+    <Name>HourMeter</Name>
+    <Electric>
+      <Simvar name="CIRCUIT GENERAL PANEL ON" unit="Boolean"/>
+    </Electric>
+  </Instrument>
+  <Instrument>
+    <Name>WT21_PFD</Name>
+    <RadarAltitude>True</RadarAltitude>
+    <Electric>
+      <Or>
+        <Simvar name="CIRCUIT ON:40" unit="Boolean"/>
+      </Or>
+    </Electric>
+
+    <VNAV advanced="True">
+      <FmsSpeeds>
+        <GeneralLimits>
+          <Mach>
+            <Minimum>0.2</Minimum>
+            <Maximum>0.83</Maximum>
+          </Mach>
+        </GeneralLimits>
+      </FmsSpeeds>
+    </VNAV>
+  </Instrument>
+  <Instrument>
+    <Name>WT21_MFD_1</Name>
+    <Electric>
+      <Or>
+        <Simvar name="CIRCUIT ON:41" unit="Boolean"/>
+      </Or>
+    </Electric>
+  </Instrument>
+  <Instrument>
+    <Name>WT21_MFD_2</Name>
+    <Electric>
+      <Or>
+        <Simvar name="CIRCUIT ON:41" unit="Boolean"/>
+      </Or>
+    </Electric>
+  </Instrument>
+  <Instrument>
+    <Name>CJ4_SAI</Name>
+    <Electric>
+      <Simvar name="CIRCUIT ON:48" unit="Boolean"/>
+    </Electric>
+  </Instrument>
+  <Instrument>
+    <Name>A320_Neo_Clock</Name>
+    <Electric>
+      <Simvar name="CIRCUIT ON:50" unit="Boolean"/>
+    </Electric>
+  </Instrument>
+  <Instrument>
+    <Name>WT21_FMC_1</Name>
+    <Electric>
+      <Or>
+        <Simvar name="CIRCUIT ON:49" unit="Boolean"/>
+      </Or>
+    </Electric>
+    <AlwaysUpdate>True</AlwaysUpdate>
+
+    <VNAV advanced="True">
+      <FmsSpeeds>
+        <GeneralLimits>
+          <Mach>
+            <Minimum>0.2</Minimum>
+            <Maximum>0.83</Maximum>
+          </Mach>
+        </GeneralLimits>
+      </FmsSpeeds>
+    </VNAV>
+  </Instrument>
+  <Instrument>
+    <Name>WT21_FMC_2</Name>
+    <Electric>
+      <Or>
+        <Simvar name="CIRCUIT ON:51" unit="Boolean"/>
+      </Or>
+    </Electric>
+    <AlwaysUpdate>True</AlwaysUpdate>
+
+    <VNAV advanced="True">
+      <FmsSpeeds>
+        <GeneralLimits>
+          <Mach>
+            <Minimum>0.2</Minimum>
+            <Maximum>0.83</Maximum>
+          </Mach>
+        </GeneralLimits>
+      </FmsSpeeds>
+    </VNAV>
+  </Instrument>
+
+  <!-- Annunciations -->
+  <Annunciations>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>OIL PRESSURE LOW L-R</Text>
+      <Condition>
+        <And>
+          <And>
+            <LowerEqual>
+              <Simvar name="ENG OIL PRESSURE:2" unit="psi"/>
+              <Constant>22</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <LowerEqual>
+              <Simvar name="ENG OIL PRESSURE:1" unit="psi"/>
+              <Constant>22</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <Greater>
+              <Simvar name="TURB ENG N2:1" unit="percent"/>
+              <Constant>50</Constant>
+            </Greater>
+          </And>
+          <And>
+            <Greater>
+              <Simvar name="TURB ENG N2:2" unit="percent"/>
+              <Constant>50</Constant>
+            </Greater>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>OIL PRESSURE LOW L</Text>
+      <Condition>
+        <And>
+          <Not>
+            <LowerEqual>
+              <Simvar name="ENG OIL PRESSURE:2" unit="psi"/>
+              <Constant>22</Constant>
+            </LowerEqual>
+          </Not>
+          <And>
+            <LowerEqual>
+              <Simvar name="ENG OIL PRESSURE:1" unit="psi"/>
+              <Constant>22</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <Greater>
+              <Simvar name="TURB ENG N2:1" unit="percent"/>
+              <Constant>50</Constant>
+            </Greater>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>OIL PRESSURE LOW R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <LowerEqual>
+              <Simvar name="ENG OIL PRESSURE:1" unit="psi"/>
+              <Constant>22</Constant>
+            </LowerEqual>
+          </Not>
+          <And>
+            <LowerEqual>
+              <Simvar name="ENG OIL PRESSURE:2" unit="psi"/>
+              <Constant>22</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <Greater>
+              <Simvar name="TURB ENG N2:2" unit="percent"/>
+              <Constant>50</Constant>
+            </Greater>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>CABIN ALTITUDE</Text>
+      <Condition>
+        <Greater>
+          <Simvar name="PRESSURIZATION CABIN ALTITUDE" unit="feet"/>
+          <Constant>9800</Constant>
+        </Greater>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>DOOR</Text>
+      <Condition>
+        <Greater>
+          <Simvar name="EXIT OPEN:0" unit="percent"/>
+          <Constant>0</Constant>
+        </Greater>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>ENGINE FIRE L</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="ENG ON FIRE:2" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="ENG ON FIRE:1" unit="Bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>ENGINE FIRE R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="ENG ON FIRE:1" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="ENG ON FIRE:2" unit="Bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>DC GENERATOR OFF L-R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Or>
+              <Simvar name="GENERAL ENG MASTER ALTERNATOR:1" unit="Bool"/>
+              <Simvar name="GENERAL ENG MASTER ALTERNATOR:2" unit="Bool"/>
+            </Or>
+          </Not>
+          <And>
+            <Not>
+              <Simvar name="SIM ON GROUND" unit="bool"/>
+            </Not>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>DC GENERATOR OFF L</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="GENERAL ENG MASTER ALTERNATOR:1" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="GENERAL ENG MASTER ALTERNATOR:2" unit="Bool"/>
+          </And>
+          <And>
+            <Not>
+              <Simvar name="SIM ON GROUND" unit="bool"/>
+            </Not>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>DC GENERATOR OFF R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="GENERAL ENG MASTER ALTERNATOR:2" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="GENERAL ENG MASTER ALTERNATOR:1" unit="Bool"/>
+          </And>
+          <And>
+            <Not>
+              <Simvar name="SIM ON GROUND" unit="bool"/>
+            </Not>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>NO TAKEOFF</Text>
+      <Condition>
+        <And>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+          <Greater>
+            <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+            <Constant>70</Constant>
+          </Greater>
+          <Greater>
+            <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+            <Constant>70</Constant>
+          </Greater>
+          <Or>
+            <Greater>
+              <Simvar name="TRAILING EDGE FLAPS LEFT ANGLE" unit="Degree"/>
+              <Constant>16</Constant>
+            </Greater>
+            <Greater>
+              <Simvar name="SPOILERS HANDLE POSITION" unit="Percent"/>
+              <Constant>0.1</Constant>
+            </Greater>
+            <Greater>
+              <Simvar name="ELEVATOR TRIM PCT" unit="Percent"/>
+              <Constant>49</Constant>
+            </Greater>
+            <Lower>
+              <Simvar name="ELEVATOR TRIM PCT" unit="Percent"/>
+              <Constant>-9</Constant>
+            </Lower>
+          </Or>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>EMER LIGHTS NOT ARMED</Text>
+      <Condition>
+        <Equal>
+          <Simvar name="L:BC350_EMER_LIGHT_ARMED" unit="number"/>
+          <Constant>0</Constant>
+        </Equal>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>PRESSURE SOURCE NOT NORM</Text>
+      <Condition>
+        <And>
+          <Inequal>
+            <Simvar name="L:WT_CJ4_PRESS_SOURCE" unit="number"/>
+            <Constant>2</Constant>
+          </Inequal>
+          <Simvar name="SIM ON GROUND" unit="bool"/>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>PARKING BRAKE</Text>
+      <Condition>
+        <And>
+          <Greater>
+            <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+            <Constant>70</Constant>
+          </Greater>
+          <Greater>
+            <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+            <Constant>70</Constant>
+          </Greater>
+          <And>
+            <Simvar name="BRAKE PARKING INDICATOR" unit="Bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>FUEL TRANSFER</Text>
+      <Condition>
+        <Or>
+          <And>
+            <Inequal tolerance="8.95">
+              <Simvar name="FUEL TANK LEFT MAIN QUANTITY" unit="gallon"/>
+              <Simvar name="FUEL TANK RIGHT MAIN QUANTITY" unit="gallon"/>
+            </Inequal>
+            <And>
+              <Simvar name="FUEL TRANSFER PUMP ON" unit="Bool"/>
+            </And>
+          </And>
+          <And>
+            <Not>
+              <Simvar name="FUEL TRANSFER PUMP ON" unit="Bool"/>
+            </Not>
+            <Inequal tolerance="29.8">
+              <Simvar name="FUEL TANK LEFT MAIN QUANTITY" unit="gallon"/>
+              <Simvar name="FUEL TANK RIGHT MAIN QUANTITY" unit="gallon"/>
+            </Inequal>
+          </And>
+        </Or>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>FUEL LEVEL LOW L-R</Text>
+      <Condition>
+        <And>
+          <And>
+            <LowerEqual>
+              <Simvar name="FUEL TANK LEFT MAIN QUANTITY" unit="gallon"/>
+              <Constant>29.8</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <LowerEqual>
+              <Simvar name="FUEL TANK RIGHT MAIN QUANTITY" unit="gallon"/>
+              <Constant>29.8</Constant>
+            </LowerEqual>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>FUEL LEVEL LOW L</Text>
+      <Condition>
+        <And>
+          <And>
+            <LowerEqual>
+              <Simvar name="FUEL TANK LEFT MAIN QUANTITY" unit="gallon"/>
+              <Constant>29.8</Constant>
+            </LowerEqual>
+          </And>
+          <Not>
+            <LowerEqual>
+              <Simvar name="FUEL TANK RIGHT MAIN QUANTITY" unit="gallon"/>
+              <Constant>29.8</Constant>
+            </LowerEqual>
+          </Not>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>FUEL LEVEL LOW R</Text>
+      <Condition>
+        <And>
+          <And>
+            <LowerEqual>
+              <Simvar name="FUEL TANK RIGHT MAIN QUANTITY" unit="gallon"/>
+              <Constant>29.8</Constant>
+            </LowerEqual>
+          </And>
+          <Not>
+            <LowerEqual>
+              <Simvar name="FUEL TANK LEFT MAIN QUANTITY" unit="gallon"/>
+              <Constant>29.8</Constant>
+            </LowerEqual>
+          </Not>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>BATTERY FAULT</Text>
+      <Condition>
+        <Or>
+          <Greater>
+            <Simvar name="ELECTRICAL BATTERY BUS VOLTAGE" unit="volts"/>
+            <Constant>30</Constant>
+          </Greater>
+          <Lower>
+            <Simvar name="ELECTRICAL BATTERY BUS VOLTAGE" unit="volts"/>
+            <Constant>22</Constant>
+          </Lower>
+        </Or>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>DC GENERATOR OFF L-R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Or>
+              <Simvar name="GENERAL ENG MASTER ALTERNATOR:1" unit="Bool"/>
+              <Simvar name="GENERAL ENG MASTER ALTERNATOR:2" unit="Bool"/>
+            </Or>
+          </Not>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>DC GENERATOR OFF L</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="GENERAL ENG MASTER ALTERNATOR:1" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="GENERAL ENG MASTER ALTERNATOR:2" unit="Bool"/>
+          </And>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>DC GENERATOR OFF R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="GENERAL ENG MASTER ALTERNATOR:2" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="GENERAL ENG MASTER ALTERNATOR:1" unit="Bool"/>
+          </And>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>PITOT/STATIC COLD L-R-STBY</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Or>
+              <Simvar name="L:DEICE_Pitot_1" unit="Bool"/>
+              <Simvar name="L:DEICE_Pitot_2" unit="Bool"/>
+            </Or>
+          </Not>
+          <And>
+            <Or>
+              <And>
+                <And>
+                  <Simvar name="SIM ON GROUND" unit="bool"/>
+                </And>
+                <Greater>
+                  <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+                  <Constant>50</Constant>
+                </Greater>
+                <Greater>
+                  <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+                  <Constant>50</Constant>
+                </Greater>
+              </And>
+              <Not>
+                <Simvar name="SIM ON GROUND" unit="bool"/>
+              </Not>
+              <And>
+              </And>
+            </Or>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>PITOT/STATIC COLD R-STBY</Text>
+      <Condition>
+        <And>
+          <And>
+            <Not>
+              <Simvar name="L:DEICE_Pitot_2" unit="Bool"/>
+            </Not>
+            <And>
+              <Simvar name="L:DEICE_Pitot_1" unit="Bool"/>
+            </And>
+          </And>
+          <And>
+            <Or>
+              <And>
+                <And>
+                  <Simvar name="SIM ON GROUND" unit="bool"/>
+                </And>
+                <Greater>
+                  <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+                  <Constant>50</Constant>
+                </Greater>
+                <Greater>
+                  <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+                  <Constant>50</Constant>
+                </Greater>
+              </And>
+              <Not>
+                <Simvar name="SIM ON GROUND" unit="bool"/>
+              </Not>
+              <And>
+              </And>
+            </Or>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>PITOT/STATIC COLD L-STBY</Text>
+      <Condition>
+        <And>
+          <And>
+            <Not>
+              <Simvar name="L:DEICE_Pitot_1" unit="Bool"/>
+            </Not>
+            <And>
+              <Simvar name="L:DEICE_Pitot_2" unit="Bool"/>
+            </And>
+          </And>
+          <And>
+            <Or>
+              <And>
+                <And>
+                  <Simvar name="SIM ON GROUND" unit="bool"/>
+                </And>
+                <Greater>
+                  <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+                  <Constant>50</Constant>
+                </Greater>
+                <Greater>
+                  <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+                  <Constant>50</Constant>
+                </Greater>
+              </And>
+              <Not>
+                <Simvar name="SIM ON GROUND" unit="bool"/>
+              </Not>
+              <And>
+              </And>
+            </Or>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>SPEED BRAKES EXTENDED</Text>
+      <Condition>
+        <And>
+          <Greater>
+            <Simvar name="SPOILERS HANDLE POSITION" unit="Percent"/>
+            <Constant>1</Constant>
+          </Greater>
+          <And>
+            <Lower>
+              <Simvar name="RADIO HEIGHT" unit="feet"/>
+              <Constant>500</Constant>
+            </Lower>
+            <Greater>
+              <Simvar name="RADIO HEIGHT" unit="feet"/>
+              <Constant>10</Constant>
+            </Greater>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>GROUND SPOILERS FAIL</Text>
+      <Condition>
+        <And>
+          <Greater>
+            <Simvar name="SPOILERS HANDLE POSITION" unit="Percent"/>
+            <Constant>99</Constant>
+          </Greater>
+          <Not>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </Not>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>FUEL PRESSURE LOW L-R</Text>
+      <Condition>
+        <And>
+          <And>
+            <LowerEqual>
+              <Simvar name="GENERAL ENG FUEL PRESSURE:1" unit="psi"/>
+              <Constant>4.65</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <LowerEqual>
+              <Simvar name="GENERAL ENG FUEL PRESSURE:2" unit="psi"/>
+              <Constant>4.65</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <Greater>
+              <Simvar name="TURB ENG N2:1" unit="percent"/>
+              <Constant>50</Constant>
+            </Greater>
+          </And>
+          <And>
+            <Greater>
+              <Simvar name="TURB ENG N2:2" unit="percent"/>
+              <Constant>50</Constant>
+            </Greater>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>FUEL PRESSURE LOW L</Text>
+      <Condition>
+        <And>
+          <Not>
+            <LowerEqual>
+              <Simvar name="GENERAL ENG FUEL PRESSURE:2" unit="psi"/>
+              <Constant>4.65</Constant>
+            </LowerEqual>
+          </Not>
+          <And>
+            <LowerEqual>
+              <Simvar name="GENERAL ENG FUEL PRESSURE:1" unit="psi"/>
+              <Constant>4.65</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <Greater>
+              <Simvar name="TURB ENG N2:1" unit="percent"/>
+              <Constant>50</Constant>
+            </Greater>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>FUEL PRESSURE LOW R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <LowerEqual>
+              <Simvar name="GENERAL ENG FUEL PRESSURE:1" unit="psi"/>
+              <Constant>4.65</Constant>
+            </LowerEqual>
+          </Not>
+          <And>
+            <LowerEqual>
+              <Simvar name="GENERAL ENG FUEL PRESSURE:2" unit="psi"/>
+              <Constant>4.65</Constant>
+            </LowerEqual>
+          </And>
+          <And>
+            <Greater>
+              <Simvar name="TURB ENG N2:2" unit="percent"/>
+              <Constant>50</Constant>
+            </Greater>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>PARKING BRAKE</Text>
+      <Condition>
+        <And>
+          <Lower>
+            <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+            <Constant>70</Constant>
+          </Lower>
+          <Lower>
+            <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+            <Constant>70</Constant>
+          </Lower>
+          <And>
+            <Simvar name="BRAKE PARKING INDICATOR" unit="Bool"/>
+          </And>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>SPEED BRAKES EXTENDED</Text>
+      <Condition>
+        <And>
+          <Greater>
+            <Simvar name="SPOILERS HANDLE POSITION" unit="Percent"/>
+            <Constant>1</Constant>
+          </Greater>
+          <Or>
+            <Greater>
+              <Simvar name="RADIO HEIGHT" unit="feet"/>
+              <Constant>500</Constant>
+            </Greater>
+            <Lower>
+              <Simvar name="RADIO HEIGHT" unit="feet"/>
+              <Constant>10</Constant>
+            </Lower>
+          </Or>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>GROUND SPOILERS EXTENDED</Text>
+      <Condition>
+        <And>
+          <Greater>
+            <Simvar name="SPOILERS HANDLE POSITION" unit="Percent"/>
+            <Constant>99</Constant>
+          </Greater>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>PRESSURE SOURCE NOT NORM</Text>
+      <Condition>
+        <And>
+          <Inequal>
+            <Simvar name="L:WT_CJ4_PRESS_SOURCE" unit="number"/>
+            <Constant>2</Constant>
+          </Inequal>
+          <Not>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </Not>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>PITOT/STATIC COLD L-R-STBY</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Or>
+              <Simvar name="L:DEICE_Pitot_1" unit="Bool"/>
+              <Simvar name="L:DEICE_Pitot_2" unit="Bool"/>
+            </Or>
+          </Not>
+          <And>
+            <Lower>
+              <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+              <Constant>50</Constant>
+            </Lower>
+            <Lower>
+              <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+              <Constant>50</Constant>
+            </Lower>
+          </And>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>PITOT/STATIC COLD R-STBY</Text>
+      <Condition>
+        <And>
+          <And>
+            <Not>
+              <Simvar name="L:DEICE_Pitot_2" unit="Bool"/>
+            </Not>
+            <And>
+              <Simvar name="L:DEICE_Pitot_1" unit="Bool"/>
+            </And>
+          </And>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+          <And>
+            <Lower>
+              <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+              <Constant>50</Constant>
+            </Lower>
+            <Lower>
+              <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+              <Constant>50</Constant>
+            </Lower>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>PITOT/STATIC COLD L-STBY</Text>
+      <Condition>
+        <And>
+          <And>
+            <Not>
+              <Simvar name="L:DEICE_Pitot_1" unit="Bool"/>
+            </Not>
+            <And>
+              <Simvar name="L:DEICE_Pitot_2" unit="Bool"/>
+            </And>
+          </And>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+          <And>
+            <Lower>
+              <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+              <Constant>50</Constant>
+            </Lower>
+            <Lower>
+              <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+              <Constant>50</Constant>
+            </Lower>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>WING/ENG ANTI-ICE ON</Text>
+      <Condition>
+        <And>
+          <Simvar name="L:DEICE_Airframe_1" unit="Bool"/>
+          <Simvar name="L:DEICE_Airframe_2" unit="Bool"/>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>WING/ENG ANTI-ICE R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="L:DEICE_Airframe_1" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="L:DEICE_Airframe_2" unit="Bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>WING/ENG ANTI-ICE L</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="L:DEICE_Airframe_2" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="L:DEICE_Airframe_1" unit="Bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>ENGINE ANTI-ICE ON</Text>
+      <Condition>
+        <And>
+          <And>
+            <Simvar name="ENG ANTI ICE:1" unit="Bool"/>
+            <Simvar name="ENG ANTI ICE:2" unit="Bool"/>
+          </And>
+          <Not>
+            <Or>
+              <Simvar name="L:DEICE_Airframe_2" unit="Bool"/>
+              <Simvar name="L:DEICE_Airframe_1" unit="Bool"/>
+            </Or>
+          </Not>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>ENGINE ANTI-ICE R</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="ENG ANTI ICE:1" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="ENG ANTI ICE:2" unit="Bool"/>
+          </And>
+          <Not>
+            <Or>
+              <Simvar name="L:DEICE_Airframe_2" unit="Bool"/>
+              <Simvar name="L:DEICE_Airframe_1" unit="Bool"/>
+            </Or>
+          </Not>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>ENGINE ANTI-ICE L</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Simvar name="ENG ANTI ICE:2" unit="Bool"/>
+          </Not>
+          <And>
+            <Simvar name="ENG ANTI ICE:1" unit="Bool"/>
+          </And>
+          <Not>
+            <Or>
+              <Simvar name="L:DEICE_Airframe_2" unit="Bool"/>
+              <Simvar name="L:DEICE_Airframe_1" unit="Bool"/>
+            </Or>
+          </Not>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>FUEL BOOST ON L-R</Text>
+      <Condition>
+        <Or>
+          <And>
+            <Simvar name="GENERAL ENG FUEL PUMP ON:1" unit="Bool"/>
+            <Simvar name="GENERAL ENG FUEL PUMP ON:2" unit="Bool"/>
+          </And>
+          <And>
+            <Simvar name="GENERAL ENG FUEL PUMP ON:1" unit="Bool"/>
+            <Simvar name="FUEL TRANSFER PUMP ON:2" unit="Bool"/>
+          </And>
+          <And>
+            <Simvar name="GENERAL ENG FUEL PUMP ON:2" unit="Bool"/>
+            <Simvar name="FUEL TRANSFER PUMP ON:1" unit="Bool"/>
+          </And>
+        </Or>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>FUEL BOOST ON L</Text>
+      <Condition>
+        <Or>
+          <And>
+            <Not>
+              <Simvar name="GENERAL ENG FUEL PUMP ON:2" unit="Bool"/>
+            </Not>
+            <And>
+              <Simvar name="GENERAL ENG FUEL PUMP ON:1" unit="Bool"/>
+            </And>
+          </And>
+          <And>
+            <Not>
+              <Simvar name="FUEL TRANSFER PUMP ON:2" unit="Bool"/>
+            </Not>
+            <And>
+              <Simvar name="FUEL TRANSFER PUMP ON:1" unit="Bool"/>
+            </And>
+          </And>
+          <Or>
+            <And>
+              <And>
+                <Simvar name="GENERAL ENG STARTER ACTIVE:1" unit="Bool"/>
+              </And>
+              <And>
+                <And>
+                  <Greater>
+                    <Simvar name="TURB ENG N2:1" unit="percent"/>
+                    <Constant>1</Constant>
+                  </Greater>
+                </And>
+                <And>
+                  <Lower>
+                    <Simvar name="TURB ENG N2:1" unit="percent"/>
+                    <Constant>45</Constant>
+                  </Lower>
+                </And>
+              </And>
+            </And>
+          </Or>
+        </Or>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>FUEL BOOST ON R</Text>
+      <Condition>
+        <Or>
+          <And>
+            <Not>
+              <Simvar name="GENERAL ENG FUEL PUMP ON:1" unit="Bool"/>
+            </Not>
+            <And>
+              <Simvar name="GENERAL ENG FUEL PUMP ON:2" unit="Bool"/>
+            </And>
+          </And>
+          <And>
+            <Not>
+              <Simvar name="FUEL TRANSFER PUMP ON:1" unit="Bool"/>
+            </Not>
+            <And>
+              <Simvar name="FUEL TRANSFER PUMP ON:2" unit="Bool"/>
+            </And>
+          </And>
+          <Or>
+            <And>
+              <And>
+                <Simvar name="GENERAL ENG STARTER ACTIVE:2" unit="Bool"/>
+              </And>
+              <And>
+                <And>
+                  <Greater>
+                    <Simvar name="TURB ENG N2:2" unit="percent"/>
+                    <Constant>1</Constant>
+                  </Greater>
+                </And>
+                <And>
+                  <Lower>
+                    <Simvar name="TURB ENG N2:2" unit="percent"/>
+                    <Constant>45</Constant>
+                  </Lower>
+                </And>
+              </And>
+            </And>
+          </Or>
+        </Or>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>FUEL TRANSFER</Text>
+      <Condition>
+        <And>
+          <Not>
+            <Inequal tolerance="8.95">
+              <Simvar name="FUEL TANK LEFT MAIN QUANTITY" unit="gallon"/>
+              <Simvar name="FUEL TANK RIGHT MAIN QUANTITY" unit="gallon"/>
+            </Inequal>
+          </Not>
+          <And>
+            <Simvar name="FUEL TRANSFER PUMP ON" unit="Bool"/>
+          </And>
+        </And>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>DATALINK MESSAGE</Text>
+      <Condition>
+        <Equal>
+          <Simvar name="L:WT_CMU_DATALINK_RCVD" unit="number"/>
+          <Constant>1</Constant>
+        </Equal>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Advisory</Type>
+      <Text>NO TAKEOFF</Text>
+      <Condition>
+        <And>
+          <And>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </And>
+          <Lower>
+            <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+            <Constant>70</Constant>
+          </Lower>
+          <Lower>
+            <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+            <Constant>70</Constant>
+          </Lower>
+          <Or>
+            <Greater>
+              <Simvar name="TRAILING EDGE FLAPS LEFT ANGLE" unit="Degree"/>
+              <Constant>16</Constant>
+            </Greater>
+            <Greater>
+              <Simvar name="SPOILERS HANDLE POSITION" unit="Percent"/>
+              <Constant>0.1</Constant>
+            </Greater>
+            <Greater>
+              <Simvar name="ELEVATOR TRIM PCT" unit="Percent"/>
+              <Constant>27</Constant>
+            </Greater>
+            <Lower>
+              <Simvar name="ELEVATOR TRIM PCT" unit="Percent"/>
+              <Constant>-40</Constant>
+            </Lower>
+          </Or>
+        </And>
+      </Condition>
+    </Annunciation>
+
+  </Annunciations>
+
+  <!-- Voices Alerts -->
+
+  <VoicesAlerts>
+
+    <Alert>
+      <Type>SoundOnly</Type>
+      <SoundEvent>aural_500ft</SoundEvent>
+      <Condition>
+        <StateMachine>
+          <State id="Under" value="0">
+            <Transition to="Over">
+              <GreaterEqual>
+                <Simvar name="PLANE ALT ABOVE GROUND MINUS CG" unit="feet"/>
+                <Constant>510</Constant>
+              </GreaterEqual>
+            </Transition>
+          </State>
+          <State id="Over" value="0">
+            <Transition to="Alerting">
+              <LowerEqual>
+                <Simvar name="PLANE ALT ABOVE GROUND MINUS CG" unit="feet"/>
+                <Constant>500</Constant>
+              </LowerEqual>
+            </Transition>
+          </State>
+          <State id="Alerting" value="1">
+            <Transition to="Under">
+              <Constant>1</Constant>
+            </Transition>
+          </State>
+        </StateMachine>
+      </Condition>
+    </Alert>
+
+    <Alert>
+      <Type>SoundOnly</Type>
+      <SoundEvent>aural_stall</SoundEvent>
+      <Condition>
+        <Simvar name="L:WT21_STALL_WARNING" unit="number"/>
+      </Condition>
+    </Alert>
+
+    <Alert>
+      <Type>Warning</Type>
+      <ShortText>PULL UP</ShortText>
+      <LongText>PULL UP</LongText>
+      <SoundEvent>aural_pull_up</SoundEvent>
+      <Condition>
+        <And>
+          <LinearMultiPoint>
+            <Table>
+              <ReferencePoints>1160,2320,4930,12000</ReferencePoints>
+              <Maximums>0,1070,2380,4285</Maximums>
+            </Table>
+            <Param>
+              <Multiply>
+                <Simvar name="VERTICAL SPEED" unit="feet per minute"/>
+                <Constant>-1</Constant>
+              </Multiply>
+            </Param>
+            <Param>
+              <Simvar name="PLANE ALT ABOVE GROUND" unit="feet"/>
+            </Param>
+          </LinearMultiPoint>
+          <Not>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </Not>
+        </And>
+      </Condition>
+    </Alert>
+
+    <Alert>
+      <Type>SoundOnly</Type>
+      <SoundEvent>aural_overspeed</SoundEvent>
+      <Condition>
+        <Simvar name="OVERSPEED WARNING" unit="bool"/>
+      </Condition>
+    </Alert>
+
+    <Alert>
+      <Type>Caution</Type>
+      <ShortText>TERRAIN</ShortText>
+      <LongText>SINK RATE</LongText>
+      <SoundEvent>aural_sink_rate</SoundEvent>
+      <Condition>
+        <And>
+          <LinearMultiPoint>
+            <Table>
+              <ReferencePoints>1160,2320,4930,12000</ReferencePoints>
+              <Minimums>0,1070,2380,4285</Minimums>
+              <Maximums>0,1460,2980,5360</Maximums>
+            </Table>
+            <Param>
+              <Multiply>
+                <Simvar name="VERTICAL SPEED" unit="feet per minute"/>
+                <Constant>-1</Constant>
+              </Multiply>
+            </Param>
+            <Param>
+              <Simvar name="PLANE ALT ABOVE GROUND" unit="feet"/>
+            </Param>
+          </LinearMultiPoint>
+          <Not>
+            <Simvar name="SIM ON GROUND" unit="bool"/>
+          </Not>
+        </And>
+      </Condition>
+    </Alert>
+
+    <Alert>
+      <Type>Caution</Type>
+      <ShortText>TERRAIN</ShortText>
+      <LongText>DONT' SINK</LongText>
+      <SoundEvent>aural_dont_sink</SoundEvent>
+      <Condition>
+        <And>
+          <Lower>
+            <DistanceFromOrigin/>
+            <Constant>5</Constant>
+          </Lower>
+          <Lower>
+            <HeadingChangeFromDeparture/>
+            <Constant>110</Constant>
+          </Lower>
+          <Or>
+            <LinearMultiPoint>
+              <Table>
+                <ReferencePoints>0,500,7000</ReferencePoints>
+                <Maximums>50,700,700</Maximums>
+                <Minimums>50,50,50</Minimums>
+              </Table>
+              <Param>
+                <Multiply>
+                  <Simvar name="VERTICAL SPEED" unit="feet per minute"/>
+                  <Constant>-1</Constant>
+                </Multiply>
+              </Param>
+              <Param>
+                <Simvar name="PLANE ALT ABOVE GROUND" unit="feet"/>
+              </Param>
+            </LinearMultiPoint>
+            <LinearMultiPoint>
+              <Table>
+                <ReferencePoints>10,70,150</ReferencePoints>
+                <Maximums>50,700,700</Maximums>
+                <Minimums>50,50,50</Minimums>
+              </Table>
+              <Param>
+                <Substract>
+                  <MaxSinceStart>
+                    <ResetCondition>
+                      <Simvar name="SIM ON GROUND" unit="bool"/>
+                    </ResetCondition>
+                    <Simvar name="PLANE ALTITUDE" unit="feet"/>
+                  </MaxSinceStart>
+                  <Simvar name="PLANE ALTITUDE" unit="feet"/>
+                </Substract>
+              </Param>
+              <Param>
+                <Simvar name="PLANE ALT ABOVE GROUND" unit="feet"/>
+              </Param>
+            </LinearMultiPoint>
+          </Or>
+        </And>
+      </Condition>
+    </Alert>
+
+    <Alert>
+      <Type>SoundOnly</Type>
+      <SoundEvent>aural_landing_gear</SoundEvent>
+      <Condition>
+        <And>
+          <Or>            <!-- One of the following conditions is true: -->
+            <And>              <!-- a) both engines working, both throttles lower than CRU -->
+              <Not>
+                <Simvar name="GENERAL ENG FAILED:1" unit="Boolean"/>
+                <Simvar name="GENERAL ENG FAILED:2" unit="Boolean"/>
+              </Not>
+              <Lower>
+                <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+                <Constant>70</Constant>
+              </Lower>
+              <Lower>
+                <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+                <Constant>70</Constant>
+              </Lower>
+            </And>
+            <And>              <!-- b) engine 1 failed, not set to STOP, and engine 2 throttle lower than CRU -->
+              <Simvar name="GENERAL ENG FAILED:1" unit="Boolean"/>
+              <Simvar name="GENERAL ENG FUEL VALVE:1" unit="Boolean"/>
+              <Lower>
+                <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:2" unit="percent"/>
+                <Constant>70</Constant>
+              </Lower>
+            </And>
+            <And>              <!-- c) engine 2 failed, not set to STOP, and engine 1 throttle lower than CRU -->
+              <Simvar name="GENERAL ENG FAILED:2" unit="Boolean"/>
+              <Simvar name="GENERAL ENG FUEL VALVE:2" unit="Boolean"/>
+              <Lower>
+                <Simvar name="GENERAL ENG THROTTLE LEVER POSITION:1" unit="percent"/>
+                <Constant>70</Constant>
+              </Lower>
+            </And>
+          </Or>
+          <!-- Gear can be retracted and isn't down -->
+          <Simvar name="IS GEAR RETRACTABLE" unit="Boolean"/>
+          <Not>
+            <Simvar name="GEAR HANDLE POSITION" unit="Boolean"/>
+          </Not>
+          <Or>            <!-- One of the following conditions is true: -->
+            <Equal>              <!-- a) Flaps greater than 15-degrees -->
+              <Simvar name="FLAPS HANDLE INDEX" unit="number"/>
+              <Constant>2</Constant>
+            </Equal>
+            <And>              <!-- b) flaps less than/equal to 15-degrees and RADALT lower than 500 ft -->
+              <Lower>
+                <Simvar name="FLAPS HANDLE INDEX" unit="number"/>
+                <Constant>2</Constant>
+              </Lower>
+              <Lower>
+                <Simvar name="RADIO HEIGHT" unit="feet"/>
+                <Constant>500</Constant>
+              </Lower>
+            </And>
+          </Or>
+        </And>
+      </Condition>
+    </Alert>
+
+    <!-- <Alert>
+      <Type>Test</Type>
+      <ShortText>TAWS TEST</ShortText>
+      <Condition>
+        <And>
+          <Lower>
+            <TimeSinceStart/>
+            <Constant>30000</Constant>
+          </Lower>
+          <InstrumentWasOff/>
+        </And>
+      </Condition>
+    </Alert>
+
+    <Alert>
+      <Type>SoundOnly</Type>
+      <SoundEvent>aural_taws_system_test_ok</SoundEvent>
+      <Condition>
+        <And>
+          <Greater>
+            <TimeSinceStart/>
+            <Constant>30000</Constant>
+          </Greater>
+          <InstrumentWasOff/>
+        </And>
+      </Condition>
+      <Once>True</Once>
+    </Alert> -->
+  </VoicesAlerts>
+
+</PlaneHTMLConfig>

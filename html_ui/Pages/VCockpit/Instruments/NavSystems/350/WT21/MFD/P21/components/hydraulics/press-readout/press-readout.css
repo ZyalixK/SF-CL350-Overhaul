@@ -1,0 +1,25 @@
+
+.press-readout__readout {
+  font-size: var(--text-lg);
+}
+
+.press-readout {
+  width: 2.5rem;
+  height: 2.4rem;
+  display: inline-block;
+  position: relative;
+  background: var(--p21-color-black);
+  border: 0.25rem solid;
+  line-height: 0.8;
+}
+
+.press-readout__temp {
+  position: absolute;
+  width: 100%;
+  top: -1.25rem;
+  left: 0;
+}
+
+.press-readout__temp {
+  line-height: 1;
+}

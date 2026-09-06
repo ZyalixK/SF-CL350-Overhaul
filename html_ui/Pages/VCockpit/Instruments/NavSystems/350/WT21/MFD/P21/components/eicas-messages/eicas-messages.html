@@ -1,0 +1,25 @@
+<link
+  rel="stylesheet"
+  href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/eicas-messages/eicas-messages.css" />
+
+<script type="text/html" id="eicas-messages-template">
+
+  <div class="component-container" style="position: relative;">
+    <div class="msgs-box text-white text-msm hidden"
+         style="position: absolute; top: 0; right: 0; border: 1px solid var(--p21-color-white); padding: 0 0.25rem; min-width: 2.2rem; text-align: center; line-height: 1.2;">
+      MSGS <span id="messages-count" class="visibility-hidden"></span>
+    </div>
+    <div id="messages-container" class="w-full h-full text-sm p-1">
+      <!-- <div class="text-yellow">HYD PTU FAIL</div> -->
+      <!-- <div class="text-white">HYD PUMP NOT AUTO</div> -->
+      <!-- <div class="text-white">L (R) HYD SOV CLOSED</div> -->
+    </div>
+    <cas-page-messages
+      id="cas-page-messages"
+      class="block w-full h-full"></cas-page-messages>
+  </div>
+</script>
+
+<script
+  type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/eicas-messages/eicas-messages.js"></script>

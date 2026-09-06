@@ -1,0 +1,2441 @@
+wt21-mfd {
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  overflow: hidden;
+  font-family: var(--wt21-fonts-family-general);
+  background-color: var(--wt21-colors-black);
+}
+
+wt21-mfd #Mainframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+
+wt21-mfd #Electricity {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+hsi-map-page #HSIMap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+hsi-map-page .mfd-page__header-table {
+  width: 100%;
+  margin: 0 auto;
+  position: relative ;
+  transform: scale(0.575);
+  top: 1rem;
+}
+
+hsi-map-page .mfd-page__header-table table {
+  width: 100%;
+}
+
+/* CAS container in dispatch mode positioning */
+hsi-map-page {
+  /* The parent to .hsi-arc-rotating.
+   * Used to mask the main rotating part of the HSI Arc.
+   * The width and height can be adjusted to whatever we want without messing with any layout. */
+  /* The widths are weird numbers in order to get the hsi center to be square */
+  /** HINT: Don't show the white highlight since the instruments is in general not interactive */
+  /* CAS container in dispatch mode positioning */
+}
+hsi-map-page #HSIMap > .cas-container {
+  position: relative;
+  top: 460px;
+  border-top: 2px solid white;
+}
+hsi-map-page .bottom-section-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  margin-top: 8px;
+  padding-left: 1%;
+  background-color: var(--wt21-colors-black);
+}
+hsi-map-page .bottom-section-data-container {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+hsi-map-page .bottom-section-data-container.first {
+  margin-right: 8px;
+}
+hsi-map-page .bottom-section-subcontainer {
+  display: flex;
+}
+hsi-map-page .bottom-section-data-container.border {
+  border: 1px solid var(--wt21-colors-white);
+  height: 25px;
+  padding-right: 8px;
+}
+hsi-map-page .bottom-section-data-container.border:not(:last-child) {
+  border-right: none;
+}
+hsi-map-page .bottom-section-data-title,
+hsi-map-page .bottom-section-data-unit {
+  color: var(--wt21-colors-white);
+}
+hsi-map-page .bottom-section-data-title {
+  white-space: nowrap;
+}
+hsi-map-page .bottom-section-container-ver2 .bottom-section-data-title,
+hsi-map-page .bottom-section-container-ver3 .bottom-section-data-title {
+  margin-left: 8px;
+}
+hsi-map-page .bottom-section-data-value,
+hsi-map-page .bottom-section-data-unit {
+  padding-left: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+hsi-map-page .bottom-section-data-value {
+  font-size: 26px;
+  overflow: hidden;
+  color: var(--wt21-colors-green);
+}
+hsi-map-page .bottom-section-data-value.magenta {
+  color: var(--wt21-colors-magenta);
+}
+hsi-map-page .bottom-section-data-value.invalid {
+  color: var(--wt21-colors-yellow);
+}
+hsi-map-page .bottom-section-container.press,
+hsi-map-page .bottom-section-data-value {
+  min-width: 65px;
+  text-align: right;
+  align-items: baseline;
+}
+hsi-map-page .bottom-section-subcontainer,
+hsi-map-page .bottom-section-container.press,
+hsi-map-page .bottom-section-data-value {
+  margin-top: -1px;
+}
+hsi-map-page .bottom-section-data-value > span {
+  padding-left: 2px;
+  font-size: 22px;
+}
+hsi-map-page .bottom-section-container-ver3 {
+  display: flex;
+  justify-content: space-around;
+  font-size: 22px;
+}
+hsi-map-page .bottom-section-data-container-ver3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+hsi-map-page .bottom-section-size85 {
+  width: 85px;
+}
+hsi-map-page .bottom-section-size95 {
+  width: 95px;
+}
+hsi-map-page .bottom-section-container .decimal {
+  margin: 0 -4px;
+}
+hsi-map-page .bottom-section-container .colon {
+  margin: 0 -2px;
+}
+hsi-map-page .digit-shift {
+  padding-right: 15px;
+}
+hsi-map-page .xpdr .bottom-section-data-title {
+  height: 23px;
+  padding-top: 2px;
+  padding-left: 4px;
+}
+hsi-map-page .bottom-section-data-value.fail {
+  visibility: hidden;
+}
+hsi-map-page .bottom-section-xpdr-failed {
+  font-size: 22px;
+  color: var(--wt21-colors-yellow);
+  visibility: hidden;
+}
+hsi-map-page .bottom-section-xpdr-stby {
+  color: var(--wt21-colors-white);
+  border: var(--wt21-borders-normal);
+  position: absolute;
+  top: 3px;
+  padding: 5px 3px 0 3px;
+  font-size: 22px;
+  line-height: 20px;
+  visibility: hidden;
+}
+hsi-map-page .xpdr.ident .bottom-section-data-title {
+  animation: highlight-title 18s step-end;
+}
+hsi-map-page .xpdr.stby .bottom-section-xpdr-stby,
+hsi-map-page .xpdr.off .bottom-section-xpdr-stby,
+hsi-map-page .xpdr.align .bottom-section-xpdr-stby {
+  visibility: visible;
+}
+hsi-map-page .xpdr.stby .bottom-section-data-value-active,
+hsi-map-page .xpdr.stby .bottom-section-xpdr-id,
+hsi-map-page .xpdr.off .bottom-section-data-value-active,
+hsi-map-page .xpdr.off .bottom-section-xpdr-id,
+hsi-map-page .xpdr.align .bottom-section-data-value-active,
+hsi-map-page .xpdr.align .bottom-section-xpdr-id {
+  visibility: hidden;
+}
+hsi-map-page .xpdr.fail .bottom-section-xpdr-failed {
+  visibility: visible;
+}
+@keyframes highlight-title {
+  0% {
+    background: var(--wt21-colors-blue);
+  }
+  100% {
+    background: none;
+  }
+}
+hsi-map-page .bearingPointerDataFields {
+  position: absolute;
+  top: 428px;
+  font-size: 24px;
+}
+hsi-map-page .bearingPointer1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+hsi-map-page .bearingPointer2 {
+  position: absolute;
+  top: 44px;
+  left: 0;
+}
+hsi-map-page .bearingPointerDataFields .isLocalizer {
+  visibility: hidden !important;
+}
+hsi-map-page .bearingPointerDataFields .bearingPointer-row {
+  margin: -6px 0;
+  position: relative;
+}
+hsi-map-page .bearingPointerDataFields .bearingPointer-row1 {
+  display: flex;
+  flex-direction: row;
+}
+hsi-map-page .bearingPointerDataFields .bearingPointer1 {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .bearingPointerDataFields .bearingPointer2 {
+  color: var(--wt21-colors-white);
+  margin-top: 3px;
+}
+hsi-map-page .bearingPointerDataFields svg.bearingPointer-arrow-icon {
+  position: absolute;
+  stroke-width: 2px;
+  stroke: currentColor;
+  fill: none;
+  overflow: visible;
+  top: 20px;
+  left: 63px;
+}
+hsi-map-page .bearingPointerDataFields .ADF svg.bearingPointer-arrow-icon {
+  left: 48px;
+}
+hsi-map-page .bearingPointerDataFields .bearingPointer-distance {
+  margin-left: 23px;
+}
+hsi-map-page .bearingPointerDataFields .ADF .bearingPointer-ident {
+  display: none;
+}
+hsi-map-page .bearingPointerDataFields .ADF .bearingPointer-frequencyNAV,
+hsi-map-page .bearingPointerDataFields .FMS .bearingPointer-frequencyNAV,
+hsi-map-page .bearingPointerDataFields .NAV .bearingPointer-frequencyADF,
+hsi-map-page .bearingPointerDataFields .FMS .bearingPointer-frequencyADF {
+  display: none;
+}
+hsi-map-page
+  .bearingPointerDataFields
+  .NAV.showFrequency
+  .bearingPointer-ident {
+  display: none;
+}
+hsi-map-page
+  .bearingPointerDataFields
+  .NAV.showFrequency
+  .bearingPointer-frequencyNAV {
+  display: block !important;
+}
+hsi-map-page .bearingPointerDataFields .NAV .bearingPointer-frequencyNAV {
+  display: none;
+}
+hsi-map-page .hsi-elapsed-time {
+  position: absolute;
+  top: 516px;
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+}
+hsi-map-page .hsi-elapsed-time .hsi-et-label {
+  color: var(--wt21-colors-white);
+}
+hsi-map-page .hsi-elapsed-time .hsi-et-value {
+  color: var(--wt21-colors-green);
+  font-size: 26px;
+  position: absolute;
+  top: -2px;
+  left: 35px;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+}
+hsi-map-page .hsi-elapsed-time .hsi-et-value-colon {
+  margin: 0 -4px;
+}
+hsi-map-page .navSourceDataField {
+  position: absolute;
+  top: 65px;
+  white-space: nowrap;
+}
+
+hsi-map-page .MFD .navSourceDataField {
+  position: relative;
+  top: 0px;
+}
+
+hsi-map-page .bottom-section-container-ver3.pfd-left-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  font-size: 20px;
+  line-height: 0.9;
+  margin-bottom: 10px;
+}
+
+hsi-map-page .pfd-left-stats .bottom-section-data-container-ver3 {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+hsi-map-page .pfd-left-stats .bottom-section-data-title {
+  width: 38px;
+  margin-left: 0;
+  text-align: left;
+}
+
+hsi-map-page .pfd-left-stats .bottom-section-data-value {
+  font-size: 22px;
+  min-width: 0 !important;
+  padding-left: 4px;
+}
+
+
+hsi-map-page .pfd-left-stats .bottom-section-size85,
+hsi-map-page .pfd-left-stats .bottom-section-size95 {
+  width: 100%;
+}
+hsi-map-page .navSourceDataField.FMS {
+  color: var(--wt21-colors-magenta);
+}
+hsi-map-page .navSourceDataField.NAV {
+  color: var(--wt21-colors-green);
+}
+hsi-map-page .navSourceDataFieldLine {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+hsi-map-page .navSourceDataField .line1 .source {
+  font-size: 32px;
+}
+hsi-map-page .navSourceDataField .line1 .frequency {
+  position: absolute;
+  left: 80px;
+  bottom: 4px;
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+}
+hsi-map-page .navSourceDataField .line1 .frequency .frequency-decimal {
+  margin: 0 -4px;
+}
+hsi-map-page .navSourceDataField .line2 .dtk-crs-label {
+  font-size: 24px;
+}
+hsi-map-page .navSourceDataField .line2 .dtk-crs-value {
+  position: absolute;
+  left: 47px;
+  bottom: -4px;
+  font-size: 32px;
+}
+hsi-map-page .navSourceDataField .line3 {
+  margin-top: -6px;
+  font-size: 27px;
+}
+hsi-map-page .navSourceDataField .line4 {
+  display: none;
+  margin-top: -9px;
+  font-size: 24px;
+  margin-bottom: 2px;
+}
+hsi-map-page .MFD .navSourceDataField .line4 {
+  display: flex;
+}
+hsi-map-page .navSourceDataField .line4 .ttg-label {
+  font-size: 24px;
+}
+hsi-map-page .navSourceDataField .line4 .ttg-value {
+  position: absolute;
+  left: 40px;
+  display: flex;
+  flex-direction: row;
+  white-space: pre;
+}
+hsi-map-page .navSourceDataField .line4 .ttg-value .ttg-colon {
+  margin: 0 -4px;
+}
+hsi-map-page .navSourceDataField .line5 {
+  margin-top: -7px;
+}
+hsi-map-page .navSourceDataField .line5 .distance-value {
+  display: flex;
+  flex-direction: row;
+  font-size: 32px;
+}
+hsi-map-page .navSourceDataField .line5 .distance-value .distance-decimal {
+  margin: 0 -6px;
+}
+hsi-map-page .navSourceDataField .line5 .distance-unit {
+  font-size: 24px;
+  margin-bottom: 4px;
+  margin-left: 2px;
+}
+hsi-map-page .navSourceDataField .flash-off .line3,
+hsi-map-page .navSourceDataField .flash-off .line5 {
+  visibility: hidden;
+}
+hsi-map-page .navSourcePreset {
+  position: absolute;
+  top: 352px;
+}
+hsi-map-page .navSourcePreset .label {
+  font-size: 24px;
+  margin-left: -4.5px;
+  transform: scale(0.87, 0.9);
+}
+hsi-map-page .navSourcePreset .box {
+  border: 2.5px solid var(--wt21-colors-cyan);
+  position: absolute;
+  top: 23px;
+  left: 1px;
+  width: 59px;
+  height: 35px;
+}
+hsi-map-page .navSourcePreset .box .standby {
+  font-size: 24px;
+  color: var(--wt21-colors-cyan);
+  position: absolute;
+  top: 5px;
+  left: 2px;
+}
+hsi-map-page .minimums-display-container {
+  position: absolute;
+  top: 6%;
+  right: -4%;
+  width: 185px;
+  font-size: 24px;
+  text-align: left;
+  color: var(--wt21-colors-cyan);
+  word-spacing: -0.6ch;
+}
+hsi-map-page .minimums-display-container.alert {
+  color: var(--wt21-colors-yellow);
+  animation: mins-blink 0.75s step-start 5;
+}
+@keyframes mins-blink {
+  50% {
+    opacity: 0;
+  }
+}
+hsi-map-page .nexrad-info {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--wt21-colors-white);
+  font-size: 26px;
+  text-align: right;
+}
+hsi-map-page .terr-wx-info {
+  position: absolute;
+  top: 64.65%;
+  right: 0;
+  color: var(--wt21-colors-white);
+  text-align: right;
+  font-size: 24px;
+  letter-spacing: -1.75px;
+}
+hsi-map-page .terr-wx-info > * + * {
+  margin-top: -6px;
+  /* font-size: 26px; */
+}
+hsi-map-page .terr-wx-info.TERR .terr-label {
+  /* Active mode is larger font */
+  font-size: 26px;
+  margin-top: -4px;
+}
+hsi-map-page .terr-wx-info.TERR.format-supported .terr-label {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .terr-wx-info.WX .wx-label {
+  /* Active mode is larger font */
+  font-size: 26px;
+  margin-top: -8px;
+}
+hsi-map-page .terr-wx-info.WX.format-supported .wx-label {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .terr-wx-info .line-3,
+hsi-map-page .terr-wx-info .line-4,
+hsi-map-page .terr-wx-info .line-5 {
+  margin-top: -8px;
+  /* Lines 3,4,5 are shifted left a tiny bit */
+  margin-right: 1px;
+}
+hsi-map-page .terr-wx-info.format-supported .line-3,
+hsi-map-page .terr-wx-info.format-supported .line-4,
+hsi-map-page .terr-wx-info.format-supported .line-5 {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .terr-wx-info .line-3 {
+  margin-top: -10px;
+}
+hsi-map-page .tfc-info {
+  position: absolute;
+  top: 30.25%;
+  right: 0;
+  width: 100%;
+  height: 34%;
+  color: var(--wt21-colors-white);
+  text-align: right;
+  font-size: 20px;
+  letter-spacing: -1px;
+  transform: rotateX(0);
+  white-space: nowrap;
+}
+hsi-map-page .tfc-info:not(.tfc-disabled) .tfc-label {
+  font-size: 22px;
+}
+hsi-map-page .tfc-info.format-supported .tfc-label {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .tfc-info-hideable {
+  position: absolute;
+  right: 0;
+  top: 14.28%;
+  width: 100%;
+  height: 85.72%;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "data data" "ot ot" "alt above-below" "alt above-below" "tfc1 tfc1" "tfc2 tfc2";
+  justify-items: stretch;
+  align-items: center;
+}
+hsi-map-page .tfc-disabled .tfc-info-hideable {
+  display: none;
+}
+hsi-map-page .tfc-info .tfc-data {
+  grid-area: data;
+}
+hsi-map-page .tfc-info .tfc-other-traffic {
+  grid-area: ot;
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .tfc-info .tfc-other-traffic svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: var(--wt21-colors-cyan);
+  stroke-width: 10;
+}
+hsi-map-page .tfc-info .tfc-above-below {
+  grid-area: above-below;
+}
+hsi-map-page .tfc-info .tfc-altitude {
+  grid-area: alt;
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .right-info-panel {
+  position: relative;
+  /* TODO This should be temporary. */
+  /* TODO Remove once the geometry for the panel has been fixed to leave gaps around the panel. */
+  margin-right: 4px;
+  height: 100%;
+}
+hsi-map-page #MsgInfo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font-size: 22px;
+}
+hsi-map-page #MsgInfo #PFDMessageTopLeft {
+  position: absolute;
+  top: 2.5%;
+  left: 1%;
+  width: 12.5%;
+  text-align: left;
+}
+hsi-map-page #MsgInfo #PFDMessageTopRight {
+  position: absolute;
+  top: 2.5%;
+  left: 1%;
+  width: 12.5%;
+  text-align: right;
+}
+hsi-map-page #MsgInfo #PFDMessageBotLeft {
+  position: absolute;
+  top: 6.5%;
+  left: 1%;
+  width: 12.5%;
+  text-align: left;
+}
+hsi-map-page #MsgInfo #PFDMessageBotRight {
+  position: absolute;
+  top: 6.5%;
+  left: 1%;
+  width: 12.5%;
+  text-align: right;
+}
+hsi-map-page #MsgInfo #MFDMessageTopRight {
+  position: absolute;
+  top: 10%;
+  left: 82%;
+  width: 15%;
+  text-align: left;
+}
+hsi-map-page #MsgInfo #PFDMessageMap {
+  top: 54.5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50%;
+  position: absolute;
+  text-align: center;
+  font-size: 24px;
+  text-shadow: var(--wt21-fonts-shadow-normal);
+}
+hsi-map-page .hsi-format-rose #MsgInfo #PFDMessageMap,
+hsi-map-page .hsi-format-plan #MsgInfo #PFDMessageMap {
+  top: 41.5%;
+}
+hsi-map-page .hsi-format-ppos #MsgInfo #PFDMessageMap {
+  top: 53%;
+}
+hsi-map-page .hsi-format-gwx #MsgInfo #PFDMessageMap,
+hsi-map-page .hsi-format-tcas #MsgInfo #PFDMessageMap {
+  display: none;
+}
+hsi-map-page #MsgInfo .msg-info-blink {
+  animation: msg-info-blink 0.75s step-start infinite;
+}
+@keyframes msg-info-blink {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+hsi-map-page .hsi-course-needle-shadow {
+  stroke-width: 7;
+  /* opacity: 0.9; */
+  stroke: var(--wt21-colors-black);
+}
+hsi-map-page .isLocalizer .hsi-course-needle-to-from-triangle {
+  display: none;
+}
+hsi-map-page .hsi-ghost-needle {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .hsi-ghost-needle-shadow {
+  stroke-width: 4.5;
+  /* opacity: 0.9; */
+  stroke: var(--wt21-colors-black);
+}
+hsi-map-page .hsi-track-pointer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+hsi-map-page .fail .hsi-track-pointer,
+hsi-map-page .align .hsi-track-pointer {
+  display: none;
+}
+hsi-map-page .hsi-arc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotateX(0);
+}
+hsi-map-page .hsi-arc-rotating-mask {
+  width: var(--center-width);
+  height: 37.25%;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+hsi-map-page .hsi-arc-rotating-mask-foreground-square {
+  width: var(--center-width-narrow);
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+hsi-map-page .hsi-arc-rotating {
+  width: 100%;
+  height: 100%;
+}
+hsi-map-page .hsi-arc-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: var(--center-width);
+  height: 100%;
+  z-index: 0;
+}
+hsi-map-page .hsi-arc-range-text-inner {
+  font-size: var(--hsi-range-text-font-size);
+  color: var(--wt21-colors-white);
+  position: absolute;
+  top: 50.55%;
+  left: 20%;
+  text-align: center;
+  width: 10%;
+}
+hsi-map-page .hsi-arc-range-text-outer {
+  font-size: var(--hsi-range-text-font-size);
+  color: var(--wt21-colors-white);
+  position: absolute;
+  top: 38.45%;
+  left: -3.5%;
+  text-align: center;
+  width: 10%;
+}
+hsi-map-page .hsi-arc-svg-static-background {
+  position: absolute;
+  top: 0;
+  z-index: 50;
+}
+hsi-map-page .hsi-plan {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: var(--center-width);
+  height: 100%;
+  transform: rotateX(0);
+}
+hsi-map-page .hsi-plan .hsi-plan-north-symbol {
+  color: rgb(128, 128, 128);
+  position: absolute;
+  top: 4%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+hsi-map-page .hsi-plan .hsi-plan-range-text-outer {
+  font-size: var(--hsi-range-text-font-size);
+  color: var(--wt21-colors-white);
+  position: absolute;
+  top: 33%;
+  left: 7%;
+  width: 10%;
+  text-align: center;
+}
+hsi-map-page .hsi-rose {
+  position: absolute;
+  /* According to reference photos, the rose is just slightly above the center of the HSI */
+  top: -6px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: var(--center-width);
+  height: 100%;
+  transform: rotateX(0);
+}
+hsi-map-page .hsi-rose-rotating {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+hsi-map-page .hsi-rose-range-text-inner {
+  font-size: var(--hsi-range-text-font-size);
+  color: var(--wt21-colors-white);
+  position: absolute;
+  top: 41.45%;
+  left: 26.25%;
+  width: 10%;
+  text-align: center;
+}
+hsi-map-page .hsi-tcas {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: var(--center-width);
+  height: 100%;
+  transform: rotateX(0);
+}
+hsi-map-page .hsi-tcas svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+hsi-map-page .hsi-tcas-rose {
+  stroke: var(--wt21-colors-gray);
+  fill: none;
+  stroke-linecap: round;
+}
+hsi-map-page .hsi-tcas .hsi-tcas-range-text-outer {
+  font-size: var(--hsi-range-text-font-size);
+  color: var(--wt21-colors-white);
+  position: absolute;
+  top: 33%;
+  left: 12%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: black;
+}
+hsi-map-page .hsi-wind-container {
+  position: absolute;
+  top: 0.5%;
+  left: 16%;
+  width: 8%;
+  height: 10%;
+}
+hsi-map-page .MFD .hsi-wind-container {
+  left: 3%;
+  top: 7%;
+}
+hsi-map-page .hsi-wind-speed {
+  font-size: 20px;
+  text-align: center;
+  color: var(--wt21-colors-magenta);
+}
+hsi-map-page .hsi-wind-arrow {
+  position: absolute;
+  top: 35%;
+  left: 38%;
+  height: 80%;
+  transition: all 0.5s ease-in;
+}
+hsi-map-page .hsi-format-plan .hsi-wind-container {
+  display: none;
+}
+hsi-map-page .hsi-container {
+  width: 100%;
+  height: 100%;
+  --hsi-range-text-font-size: 24px;
+}
+hsi-map-page .hsi-container.hsi-format-plan .hsi-heading-infos {
+  display: none;
+}
+hsi-map-page .hsi-square {
+  position: relative;
+  height: 100%;
+}
+hsi-map-page .hsi-container svg {
+  stroke-width: 2px;
+}
+hsi-map-page .hsi-selected-heading-readout {
+  position: absolute;
+  left: 13%;
+  top: 0.25%;
+  display: flex;
+  align-items: baseline;
+  width: 12%;
+  justify-content: space-between;
+  color: var(--wt21-colors-cyan);
+  z-index: 0;
+}
+hsi-map-page .hsi-selected-heading-background {
+  position: absolute;
+  top: -1px;
+  left: -4px;
+  background-color: var(--wt21-colors-black);
+  width: 102px;
+  height: 29px;
+  z-index: -1;
+}
+hsi-map-page .hsi-selected-heading-legend {
+  font-size: 2.4vh;
+}
+hsi-map-page .hsi-selected-heading-value {
+  font-size: 3.1vh;
+  margin-left: 10%;
+}
+hsi-map-page .hsi-static-heading-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+hsi-map-page .hsi-heading-box-lubber-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 300px;
+  height: 150px;
+}
+hsi-map-page .hsi-static-current-heading {
+  color: var(--wt21-colors-green);
+  font-size: 3.1vh;
+  text-align: center;
+  padding-top: 0.3%;
+  position: relative;
+}
+hsi-map-page .hsi-rotating-large {
+  position: absolute;
+  width: 100vw;
+  height: 100vw;
+  /* This "left: 50%" is offset in the code where the rotation transform is applied. */
+  /* This is done so that we can center an absolutely positioned element on it's parent even though it is wider than the parent. */
+  left: 50%;
+}
+hsi-map-page .hsi-rotating-large svg {
+  width: 100%;
+  height: 100%;
+}
+hsi-map-page .hsi-absolute-square {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+hsi-map-page .hsi-tfc-ticks {
+  display: none;
+}
+hsi-map-page .tfc-enabled .hsi-tfc-ticks {
+  display: block;
+}
+hsi-map-page .hsi-tfc-ticks-25NM,
+hsi-map-page .hsi-tfc-ticks-10NM,
+hsi-map-page .hsi-tfc-ticks-5NM {
+  display: none;
+}
+hsi-map-page .hsi-range-25NM .hsi-tfc-ticks-25NM {
+  display: block;
+}
+hsi-map-page .hsi-range-10NM .hsi-tfc-ticks-10NM {
+  display: block;
+}
+hsi-map-page .hsi-range-5NM .hsi-tfc-ticks-5NM {
+  display: block;
+}
+hsi-map-page .hsi-arc-map {
+  transform: rotateX(0);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+hsi-map-page .mfd-extended-map .hsi-arc-map {
+  margin-top: -260px;
+}
+hsi-map-page .mfd-extended-map .hsi-arc-map > div:nth-child(2) {
+  height: 824px !important;
+}
+hsi-map-page .mfd-extended-map .hsi-arc-mask {
+  fill: none;
+}
+hsi-map-page .mfd-extended-map .hsi-selected-heading-background {
+  display: none;
+}
+hsi-map-page .hsi-heading-infos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: var(--center-width);
+  height: 100%;
+}
+hsi-map-page .hsi-map-ownship-icon {
+  stroke: var(--wt21-colors-white);
+  stroke-width: 2;
+}
+hsi-map-page .hsi-heading-infos .fail-box {
+  left: 45.5%;
+}
+hsi-map-page .fail .hsi-static-heading-box,
+hsi-map-page .warn .hsi-static-heading-box,
+hsi-map-page .align .hsi-static-heading-box {
+  display: none;
+}
+hsi-map-page .hsi-container.align .fail-box {
+  display: block;
+  color: var(--wt21-colors-red);
+  border-color: var(--wt21-colors-red);
+}
+hsi-map-page .hsi-container.fail .map-fail-flag,
+hsi-map-page .hsi-container.align .map-fail-flag {
+  display: block;
+  color: var(--wt21-colors-yellow);
+  position: absolute;
+  top: 28%;
+  left: 46.9%;
+}
+hsi-map-page .hsi-container.mfd-extended-map .map-fail-flag {
+  top: 50.6%;
+}
+hsi-map-page .hsi-container .map-fail-flag,
+hsi-map-page .hsi-container.hsi-format-rose .map-fail-flag,
+hsi-map-page .hsi-container.hsi-format-arc .map-fail-flag,
+hsi-map-page .hsi-container.hsi-format-tcas .map-fail-flag,
+hsi-map-page .hsi-container.fail .hsi-arc-map > div > div,
+hsi-map-page .hsi-container.align .hsi-arc-map > div > div {
+  display: none;
+}
+hsi-map-page #copyrightInfo {
+  position: absolute;
+  top: 59.2%;
+  left: 33.75%;
+  font-size: 1.5rem;
+}
+hsi-map-page .MFD #copyrightInfo {
+  left: 27.5%;
+}
+hsi-map-page .align#copyrightInfo {
+  display: block;
+}
+hsi-map-page .hsi-tcas-flag {
+  display: none;
+  position: absolute;
+  color: var(--wt21-colors-yellow);
+  top: 1%;
+  left: 62%;
+  font-size: 24px;
+}
+hsi-map-page .PFD .hsi-tcas-flag.alert,
+hsi-map-page .PFD .hsi-tcas-flag.align,
+hsi-map-page .PFD .hsi-tcas-flag.fail {
+  display: block;
+}
+hsi-map-page .PFD .hsi-tcas-flag.alert {
+  animation: tcas-flag-blink 0.75s step-start 5;
+}
+hsi-map-page .PFD .hsi-tcas-flag.ra {
+  color: var(--wt21-colors-red);
+}
+@keyframes tcas-flag-blink {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+hsi-map-page .mfd-hsi.MFD {
+  width: 100%;
+  /* height: 824px;
+  top: 200px; */
+  /* height: 441px; */
+  /* top: 8.9rem; */
+  top: 5.9rem;
+  left: 2.5rem;
+  zoom: 0.8;
+  position: absolute;
+  --center-width: 100%;
+  --center-width-narrow: 70%;
+  display: flex !important;
+  align-items: flex-end;
+  /* background-color: var(--wt21-colors-black); */
+}
+hsi-map-page .left-panel {
+  width: 13.472%;
+  padding-left: -20%;
+  z-index: 50;
+  height: 564px;
+  position: relative;
+  transform: translateX(-31%);
+}
+hsi-map-page .hsi-center {
+  position: relative;
+  background-color: var(--wt21-colors-black);
+}
+hsi-map-page .right-panel {
+  width: 13.472%;
+  height: 564px;
+  padding-right: -20%;
+  transform: translateX(35%);
+}
+hsi-map-page .popup-menu {
+  position: absolute;
+  font-size: 24px;
+  display: inline-block;
+  background: var(--wt21-colors-black);
+  border: 1px solid var(--wt21-colors-gray);
+}
+hsi-map-page .pfd-popup-menu,
+hsi-map-page .pfd-popup-menu-brgsrc,
+hsi-map-page .pfd-popup-menu-config,
+hsi-map-page .pfd-popup-menu-overlays,
+hsi-map-page .pfd-popup-menu-refs,
+hsi-map-page .pfd-popup-menu-baroset {
+  top: 45.9%;
+  width: 27%;
+  left: 1%;
+}
+hsi-map-page .pfd-popup-menu-brgsrc {
+  width: 35%;
+}
+hsi-map-page .pfd-popup-menu-config {
+  width: 60%;
+}
+hsi-map-page .pfd-popup-menu-overlays {
+  width: 22.5%;
+}
+hsi-map-page .pfd-popup-menu-refs {
+  width: 24%;
+}
+hsi-map-page .pfd-popup-menu-baroset {
+  width: 21%;
+}
+hsi-map-page .mfd-upr-popup-menu {
+  top: 20%;
+  left: 1%;
+  width: 24.5%;
+}
+
+hsi-map-page .mfd-lwr-popup-menu,
+hsi-map-page .mfd-lwr-popup-menu-overlays,
+hsi-map-page .mfd-lwr-popup-menu-map-symbols {
+  top: auto;
+  bottom: 0.5%;
+  left: 1%;
+  width: 27%;
+}
+hsi-map-page .mfd-lwr-popup-menu-overlays {
+  width: 22.5%;
+}
+hsi-map-page .mfd-lwr-popup-menu-map-symbols {
+  width: 25%;
+}
+hsi-map-page .popup-menu-title,
+hsi-map-page .popup-submenu-title {
+  padding: 0 4px;
+  background: var(--wt21-colors-lightblue);
+}
+hsi-map-page .popup-menu-section-title {
+  padding: 0 4px;
+  background: var(--wt21-colors-blue);
+}
+hsi-map-page .submenu .popup-menu-title {
+  background: var(--wt21-colors-gray);
+}
+hsi-map-page .popup-menu-title,
+hsi-map-page .popup-submenu-title {
+  line-height: 18px;
+  border-bottom: 1px solid var(--wt21-colors-gray);
+}
+hsi-map-page .popup-submenu-title svg {
+  height: 15px;
+  margin: 3px 4px -1px 0;
+}
+hsi-map-page .popup-menu-section-title {
+  padding: 0 4px;
+  line-height: 22px;
+  margin: -6px 0 6px -2px;
+  display: table;
+}
+hsi-map-page .popup-menu-title > span,
+hsi-map-page .popup-submenu-title > span,
+hsi-map-page .popup-menu-section-title > span {
+  vertical-align: -7px;
+}
+hsi-map-page .popup-menu-section {
+  padding: 6px 4px 0 4px;
+  border-bottom: 1px solid var(--wt21-colors-gray);
+}
+hsi-map-page .popup-menu-section:last-child {
+  border-bottom: none;
+}
+hsi-map-page .popup-menu-line,
+hsi-map-page .popup-menu-radio.inline {
+  margin: -4px 0;
+  line-height: 17px;
+  border: 2px solid transparent;
+  padding: 1px;
+}
+hsi-map-page .popup-menu-line:last-child,
+hsi-map-page .popup-menu-radio.inline:last-child {
+  margin-bottom: 2px;
+}
+hsi-map-page .popup-menu-line.highlight,
+hsi-map-page .popup-menu-radio.highlight,
+hsi-map-page .popup-menu-radio.inline.highlight {
+  border: 2px solid var(--wt21-colors-cyan);
+}
+hsi-map-page .popup-menu-line > span {
+  margin-left: 25px;
+  vertical-align: -6px;
+}
+hsi-map-page .popup-menu-submenu svg {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 6px;
+}
+hsi-map-page input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  z-index: -1;
+}
+hsi-map-page .cas-container {
+  transform: rotateX(0);
+  height: 185px;
+  border-bottom: 2px solid white;
+  margin: 5px;
+  padding: 2px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(7, minmax(25px, 25px));
+  grid-column-gap: 12px;
+  grid-auto-flow: column;
+  overflow: hidden;
+  background: linear-gradient(white, white) no-repeat center/2px 100%;
+}
+hsi-map-page .cas-container > div {
+  width: 370px;
+  overflow: hidden;
+}
+hsi-map-page .cas-warning {
+  color: var(--wt21-colors-red);
+}
+hsi-map-page .cas-caution {
+  color: var(--wt21-colors-yellow);
+}
+hsi-map-page .cas-advisory {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .cas-blink {
+  animation: cas-blink 0.75s step-start infinite;
+}
+@keyframes cas-blink {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+hsi-map-page .eis-value-caution {
+  white-space: nowrap;
+  color: var(--wt21-colors-yellow);
+}
+hsi-map-page .fueldisplay-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 91%;
+  margin: auto;
+}
+hsi-map-page .fueldisplay-box {
+  color: var(--wt21-colors-green);
+  font-size: 24px;
+  line-height: 19px;
+  text-align: right;
+  border: 1px solid white;
+  padding: 7px 5px 2px 5px;
+  width: 63px;
+}
+hsi-map-page .fueldisplay-title {
+  font-size: 20px;
+  line-height: 16px;
+  text-align: center;
+  width: 42px;
+  padding-top: 3px;
+}
+hsi-map-page .left-pointer {
+  position: absolute;
+  top: 100px;
+}
+hsi-map-page .right-pointer {
+  position: absolute;
+  right: 0;
+}
+hsi-map-page .itt-display-container {
+  position: relative;
+  padding-left: 2%;
+  padding-top: 0.4%;
+}
+hsi-map-page .left-itt-compressed-pointer-mask {
+  position: absolute;
+  left: 13%;
+  top: 6.5%;
+  height: 137px;
+  width: 20px;
+  overflow: hidden;
+}
+hsi-map-page .right-itt-compressed-pointer-mask {
+  position: absolute;
+  left: 83.5%;
+  top: 6.5%;
+  height: 137px;
+  width: 20px;
+  overflow: hidden;
+}
+hsi-map-page .left-itt-compressed-pointer {
+  position: absolute;
+  top: 100px;
+}
+hsi-map-page .right-itt-compressed-pointer {
+  position: absolute;
+  top: 100px;
+  right: 0;
+}
+hsi-map-page .n1-compressed-display-container {
+  margin-top: 0.8%;
+  margin-left: 1%;
+}
+hsi-map-page .left-n1-compressed-pointer-mask,
+hsi-map-page .right-n1-compressed-pointer-mask {
+  position: absolute;
+  left: 1.8%;
+  top: 8.3%;
+  height: 132px;
+  width: 20px;
+  overflow: hidden;
+}
+hsi-map-page .right-n1-compressed-pointer-mask {
+  left: 19.1%;
+}
+hsi-map-page .left-n1-compressed-pointer,
+hsi-map-page .right-n1-compressed-pointer {
+  position: absolute;
+  top: 51px;
+}
+hsi-map-page .right-n1-compressed-pointer {
+  right: 0;
+}
+hsi-map-page .left-n1-compressed-bug,
+hsi-map-page .right-n1-compressed-bug {
+  position: absolute;
+  top: -11px;
+  right: 1px;
+}
+hsi-map-page .right-n1-compressed-bug {
+  left: 1px;
+}
+hsi-map-page .n2display-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5px;
+  width: 100%;
+  margin: auto;
+}
+hsi-map-page .n2display-box {
+  color: var(--wt21-colors-green);
+  font-size: 24px;
+  line-height: 19px;
+  text-align: right;
+  border: 1px solid white;
+  padding: 7px 1px 3px 3px;
+  width: 71px;
+}
+hsi-map-page .n2display-title {
+  font-size: 20px;
+  line-height: 16px;
+  text-align: center;
+  width: 50px;
+  white-space: nowrap;
+}
+hsi-map-page .oil-display-container {
+  padding-top: 15px;
+  font-size: 20px;
+  width: 90%;
+  margin: auto;
+  height: 70px;
+}
+hsi-map-page .oil-display-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 22px;
+}
+hsi-map-page .oil-display-values {
+  color: var(--wt21-colors-green);
+  font-size: 24px;
+  text-align: right;
+  width: 36px;
+}
+hsi-map-page .trim-pointer {
+  transform-origin: 50% 30%;
+}
+hsi-map-page .flight-control-aileron-rudder {
+  position: relative;
+  width: 45%;
+}
+hsi-map-page .flight-control-elevator {
+  position: relative;
+}
+hsi-map-page .flight-control-aileron-pointer {
+  position: absolute;
+  top: 43px;
+  left: 68px;
+}
+hsi-map-page .flight-control-rudder-pointer {
+  position: absolute;
+  top: 72px;
+  left: 68px;
+}
+hsi-map-page .flight-control-elevator {
+  position: relative;
+}
+hsi-map-page .flight-control-elevator-pointer {
+  position: absolute;
+  top: 71px;
+  right: 7px;
+}
+hsi-map-page .flight-control-flaps {
+  position: relative;
+}
+hsi-map-page .flight-control-flaps-pointer {
+  position: absolute;
+  left: 110px;
+  transform-origin: 5px 15px;
+}
+hsi-map-page .flight-control-flaps-markings {
+  position: absolute;
+}
+hsi-map-page .ign-indicator {
+  font-size: 16pt;
+  color: var(--wt21-colors-green);
+  width: 5px;
+  word-break: break-word;
+  line-height: 20px;
+}
+hsi-map-page .eis-compressed-container {
+  transform: rotateX(0);
+  height: 185px;
+  display: flex;
+}
+hsi-map-page .eis-compressed-primary-group {
+  display: flex;
+}
+hsi-map-page .eis-compressed-secondary-group {
+  padding-top: 1%;
+  padding-left: 3%;
+}
+hsi-map-page .eis-compressed-trim-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -0.5%;
+  padding-left: 1%;
+}
+hsi-map-page .eis-compressed-trim-label {
+  position: absolute;
+  right: 2%;
+}
+hsi-map-page .eis-compressed-flap-position {
+  position: absolute;
+  left: 73.6%;
+  top: 64%;
+}
+hsi-map-page .eis-compressed-ign-left {
+  position: absolute;
+  top: 5%;
+  left: 24%;
+}
+hsi-map-page .eis-compressed-ign-right {
+  position: absolute;
+  top: 5%;
+  left: 43.5%;
+}
+hsi-map-page .expanded-fuel-container {
+  font-size: 20px;
+  width: 100%;
+  margin: auto;
+}
+hsi-map-page .expanded-fuel-title {
+  text-align: center;
+}
+hsi-map-page .expanded-fuel-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1px;
+  height: 25px;
+}
+hsi-map-page .expanded-fuel-values {
+  color: var(--wt21-colors-green);
+  font-size: 24px;
+  text-align: right;
+  width: 63px;
+  padding-right: 5px;
+}
+hsi-map-page .expanded-fueldisplay-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+hsi-map-page .expanded-fueldisplay-box {
+  color: var(--wt21-colors-green);
+  font-size: 24px;
+  line-height: 19px;
+  text-align: right;
+  border: 1px solid white;
+  padding: 7px 5px 2px 5px;
+  width: 63px;
+}
+hsi-map-page .expanded-fueldisplay-title {
+  font-size: 20px;
+  line-height: 16px;
+  text-align: center;
+  width: 42px;
+  padding-top: 3px;
+}
+hsi-map-page .expandeditt-display-container {
+  position: relative;
+  padding-left: 2%;
+}
+hsi-map-page .left-itt-pointer-mask {
+  position: absolute;
+  left: 8%;
+  top: 4.2%;
+  height: 271px;
+  width: 20px;
+  overflow: hidden;
+}
+hsi-map-page .right-itt-pointer-mask {
+  position: absolute;
+  left: 82.5%;
+  top: 4.2%;
+  height: 271px;
+  width: 20px;
+  overflow: hidden;
+}
+hsi-map-page .left-itt-pointer {
+  position: absolute;
+  top: 100px;
+}
+hsi-map-page .right-itt-pointer {
+  position: absolute;
+  top: 100px;
+  right: 0;
+}
+hsi-map-page .itt-temp-limit-container {
+  position: absolute;
+  top: 0%;
+}
+hsi-map-page .expanded-n1-display-container {
+  padding-top: 0.8%;
+}
+hsi-map-page .left-n1-pointer-mask,
+hsi-map-page .right-n1-pointer-mask {
+  position: absolute;
+  left: 4.3%;
+  top: 5.7%;
+  height: 234px;
+  width: 20px;
+  overflow: hidden;
+}
+hsi-map-page .right-n1-pointer-mask {
+  left: 21.5%;
+}
+hsi-map-page .left-n1-pointer,
+hsi-map-page .right-n1-pointer {
+  position: absolute;
+  top: 51px;
+}
+hsi-map-page .right-n1-pointer {
+  right: 0;
+}
+hsi-map-page .left-n1-bug,
+hsi-map-page .right-n1-bug {
+  position: absolute;
+  top: -11px;
+  right: 1px;
+}
+hsi-map-page .right-n1-bug {
+  left: 1px;
+}
+hsi-map-page .expanded-oil-press-temp-container {
+  position: relative;
+}
+hsi-map-page .left-oil-psi-pointer {
+  position: absolute;
+  top: 20px;
+  left: 7px;
+  height: 70px;
+}
+hsi-map-page .right-oil-psi-pointer {
+  position: absolute;
+  top: 20px;
+  left: 70px;
+}
+hsi-map-page .left-oil-temp-pointer {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+}
+hsi-map-page .right-oil-temp-pointer {
+  position: absolute;
+  top: 20px;
+  left: 161px;
+}
+hsi-map-page .eis-expanded-container {
+  transform: rotateX(0);
+  display: flex;
+  height: 460px;
+}
+hsi-map-page .eis-expanded-primary-group {
+  display: flex;
+  padding-left: 1.5%;
+}
+hsi-map-page .eis-expanded-secondary-group {
+  padding-top: 1%;
+  padding-left: 3%;
+}
+hsi-map-page .eis-expanded-flight-control-group {
+  position: relative;
+  padding-left: 5px;
+  width: 100%;
+}
+hsi-map-page .eis-expanded-ailrud-trim {
+  position: absolute;
+  top: 3%;
+  left: 16%;
+}
+hsi-map-page .eis-expanded-elevator-trim {
+  position: absolute;
+  top: 23%;
+  left: 36%;
+}
+hsi-map-page .eis-expanded-trim-label {
+  position: absolute;
+  right: 2%;
+}
+hsi-map-page .eis-expanded-flap-position {
+  position: absolute;
+  top: 50%;
+  left: -15%;
+}
+hsi-map-page .eis-expanded-ign-left {
+  position: absolute;
+  top: 2.5%;
+  left: 26.5%;
+}
+hsi-map-page .eis-expanded-ign-right {
+  position: absolute;
+  top: 2.5%;
+  left: 45.5%;
+}
+hsi-map-page .systems-oxy-psi {
+  position: relative;
+}
+hsi-map-page .systems-oxy-psi-pointer {
+  position: absolute;
+  top: 40px;
+  right: 5px;
+}
+hsi-map-page .systems2-data-container {
+  position: relative;
+  display: flex;
+  background-color: var(--wt21-colors-black);
+  flex-grow: 1;
+}
+hsi-map-page .systems2-aileron-pointer {
+  position: absolute;
+  left: 148px;
+  top: 42px;
+}
+hsi-map-page .systems2-rudder-pointer {
+  position: absolute;
+  left: 308px;
+  top: 73px;
+}
+hsi-map-page .systems2-elevator-left-pointer {
+  position: absolute;
+  left: 471px;
+  top: 56px;
+}
+hsi-map-page .systems2-elevator-right-pointer {
+  position: absolute;
+  left: 501px;
+  top: 56px;
+}
+hsi-map-page .systems-overlay-container {
+  position: absolute;
+  bottom: 4%;
+  border: 2px solid var(--wt21-colors-white);
+  height: 17%;
+  width: 95%;
+  left: 2.5%;
+  display: flex;
+  flex-direction: column;
+  z-index: 75;
+}
+hsi-map-page .systems-overlay-title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: var(--wt21-colors-blue);
+  font-size: 22px;
+  height: 32px;
+  min-height: 32px;
+  border-bottom: 2px solid var(--wt21-colors-white);
+}
+hsi-map-page .systems1-data-container {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3px;
+  background-color: var(--wt21-colors-black);
+  flex-grow: 1;
+}
+hsi-map-page .fms-text-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateX(0);
+  padding-left: 85px;
+  font-size: 24px;
+}
+hsi-map-page .fms-text-row {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fill, 100px);
+}
+hsi-map-page .fms-text-row-right-align {
+  text-align: right;
+}
+hsi-map-page .fms-text-vnav {
+  position: absolute;
+  left: 395px;
+  top: 0;
+  width: calc(100% - 395px);
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(4, min-content);
+  grid-template-columns: 15px 100px 1fr;
+  color: var(--wt21-colors-green);
+  background: black;
+}
+hsi-map-page .fms-text-vnav-divider {
+  color: var(--wt21-colors-white);
+}
+hsi-map-page .fms-text-incompatible {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+}
+hsi-map-page .fms-text-incompatible div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+hsi-map-page .upper-text-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateX(0);
+  transform: translate(-5.9%, -220%);
+}
+hsi-map-page .mfd-page-perf-ref-container {
+  position: absolute;
+  left: 20%;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+}
+hsi-map-page .perf-ref-header {
+  display: flex;
+  width: 450px;
+  justify-content: space-between;
+}
+hsi-map-page .perf-ref-data-container {
+  margin-top: 20px;
+}
+hsi-map-page .perf-ref-data-row {
+  display: flex;
+}
+hsi-map-page .data1-size {
+  width: 160px;
+}
+hsi-map-page .data2-size {
+  width: 100px;
+}
+hsi-map-page .data3-size {
+  width: 80px;
+}
+hsi-map-page .data4-size {
+  width: 158px;
+}
+hsi-map-page .data5-size {
+  width: 128px;
+}
+hsi-map-page .data6-size {
+  width: 128px;
+}
+hsi-map-page .perf-ref-vspeed-container {
+  position: absolute;
+  top: 9.5%;
+  left: 63%;
+}
+hsi-map-page .perf-ref-app-vspeed-container {
+  position: absolute;
+  top: 9.5%;
+  left: 63%;
+}
+hsi-map-page .perf-ref-vspeed-container,
+hsi-map-page .perf-ref-app-vspeed-container > div {
+  margin-bottom: 25px;
+}
+hsi-map-page .perf-ref-vspeed {
+  text-align: end;
+  padding-right: 12px;
+}
+hsi-map-page .perf-ref-field-length-container {
+  position: absolute;
+  left: 79%;
+  top: 58.5%;
+  text-align: center;
+}
+hsi-map-page .perf-ref-field-length-value {
+  text-align: center;
+}
+hsi-map-page .gnss-status-title-header {
+  text-align: center;
+}
+hsi-map-page .gnss-status-pos,
+hsi-map-page .gnss-status-sat,
+hsi-map-page .gnss-status-grid1,
+hsi-map-page .gnss-status-grid2,
+hsi-map-page .gnss-status-grid3 {
+  width: 457px;
+}
+hsi-map-page .gnss-status-pos,
+hsi-map-page .gnss-status-grid1 {
+  margin-top: 20px;
+}
+hsi-map-page .gnss-status-grid1 {
+  display: flex;
+  justify-content: space-between;
+}
+hsi-map-page .gnss-status-grid2 {
+  margin-top: -24px;
+}
+hsi-map-page .gnss-status-grid3 {
+  margin-top: -140px;
+}
+hsi-map-page .gnss-status-value {
+  display: inline-block;
+  color: var(--wt21-colors-white);
+  padding-left: 15px;
+}
+hsi-map-page .no-padding {
+  padding: 0;
+}
+hsi-map-page .gnss-status-value.min40 {
+  min-width: 40px;
+}
+hsi-map-page .gnss-status-value.min93 {
+  min-width: 93px;
+}
+hsi-map-page .gnss-status-value.min106 {
+  min-width: 106px;
+}
+hsi-map-page #PageSection {
+  position: absolute;
+  top: 185px;
+  background: var(--wt21-colors-black);
+  width: 100%;
+  height: 824px;
+  z-index: 51;
+  padding-top: 7px;
+  display: none;
+}
+hsi-map-page .mfd-page-box {
+  border: 5px solid var(--wt21-colors-white);
+  height: 820px;
+  position: relative;
+  font-size: 24px;
+}
+hsi-map-page .mfd-page-box::before {
+  content: "";
+  display: block;
+  height: 35px;
+  width: 60px;
+  background: var(--wt21-colors-black);
+  position: absolute;
+  right: -5px;
+  top: -10px;
+}
+hsi-map-page .mfd-page-box::after {
+  content: "";
+  display: block;
+  border-bottom: 5px solid var(--wt21-colors-white);
+  border-left: 8px solid var(--wt21-colors-white);
+  height: 35px;
+  width: 160px;
+  background: var(--wt21-colors-black);
+  position: absolute;
+  right: 15px;
+  top: -5px;
+  transform: skew(57deg);
+}
+hsi-map-page .mfd-page-main-container {
+  position: absolute;
+  left: 12%;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 550px;
+}
+hsi-map-page .mfd-page-title-header {
+  display: flex;
+  width: 550px;
+  justify-content: space-between;
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .header-hidden {
+  visibility: hidden;
+}
+hsi-map-page .grid-center {
+  justify-self: center;
+  white-space: nowrap;
+}
+hsi-map-page .grid-right {
+  justify-self: right;
+  white-space: nowrap;
+}
+hsi-map-page .grid-left {
+  justify-self: left;
+  white-space: nowrap;
+}
+hsi-map-page .text-right {
+  text-align: right;
+}
+hsi-map-page .nav-status-title-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+hsi-map-page .nav-status-title-header > div {
+  margin-bottom: 20px;
+}
+hsi-map-page .nav-status-grid {
+  margin-left: 65px;
+  display: grid;
+  grid-template-columns: 140px 170px 110px 150px;
+  grid-template-rows: repeat(9, 40px);
+}
+hsi-map-page .mfd-page-pos-report-container {
+  position: absolute;
+  left: 20%;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+}
+hsi-map-page .pos-report-header-margin {
+  margin-bottom: 30px;
+}
+hsi-map-page .pos-report-grid-container {
+  display: grid;
+  grid-template-columns: 100px 250px 108px 95px;
+  grid-template-rows: repeat(3, 22px);
+  margin-bottom: 20px;
+}
+hsi-map-page .grid-coordinates {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  text-align: center;
+  padding-right: 70px;
+}
+hsi-map-page .grid-indent {
+  padding-left: 40px;
+}
+hsi-map-page .pos-grid-spacing1 {
+  padding-right: 145px;
+}
+hsi-map-page .pos-grid-spacing2 {
+  padding-right: 107px;
+}
+hsi-map-page .pos-report-weather {
+  align-self: left;
+  display: grid;
+  grid-template-columns: 247px 105px 175px;
+  grid-template-rows: repeat(2, 22px);
+}
+hsi-map-page .pos-report-dest {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 145px 185px 150px 75px;
+  grid-template-rows: repeat(3, 22px);
+}
+hsi-map-page .pos-report-dest-spacing {
+  padding-right: 120px;
+}
+hsi-map-page .pos-summary-title-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+hsi-map-page .pos-summary-title-header > div {
+  margin-bottom: 20px;
+}
+hsi-map-page .pos-summary-grid {
+  display: grid;
+  grid-template-columns: 240px 150px 60px;
+  grid-template-rows: repeat(6, 22px);
+}
+hsi-map-page .pos-summary-grid-title {
+  display: grid;
+  grid-template-columns: 240px 150px 60px;
+  grid-template-rows: auto;
+  margin-bottom: 20px;
+}
+hsi-map-page .pos-summary-grid-indent {
+  padding-left: 10px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+hsi-map-page .progress-row {
+  padding-left: 20px;
+  margin-top: 20px;
+  white-space: nowrap;
+}
+hsi-map-page .progress-grid,
+hsi-map-page .dest-grid {
+  align-self: left;
+  display: grid;
+  grid-template-columns: 100px 120px 210px 90px;
+}
+hsi-map-page .progress-grid {
+  margin-top: 28px;
+  grid-template-rows: 22px 42px 42px 42px 42px 42px 42px 42px;
+}
+hsi-map-page .dest-grid {
+  grid-template-rows: repeat(6, 22px);
+}
+hsi-map-page .dest-indent {
+  padding-left: 15px;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+hsi-map-page .fuel-column {
+  grid-column-start: 3;
+  padding-left: 40px;
+}
+hsi-map-page .progress-fuel-label {
+  position: absolute;
+  top: 9.7%;
+  left: 97%;
+}
+hsi-map-page .vnav-ident {
+  margin-left: 12px;
+}
+hsi-map-page .vordme-status-title-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+hsi-map-page .vordme-status-grid {
+  margin-left: 40px;
+  width: 450px;
+  display: grid;
+  grid-template-columns: 120px 80px 110px 100px;
+  grid-template-rows: 22px 40px 60px 40px 40px 40px;
+}
+hsi-map-page .grid-right.dme-inactive {
+  justify-self: left;
+}
+hsi-map-page .grid-right.dme-inactive .dme-placeholder {
+  display: inline;
+}
+hsi-map-page .grid-right.dme-inactive .dme-value,
+hsi-map-page .dme-placeholder {
+  display: none;
+}
+hsi-map-page .check-label {
+  display: block;
+}
+hsi-map-page .check-design {
+  display: inline-block;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin: 2px 2.5px -0.5px 5.5px;
+  vertical-align: -1px;
+  border: 1px solid var(--wt21-colors-gray);
+}
+hsi-map-page .check-design > svg {
+  display: none;
+}
+hsi-map-page .check-input:disabled ~ .check-design > .disabled-svg {
+  display: block;
+}
+hsi-map-page .check-input:checked ~ .check-design > .enabled-svg {
+  display: block;
+}
+hsi-map-page .popup-menu-checkbox.disabled > label > .check-design {
+  border: 1px solid var(--wt21-colors-dark-gray);
+}
+hsi-map-page .popup-menu-checkbox .check-input:checked ~ .check-text {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .popup-menu-checkbox .magenta .check-input:checked ~ .check-text {
+  color: var(--wt21-colors-magenta);
+}
+hsi-map-page .popup-menu-checkbox .magenta .enabled-svg path {
+  stroke: var(--wt21-colors-magenta);
+}
+hsi-map-page .popup-menu-checkbox label .check-text {
+  width: calc(100% - 25px);
+  display: inline-flex;
+  justify-content: space-between;
+}
+hsi-map-page .popup-menu-checkbox.disabled label .check-text {
+  color: var(--wt21-colors-dark-gray);
+}
+hsi-map-page .check-select-value {
+  padding-right: 3px;
+}
+hsi-map-page .popup-menu-radio {
+  position: relative;
+  margin: -3px 0 3px 0;
+  border: 2px solid transparent;
+}
+hsi-map-page .radio-label {
+  display: block;
+  line-height: 1.1;
+}
+hsi-map-page .popup-menu-radio .label {
+  display: none;
+}
+hsi-map-page .popup-menu-radio.inline .radio-label,
+hsi-map-page .popup-menu-radio.inline .label {
+  display: inline-block;
+  line-height: 17px;
+  vertical-align: -7px;
+}
+hsi-map-page .radio-label.radio-select {
+  line-height: 17px;
+  padding-top: 3px;
+}
+hsi-map-page .popup-menu-radio.inline .label {
+  width: 145px;
+}
+hsi-map-page .popup-menu-radio.inline .radio-label {
+  width: 100px;
+}
+hsi-map-page .popup-menu-radio .radio-label:first-child {
+  margin-top: 5px;
+}
+hsi-map-page .popup-menu-radio .radio-label:last-child {
+  margin-bottom: -5px;
+}
+hsi-map-page .radio-label.radio-select:last-child {
+  margin-bottom: 2px;
+}
+hsi-map-page .radio-label .radio-design {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid currentColor;
+  position: relative;
+  margin: 0 3.5px -0.5px 6.5px;
+  border-radius: 100px;
+  background: var(--wt21-colors-cyan);
+}
+hsi-map-page .radio-label .radio-design::before {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: inherit;
+  background: var(--wt21-colors-black);
+  transform: scale(1);
+}
+hsi-map-page .radio-label .radio-input:checked + .radio-design::before {
+  transform: scale(0);
+}
+hsi-map-page .radio-label .radio-input:checked ~ .radio-text {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .radio-label .radio-design > svg {
+  position: absolute;
+  display: none;
+  top: -1px;
+  left: -1px;
+}
+hsi-map-page .radio-label .radio-input:disabled ~ .radio-design > svg {
+  display: block;
+}
+hsi-map-page .radio-label .radio-text {
+  width: calc(100% - 25px);
+  display: inline-flex;
+  justify-content: space-between;
+}
+hsi-map-page .radio-label.disabled {
+  color: var(--wt21-colors-dark-gray);
+}
+hsi-map-page .radio-label .radio-select-value {
+  padding-right: 3px;
+}
+hsi-map-page .popup-menu-select {
+  white-space: nowrap;
+  word-break: keep-all;
+  margin: -4px 0;
+  padding-left: 25px;
+}
+hsi-map-page .popup-menu-select div {
+  padding: 1px 0;
+  display: inline-block;
+}
+hsi-map-page .popup-menu-select-label {
+  width: 105px;
+  vertical-align: -6px;
+}
+hsi-map-page .popup-menu-select-value {
+  color: var(--wt21-colors-cyan);
+  vertical-align: -6px;
+}
+@font-face {
+  font-family: "WT21";
+  src: url("/Pages/VCockpit/Instruments/WT21/Assets/Fonts/Custom_Altimeter_wt21-LightCondensed.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "WT21 FMC";
+  src: url("/Pages/VCockpit/Instruments/WT21/Assets/Fonts/wt21-Condensed.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+hsi-map-page html {
+  /*
+  This is a repository for common style parameters. Use these whenever you can, so that we can make global adjustments at just this point.
+  Use as var(--wt21-x-y-z) to replace any value in conventional notation.
+  Keep these colors in sync with WT21_Colors.ts.
+  */
+  /* Color Styling */
+  --wt21-colors-black: black;
+  --wt21-colors-black-translucent: rgba(0, 0, 0, 0.35);
+  --wt21-colors-white: white;
+  --wt21-colors-gray: hsl(0, 0%, 70%);
+  --wt21-colors-dark-gray: hsl(0, 0%, 60%);
+  --wt21-colors-lightblue: hsl(210, 100%, 50%);
+  --wt21-colors-blue: hsl(230, 100%, 51%);
+  --wt21-colors-red: red;
+  --wt21-colors-amber: orange;
+  --wt21-colors-yellow: yellow;
+
+
+  --wt21-colors-green: #00ff00;
+  --wt21-colors-magenta: magenta;
+  --wt21-colors-cyan: hsl(195, 100%, 50%);
+  /* Font Styling */
+  --wt21-fonts-family-general: "WT21";
+  --wt21-fonts-family-fmc: "WT21 FMC";
+  --wt21-fonts-weight-bold: 700;
+  --wt21-fonts-weight-normal: 400;
+  --wt21-fonts-weight-light: 300;
+  --wt21-fonts-shadow-normal: 1px 1px var(--wt21-colors-black),
+    -1px -1px var(--wt21-colors-black), 1px -1px var(--wt21-colors-black),
+    -1px 1px var(--wt21-colors-black);
+  --wt21-fonts-shadow-light: 1px 1px var(--wt21-colors-black-translucent),
+    -1px -1px var(--wt21-colors-black-translucent),
+    1px -1px var(--wt21-colors-black-translucent),
+    -1px 1px var(--wt21-colors-black-translucent);
+  /* Border Styling */
+  --wt21-borders-xlight: 1px solid var(--wt21-colors-grey);
+  --wt21-borders-light: 1px solid var(--wt21-colors-white);
+  --wt21-borders-normal: 2px solid var(--wt21-colors-white);
+  --wt21-borders-strong: 3px solid var(--wt21-colors-white);
+}
+hsi-map-page #vignettage {
+  display: none;
+  visibility: hidden;
+}
+hsi-map-page #highlight {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+hsi-map-page .hidden {
+  display: none !important;
+}
+hsi-map-page .visibility-hidden {
+  visibility: hidden !important;
+}
+hsi-map-page .menudisabled {
+  color: var(--wt21-colors-dark-gray);
+}
+hsi-map-page .white-text {
+  color: var(--wt21-colors-white);
+}
+hsi-map-page .magenta-text {
+  color: var(--wt21-colors-magenta);
+}
+hsi-map-page .cyan-text {
+  color: var(--wt21-colors-cyan);
+}
+hsi-map-page .green-text {
+  color: var(--wt21-colors-green);
+}
+hsi-map-page .yellow-text {
+  color: var(--wt21-colors-yellow);
+}
+hsi-map-page .fail-box,
+hsi-map-page .fail-box-small,
+hsi-map-page .info-box {
+  background: var(--wt21-colors-black);
+  color: var(--wt21-colors-cyan);
+  border: 0.175rem solid var(--wt21-colors-cyan);
+  font-size: 1.75rem;
+  position: absolute;
+  padding: 0.4rem 0.15rem 0 0.15rem;
+  line-height: 0.8;
+  display: none;
+}
+hsi-map-page .fail-box-small {
+  font-size: 1.5rem;
+}
+hsi-map-page .fail .fail-box,
+hsi-map-page .fail .fail-box-small {
+  color: var(--wt21-colors-red);
+  border: 0.175rem solid var(--wt21-colors-red);
+  display: block;
+}
+hsi-map-page .warn .fail-box,
+hsi-map-page .warn .fail-box-small {
+  color: var(--wt21-colors-yellow);
+  border: 0.175rem solid var(--wt21-colors-yellow);
+  display: block;
+}
+hsi-map-page .fail .fail-box,
+hsi-map-page .fail .fail-box-small,
+hsi-map-page .warn .fail-box,
+hsi-map-page .warn .fail-box-small,
+hsi-map-page .align .fail-box,
+hsi-map-page .align .fail-box-small {
+  animation: fail-blink 0.75s step-start;
+  animation-iteration-count: 6;
+}
+@keyframes fail-blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+hsi-map-page wt21-mfd {
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  overflow: hidden;
+  font-family: var(--wt21-fonts-family-general);
+  background-color: var(--wt21-colors-black);
+}
+hsi-map-page wt21-mfd #Mainframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+hsi-map-page wt21-mfd #Electricity {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+hsi-map-page #UpperMenu {
+  position: relative;
+  height: 20%;
+  margin-top: 5%;
+}
+hsi-map-page #TextPagesContainer {
+  position: relative;
+  height: 20%;
+  margin-top: 5%;
+  top: -20%;
+}
+hsi-map-page #HSIMap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+hsi-map-page #MFDBottomSection {
+  height: 3.5%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--wt21-colors-black);
+  padding-top: 1%;
+}
+hsi-map-page #MenuSection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+}
+hsi-map-page #HSIMap > .cas-container {
+  position: relative;
+  top: 460px;
+  border-top: 2px solid white;
+}

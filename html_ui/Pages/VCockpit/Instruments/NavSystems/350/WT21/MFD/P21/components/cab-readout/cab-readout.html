@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/cab-readout/cab-readout.css">
+
+
+<script type="text/html" id="cab-readout-template">
+  <div class="component-container">
+    <div class="cab-readout text-sm text-grey">
+      <div class="cab-readout__title">CABIN</div>
+      <div class="cab-readout__grid">
+
+        <table class="cab-readout__half">
+          <tbody>
+            <tr>
+              <td class="cab-readout__label">OXY QTY</td>
+              <td class="text-green text-md text-right cab-readout__value"><span id="cab-oxy-qty">1850</span></td>
+            </tr>
+            <tr>
+              <td class="cab-readout__label">ALT</td>
+              <td class="text-green text-md text-right cab-readout__value"><span id="cab-alt">7300</span></td>
+            </tr>
+            <tr>
+              <td class="cab-readout__label">RATE</td>
+              <td class="text-green text-md text-right">
+                <div class="flex justify-end cab-readout__value">
+                  <span id="cab-rate-arrow" class="relative" style="transform: rotate(180deg)">
+                    <svg width="13" height="18" viewBox="0 0 13 18">
+                        <path d="
+                          M6 1
+                          L6 10
+                          L1 10
+                          L6 17
+                          L12 10
+                          L6 10
+                          Z
+                        " class="stroke-green">
+                      </path>
+                    </svg>
+                  </span>
+                  <span id="cab-rate">1000</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="cab-readout__half">
+          <tbody>
+            <tr>
+              <td class="cab-readout__label">&#916;P</td>
+              <td class="text-green text-md text-right cab-readout__value"><span id="cab-dp">0.0</span></td>
+            </tr>
+            <tr>
+              <td class="cab-readout__label">TEMP &#176;C</td>
+              <td class="text-green text-md text-right cab-readout__value"><span id="cab-temp">23</span></td>
+            </tr>
+            <tr>
+              <td class="cab-readout__label">LNDG ALT</td>
+              <td class="text-md text-right cab-readout__value"><span id="cab-lndg-alt" class="text-magenta">220</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/javascript" src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/cab-readout/cab-readout.js"></script>

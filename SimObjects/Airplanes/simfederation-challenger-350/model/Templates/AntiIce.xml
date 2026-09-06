@@ -1,0 +1,189 @@
+<ModelBehaviors>
+	<Template Name="P21_ANTI_ICE_TEMPLATE">
+		<!-- WING -->
+		<Component ID="P21_WING_PUSH_BTN" Node="DEICE_Push_Airframe">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>DEICE_Push_Airframe</NODE_ID>
+				<ANIM_NAME>DEICE_Push_Airframe</ANIM_NAME>
+				<VAR_NAME>L:P21_WING_PUSH_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_WING_PUSH_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'AIRFRAME DE-ICE'</TOOLTIP_TITLE>
+      				<TT_DESCRIPTION>'SET AIRFRAME DE-ICE POSITION'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_WING_PUSH_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE>
+
+				</ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="P21_PROBES_L_BTN" Node="PROBES_L_BUTTON">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>PROBES_L_BUTTON</NODE_ID>
+				<ANIM_NAME>PROBES_L_BUTTON</ANIM_NAME>
+				<VAR_NAME>L:P21_PROBES_L_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_PROBES_L_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'PROBES L'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_PROBES_L_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE></ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_PROBES_R_BTN" Node="PROBES_R_BUTTON">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>PROBES_R_BUTTON</NODE_ID>
+				<ANIM_NAME>PROBES_R_BUTTON</ANIM_NAME>
+				<VAR_NAME>L:P21_PROBES_R_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_PROBES_R_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'PROBES R'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_PROBES_R_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE></ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_ENG_L_BTN" Node="DEICE_Push_Engine_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>DEICE_Push_Engine_1</NODE_ID>
+				<ANIM_NAME>DEICE_Push_Engine_1</ANIM_NAME>
+				<VAR_NAME>L:P21_ENG_L_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_ENG_L_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'ANTI-ICE ENGINE'</TOOLTIP_TITLE>
+      				<TT_DESCRIPTION>'SET ANTI-ICE ENGINE LEFT POSITION'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_ENG_L_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE></ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+
+		<Component ID="P21_ENG_R_BTN" Node="DEICE_Push_Engine_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<AUDIO_POS_X>0.479</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.731</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.621</AUDIO_POS_Z>
+				<NODE_ID>DEICE_Push_Engine_2</NODE_ID>
+				<ANIM_NAME>DEICE_Push_Engine_2</ANIM_NAME>
+				<VAR_NAME>L:P21_ENG_R_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_ENG_R_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'ANTI-ICE ENGINE'</TOOLTIP_TITLE>
+      				<TT_DESCRIPTION>'SET ANTI-ICE ENGINE RIGHT POSITION'</TT_DESCRIPTION>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_ENG_R_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE></ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- WSHLD_WINDOW_L -->
+		<Component ID="P21_WSHLD_WINDOW_L_BTN" Node="ASOBO_DEICE_Push_Windshield_1">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<NODE_ID>ASOBO_DEICE_Push_Windshield_1</NODE_ID>
+				<ANIM_NAME>ASOBO_DEICE_Push_Windshield_1</ANIM_NAME>
+				<VAR_NAME>L:P21_WSHLD_WINDOW_L_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_WSHLD_WINDOW_L_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'WINDSHIELD DE-ICE'</TOOLTIP_TITLE>
+      			<TT_DESCRIPTION>'SET PILOT WINDSHIELD DE-ICE POSITION'</TT_DESCRIPTION>
+          		<TT_ICON>PUSH</TT_ICON>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_WSHLD_WINDOW_L_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE></ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- WSHLD_WINDOW_R -->
+		<Component ID="P21_WSHLD_WINDOW_R_BTN" Node="ASOBO_DEICE_Push_Windshield_2">
+			<UseTemplate Name="P21_BTN_PUSH_TOGGLE">
+				<NODE_ID>ASOBO_DEICE_Push_Windshield_2</NODE_ID>
+				<ANIM_NAME>ASOBO_DEICE_Push_Windshield_2</ANIM_NAME>
+				<VAR_NAME>L:P21_WSHLD_WINDOW_R_BTN</VAR_NAME>
+				<TOOLTIPID>L:P21_WSHLD_WINDOW_R_BTN</TOOLTIPID>
+				<TOOLTIP_TITLE>'WINDSHIELD DE-ICE'</TOOLTIP_TITLE>
+      			<TT_DESCRIPTION>'SET COPILOT WINDSHIELD DE-ICE POSITION'</TT_DESCRIPTION>
+          		<TT_ICON>PUSH</TT_ICON>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_WSHLD_WINDOW_R_BTN) 0 == if{
+							'Disabled'
+					} els{
+							'Enabled'
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONUPDATE_CODE></ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+
+		<!-- WIND SOURCE -->
+		<Component ID="P21_WING_SRC_KNOB" Node="DEICE_Knob_Wing_Source">
+			<PartID>P21_WING_SRC_KNOB</PartID>
+			<CameraTitle>Pedestal</CameraTitle>
+			<UseTemplate Name="P21_ROTARY_3STATE">
+				<AUDIO_POS_X>0.450</AUDIO_POS_X>
+				<AUDIO_POS_Y>0.441</AUDIO_POS_Y>
+				<AUDIO_POS_Z>0.924</AUDIO_POS_Z>
+				<NODE_ID>DEICE_Knob_Wing_Source</NODE_ID>
+				<ANIM_NAME>DEICE_Knob_Wing_Source</ANIM_NAME>
+				<VAR_NAME>L:P21_WING_SRC_KNOB</VAR_NAME>
+				<TOOLTIP_TITLE>'WING SOURCE'</TOOLTIP_TITLE>
+				<TOOLTIP_VAL_CODE>
+					(L:P21_WING_SRC_KNOB) 0 == if{
+						'FROM L'
+					} els {
+						(L:P21_WING_SRC_KNOB) 1 == if{
+							'NORM'
+						} else {
+							(L:P21_WING_SRC_KNOB) 2 == if{
+								'FROM R'
+							}
+						}
+					}
+				</TOOLTIP_VAL_CODE>
+				<ONCHANGE_CODE></ONCHANGE_CODE>
+				<ONUPDATE_CODE></ONUPDATE_CODE>
+			</UseTemplate>
+		</Component>
+	</Template>
+</ModelBehaviors>

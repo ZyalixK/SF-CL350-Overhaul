@@ -1,0 +1,37 @@
+<ModelBehaviors>
+  <Include ModelBehaviorFile="ASOBO\Inputs\Helpers.xml"/>
+  <Template Name="WT_CJ4_PASSENGER_Knob_Template">
+    <Parameters Type="Default">
+      <ID>1</ID>
+      <INCREMENT>1</INCREMENT>
+      <LOCAL_VAR></LOCAL_VAR>
+      <IE></IE>
+      <NODE_ID></NODE_ID>
+      <INIT_VALUE>0</INIT_VALUE>
+    </Parameters>
+    <UseTemplate Name="ASOBO_Interaction_Base_Template">
+      <IE_NAME>#IE#_#ID#</IE_NAME>
+      <INPUT_EVENT_ID_SOURCE>PASSENGER</INPUT_EVENT_ID_SOURCE>
+      <USE_INPUT_EVENT_ID>PASSENGER</USE_INPUT_EVENT_ID>
+      <INTERACTION_TYPE>Knob</INTERACTION_TYPE>
+      <GET_STATE_EXTERNAL>(L:#LOCAL_VAR#)</GET_STATE_EXTERNAL>
+      <SET_STATE_EXTERNAL>
+					p0 (L:#LOCAL_VAR#) &gt; if{ 
+							(L:#LOCAL_VAR#) #INCREMENT# + 100 min (&gt;L:#LOCAL_VAR#)
+					} els{
+							(L:#LOCAL_VAR#) #INCREMENT# - 0.0 max (&gt;L:#LOCAL_VAR#)
+					}
+      </SET_STATE_EXTERNAL>
+      <LOCAL_VAR_TO_WATCH_0>#LOCAL_VAR#</LOCAL_VAR_TO_WATCH_0>
+      <COUNT>100</COUNT>
+      <WWISE_EVENT>lighting_knob_generic</WWISE_EVENT>
+      <ANIM_NAME>#NODE_ID#</ANIM_NAME>
+    </UseTemplate>
+    <UseTemplate Name="ASOBO_GT_Update">
+      <UPDATE_ONCE>True</UPDATE_ONCE>
+      <UPDATE_CODE>
+			  #INIT_VALUE# (&gt;L:#LOCAL_VAR#)
+      </UPDATE_CODE>
+    </UseTemplate>
+  </Template>
+</ModelBehaviors>

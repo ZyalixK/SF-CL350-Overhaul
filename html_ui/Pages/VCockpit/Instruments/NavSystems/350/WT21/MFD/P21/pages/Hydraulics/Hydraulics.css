@@ -1,0 +1,151 @@
+hydraulics-page #jet-left {
+  position: absolute;
+  left: 1.6%;
+  top: 41.8%;
+  width: 6.75;
+  height: 19.2;
+}
+
+hydraulics-page #jet-right {
+  position: absolute;
+  left: 89.5%;
+  top: 41.9%;
+  width: 6.75;
+  height: 19.2;
+}
+
+hydraulics-page #reservoir-left {
+  position: absolute;
+  width: 16.3%;
+  height: 11.5%;
+  left: 17.93%;
+  top: 10.23%;
+}
+
+hydraulics-page #reservoir-aux {
+  position: absolute;
+  width: 8.9%;
+  height: 9.8%;
+  left: 46.1%;
+  top: 17.2%;
+}
+
+hydraulics-page #reservoir-right {
+  position: absolute;
+  width: 16.6%;
+  height: 11.5%;
+  left: 65.9%;
+  top: 10.43%;
+}
+
+hydraulics-page #pump-edp-left {
+  position: absolute;
+  left: 9.3%;
+  top: 46%;
+}
+
+hydraulics-page #pump-dcmp-left {
+  position: absolute;
+  left: 31%;
+  top: 32.8%;
+}
+
+hydraulics-page #pump-dcmp-aux {
+  position: absolute;
+  left: 48.8%;
+  top: 32.5%;
+}
+
+hydraulics-page #pump-dcmp-right {
+  position: absolute;
+  left: 65.4%;
+  top: 32.5%;
+}
+
+hydraulics-page #pump-edp-right {
+  position: absolute;
+  left: 87.4%;
+  top: 46%;
+}
+
+hydraulics-page #valve-sov-left {
+  position: absolute;
+  left: 17.6%;
+  top: 27.25%;
+}
+
+hydraulics-page #valve-sov-right {
+  position: absolute;
+  left: 78.8%;
+  top: 27.25%;
+}
+
+hydraulics-page #press-left {
+  position: absolute;
+  left: 21.98%;
+  top: 49.85%;
+}
+
+hydraulics-page #press-aux {
+  position: absolute;
+  left: 47.9%;
+  top: 44.87%;
+}
+
+hydraulics-page #press-right {
+  position: absolute;
+  left: 71.54%;
+  top: 49.65%;
+}
+
+hydraulics-page #component-left {
+  position: absolute;
+  left: 17.21%;
+  top: 69.8%;
+  line-height: 1.1;
+}
+
+
+hydraulics-page #label-aux {
+  position: absolute;
+  left: 53.4%;
+  top: 29.2%;
+}
+
+hydraulics-page #component-aux {
+  position: absolute;
+  left: 47.34%;
+  top: 70.42%;
+  line-height: 1.1;
+}
+
+hydraulics-page #component-ptu {
+  position: absolute;
+  left: 36.2%;
+  top: 87.86%;
+  line-height: 1.1;
+}
+
+hydraulics-page #component-right {
+  position: absolute;
+  left: 66.12%;
+  top: 69.7%;
+  line-height: 1.1;
+}
+
+hydraulics-page #ptu {
+  position: absolute;
+  left: 35.77%;
+  top: 32.05%;
+}
+
+hydraulics-page #servicing-left {
+  position: absolute;
+  left: 0.2%;
+  top: 67.55%;
+}
+hydraulics-page #servicing-right {
+  position: absolute;
+  left: 88.1%;
+  top: 67.55%;
+}

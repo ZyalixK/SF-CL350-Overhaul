@@ -1,0 +1,170 @@
+<link
+  rel="stylesheet"
+  href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/flight-controls/fc-spoiler-gauge/fc-spoiler-gauge.css" />
+
+<script type="text/html" id="fc-spoiler-gauge-template">
+  <div class="component-container">
+    <svg width="356" h="200" viewBox="-89 -52 178 92.5">
+
+
+      <!-- Title -->
+      <!-- <text>
+        <tspan x="-33" y="-34" class="text-sm fill-grey">SPOILERS</tspan>
+      </text> -->
+
+      <!-- Left -->
+      <g id="g1" style="transform: translate(-75px, -28px)">
+        <g style="transform: translateY(66%)">
+          <!-- Arrow Left -->
+          <path
+            d="
+              M 6 1 L2 13
+              M 6 1 L6 62
+            "
+            id="g1-left"
+            class="stroke-green"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+
+          <!-- Arrow Right-->
+          <path
+            d="
+              M 17 1 L21 13
+              M 17 1 L17 62
+            "
+            id="g1-right"
+            class="stroke-green"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+        </g>
+
+        <line x1="1" y1="0" x2="23" y2="0" class="stroke-white"></line>
+
+        <path d="M1 70 L1 62 L12 62 L12 70 Z" id="g1-box-l"
+              class="stroke-green fill-black"></path>
+        <path d="M12 70 L12 62 L23 62 L23 70 Z" id="g1-box-r"
+              class="stroke-green fill-black"></path>
+
+        <!-- Tick Markers -->
+        <g style="transform: translate(5.5px, 0)" class="tick-markers">
+          <line x1="2" y1="16" x2="10" y2="16" class="stroke-white"></line>
+          <line x1="-1" y1="32" x2="13" y2="32" class="stroke-white"></line>
+          <line x1="2" y1="48" x2="10" y2="48" class="stroke-white"></line>
+        </g>
+      </g>
+
+      <!-- Left Middle -->
+      <g id="g2" style="transform: translate(-39px, -28px)">
+        <g style="transform: translateY(66%)">
+          <!-- Arrow Left -->
+          <path
+            d="
+              M 6 1 L2 13
+              M 6 1 L6 62
+            "
+            id="g2-left"
+            class="stroke-green"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+
+          <!-- Arrow Right-->
+          <path
+            d="
+              M 17 1 L21 13
+              M 17 1 L17 62
+            "
+            id="g2-right"
+            class="stroke-green"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+        </g>
+
+        <line x1="1" y1="0" x2="23" y2="0" class="stroke-white"></line>
+
+        <path d="M1 70 L1 62 L12 62 L12 70 Z" id="g2-box-l"
+              class="stroke-green fill-black"></path>
+        <path d="M12 70 L12 62 L23 62 L23 70 Z" id="g2-box-r"
+              class="stroke-green fill-black"></path>
+      </g>
+
+      <!-- Right Middle -->
+      <g id="g3" style="transform: translate(-75px, -28px)">
+        <g style="transform: translateY(66%)">
+          <!-- Arrow Left -->
+          <path
+            d="
+              M 6 1 L2 13
+              M 6 1 L6 62
+            "
+            id="g3-left"
+            class="stroke-green"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+
+          <!-- Arrow Right-->
+          <path
+            d="
+              M 17 1 L21 13
+              M 17 1 L17 62
+            "
+            id="g3-right"
+            class="stroke-green"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+        </g>
+
+        <line x1="1" y1="0" x2="23" y2="0" class="stroke-white"></line>
+
+        <path d="M1 70 L1 62 L12 62 L12 70 Z" id="g3-box-l"
+              class="stroke-green fill-black"></path>
+        <path d="M12 70 L12 62 L23 62 L23 70 Z" id="g3-box-r"
+              class="stroke-green fill-black"></path>
+      </g>
+
+      <!-- Right -->
+      <g id="g4" style="transform: translate(-39px, -28px)">
+        <g style="transform: translateY(66%)">
+          <!-- Arrow Left -->
+          <path
+            d="
+              M 6 1 L2 13
+              M 6 1 L6 62
+            "
+            id="g4-left"
+            class="stroke-green"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+
+          <!-- Arrow Right-->
+          <path
+            d="
+              M 17 1 L21 13
+              M 17 1 L17 62
+            "
+            id="g4-right"
+            class="stroke-green"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+        </g>
+
+        <line x1="1" y1="0" x2="23" y2="0" class="stroke-white"></line>
+
+        <path d="M1 70 L1 62 L12 62 L12 70 Z" id="g4-box-l"
+              class="stroke-green fill-black"></path>
+        <path d="M12 70 L12 62 L23 62 L23 70 Z" id="g4-box-r"
+              class="stroke-green fill-black"></path>
+
+        <!-- Tick Markers -->
+        <g style="transform: translate(5.5px, 0)" class="tick-markers">
+          <line x1="2" y1="16" x2="10" y2="16" class="stroke-white"></line>
+          <line x1="-1" y1="32" x2="13" y2="32" class="stroke-white"></line>
+          <line x1="2" y1="48" x2="10" y2="48" class="stroke-white"></line>
+        </g>
+      </g>
+    </svg>
+  </div>
+</script>
+
+<script
+  type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/flight-controls/fc-spoiler-gauge/fc-spoiler-gauge.js"></script>

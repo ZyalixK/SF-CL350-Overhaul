@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Navcom/Navcom.css">
+
+<script type="text/html" id="navcom-page-template">
+  <div class="navcom">
+    <div class="navcom-section navcom-section--com1">
+      <div class="navcom-section__label text-sm">
+        <span id="com-own-label" class="navcom-section__label-inner">
+          COM1
+        </span>
+      </div>
+      <div class="flex items-center">
+        <span id="com1-active" class="text-green text-xl">118.000</span>
+        <span id="com1-transmit" class="text-cyan text-base">TX</span>
+      </div>
+      <div id="com1-standby" class="navcom-section__bordered border inline-block">118.000</div>
+      <div class="navcom-section__arrow-cont">
+        <svg width="8" height="44" viewBox="0 0 8 44">
+          <g class="fill-cyan">
+            <polygon points="4,0 1,14 8,14"></polygon>
+          </g>
+        </svg>
+      </div>
+      <div class="navcom-section__separator"></div>
+    </div>
+    <div class="navcom-section">
+      <div class="navcom-section__label text-sm">
+        <span id="nav1-label" class="navcom-section__label-inner">
+          NAV1
+        </span>
+      </div>
+      <div id="nav1-active" class="text-green text-xl mb-xs">118.000</div>
+      <div id="nav1-standby">118.000</div>
+      <div class="navcom-section__separator"></div>
+    </div>
+    <div class="navcom-section">
+      <div class="navcom-section__label text-sm">
+        <span id="atc-label" class="navcom-section__label-inner">
+          ATC/TCAS
+        </span>
+      </div>
+      <div id="transponder-code" class="text-white text-xl mb-2xs">1200</div>
+      <div id="transponder-state" class="text-cyan mb-2xs uppercase">STBY</div>
+      <div id="transponder-altitude" class="hidden text-cyan uppercase">ABV</div>
+      <div class="navcom-section__separator"></div>
+    </div>
+    <div class="navcom-section">
+      <div class="navcom-section__label text-sm">
+        <span id="adf-label" class="navcom-section__label-inner">
+          ADF1
+        </span>
+      </div>
+      <div id="adf-active" class="text-green text-xl mb-xs">1799.5</div>
+      <div id="adf-standby" class="text-white mb-2xs text-center">190.0</div>
+      <div class="navcom-section__separator "></div>
+    </div>
+    <div class="navcom-section">
+      <div class="navcom-section__label text-sm">
+        <span id="hf-label" class="navcom-section__label-inner">
+          HF1
+        </span>
+      </div>
+      <div class="text-green text-base mb-xs">
+        <span id="hf1-active">2.0000</span>
+        <span id="hf1-modulation" class="text-cyan text-xl">
+          AM
+        </span>
+      </div>
+      <div id="hf1-standby" class="text-white mb-2xs text-center">2.0000</div>
+      <div class="navcom-section__separator "></div>
+    </div>
+    <div class="navcom-section">
+      <div class="navcom-section__label text-sm">
+        <span id="com3-label" class="navcom-section__label-inner">
+          COM3
+        </span>
+      </div>
+      <div class="flex items-center mb-xs">
+        <span id="com3-active" class="text-green text-xl">118.000</span>
+        <span id="com3-transmit" class="text-cyan text-base">TX</span>
+      </div>
+      <div id="com3-standby" class="text-white mb-2xs text-center">118.000</div>
+      <div class="navcom-section__separator "></div>
+    </div>
+    <div class="navcom-section">
+      <div class="navcom-section__label text-sm">
+        <span id="com-other-label" class="navcom-section__label-inner">
+          COM2
+        </span>
+      </div>
+      <div class="flex items-center mb-xs">
+        <span id="com2-active" class="text-green text-xl">118.000</span>
+        <span id="com2-transmit" class="text-cyan text-base">TX</span>
+      </div>
+      <div id="com2-standby" class="text-white mb-2xs text-center">118.000</div>
+    </div>
+</script>
+
+<script type="text/javascript" src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Navcom/Navcom.js"></script>

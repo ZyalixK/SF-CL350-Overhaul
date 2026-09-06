@@ -1,0 +1,162 @@
+<link
+  rel="stylesheet"
+  href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/EICAS/EICAS.css" />
+
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/radial-gauge-240/radial-gauge-240.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/stab-gauge/stab-gauge.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/aileron-gauge/aileron-gauge.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/rudder-trim-gauge/rudder-trim-gauge.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/gear-gauge/gear-gauge.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/flaps-gauge/flaps-gauge.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/spoilers-gauge/spoilers-gauge.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/cab-readout/cab-readout.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/eicas-messages/eicas-messages.html"></script>
+
+<script type="text/html" id="eicas-page-template">
+  <div class="eicas-container">
+    <div class="section">
+
+
+      <div class="rg-set n1-section">
+
+        <radial-gauge-240 to="---" rpm="93" id="n1-left"></radial-gauge-240>
+        <div class="rg-set__body">
+          <div class="rg-set__title text-msm text-grey">N1</div>
+
+          <div id="eng-sync" class="rg-set__subtitle text-base text-green visibility-hidden">SYNC</div>
+        </div>
+        <radial-gauge-240 to="---" rpm="93" id="n1-right"></radial-gauge-240>
+      </div>
+
+      <div class="rg-set itt-section">
+        <radial-gauge-240 id="itt-left"></radial-gauge-240>
+        <div class="rg-set__body">
+          <div class="rg-set__title text-msm text-grey">ITT</div>
+        </div>
+        <radial-gauge-240 id="itt-right"></radial-gauge-240>
+      </div>
+
+
+      <div class="n2-section" style="position: relative;">
+
+
+        <span id="eng-ign-left" class="text-green text-msm visibility-hidden"
+              style="position: absolute; left: 0%; top: -21%;">IGN</span>
+        <span id="eng-ign-right" class="text-green text-msm visibility-hidden"
+              style="position: absolute; left: 51.0%; top: -21%;">IGN</span>
+
+        <span id="eng-start-left" class="text-green text-msm visibility-hidden"
+              style="position: absolute; right: 88.2%; top: 8.0%; height: 84.0%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; line-height: 1;"><span>S</span><span>T</span><span>A</span><span>R</span><span>T</span></span>
+        <span id="eng-start-right" class="text-green text-msm visibility-hidden"
+              style="position: absolute; left: 88.2%; top: 8.0%; height: 84.0%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; line-height: 1;"><span>S</span><span>T</span><span>A</span><span>R</span><span>T</span></span>
+        <table class="n2-section__table">
+          <tbody>
+            <tr>
+              <td id="n2-left" class="text-left text-green">84.7</td>
+              <td class="text-center text-grey text-msm">N2</td>
+              <td id="n2-right" class="text-right text-green">84.7</td>
+            </tr>
+            <tr>
+              <td id="oil-press-left" class="text-left text-green">46</td>
+              <td class="text-center text-grey text-msm">OIL PRESS</td>
+              <td id="oil-press-right" class="text-right text-green">46</td>
+            </tr>
+            <tr>
+              <td id="oil-temp-left" class="text-left text-green">115</td>
+              <td class="text-center text-grey text-msm">OIL TEMP</td>
+              <td id="oil-temp-right" class="text-right text-green">115</td>
+            </tr>
+            <tr>
+              <td id="ff-left" class="text-left text-green">7300</td>
+              <td class="text-center text-grey text-msm">FF PPH</td>
+              <td id="ff-right" class="text-right text-green">7300</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div id="apu-section" class="apu-section">
+        <table class="apu-section__table">
+          <tbody>
+            <tr>
+              <td class="text-left text-grey text-msm">APU RPM</td>
+              <td><span id="apu-rpm" class="text-right text-green">100</span></td>
+            </tr>
+            <tr>
+              <td class="text-left text-grey text-msm">APU EGT</td>
+              <td>
+                <span id="apu-egt" class="text-right text-green">250</span>
+
+
+                <span id="apu-start" class="text-green text-base visibility-hidden"
+                      style="position: absolute; left: 79.5%; top: 0; white-space: nowrap;">START</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="fuel-section text-msm text-grey uppercase">
+        <div class="fuel-section__heading">FUEL  QTY  LBS</div>
+        <div class="fuel-section__total">TOTAL  <span id="fuel-qty-total" class="text-green text-base">12000</span></div>
+        <div class="fuel-section__bottom text-green text-base">
+          <div id="fuel-qty-left">6000</div>
+          <div id="fuel-qty-right">6000</div>
+        </div>
+      </div>
+
+      <div class="separator"></div>
+    </div>
+    <div class="section">
+      <div class="dev-label"></div>
+      <!-- Title -->
+      <div class="trim-title text-grey">
+        <div class="trim-title__line"></div>
+        <div class="trim-title__title text-sm">TRIM</div>
+        <div class="trim-title__line"></div>
+      </div>
+
+      <stab-gauge id="stab-gauge"></stab-gauge>
+      <flaps-gauge id="flaps-gauge"></flaps-gauge>
+      <aileron-gauge id="aileron-gauge"></aileron-gauge>
+      <rudder-trim-gauge id="rudder-trim-gauge"></rudder-trim-gauge>
+      <gear-gauge id="gear-gauge"></gear-gauge>
+      <spoilers-gauge id="spoilers-gauge"></spoilers-gauge>
+      <cab-readout id="cab-readout"></cab-readout>
+
+      <div class="separator"></div>
+    </div>
+    <div class="section">
+      <!-- <div class="dev-label">Right</div> -->
+      <eicas-messages id="eicas-messages"></eicas-messages>
+    </div>
+  </div>
+</script>
+
+
+<script
+  type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/EICAS/cas-catalogue.js"></script>
+
+<script
+  type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/EICAS/EICAS.js"></script>

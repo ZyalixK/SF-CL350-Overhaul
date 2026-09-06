@@ -1,0 +1,25 @@
+
+digital-readout .digital-readout {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  min-width: 3.8rem;
+  height: 1.7rem;
+  background: var(--p21-color-black);
+  font-size: var(--text-sm);
+  border: 0.25rem solid var(--p21-color-green);
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+digital-readout .digital-readout__value-container {
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+}
+
+digital-readout.no-border .digital-readout {
+  border: unset;
+  background: transparent;
+}

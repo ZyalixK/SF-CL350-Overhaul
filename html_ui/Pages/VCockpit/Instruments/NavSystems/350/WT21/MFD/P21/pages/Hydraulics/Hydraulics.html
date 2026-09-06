@@ -1,0 +1,111 @@
+<link
+  rel="stylesheet"
+  href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Hydraulics/Hydraulics.css" />
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/electrical/el-jet/el-jet.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/hydraulics/hyd-reservoir/hyd-reservoir.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/fuel/electric-pump/electric-pump.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/fuel/ValveIcon/ValveIcon.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/hydraulics/press-readout/press-readout.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/hydraulics/ptu-icon/ptu-icon.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/hydraulics/hyd-line-network/hyd-line-network.html"></script>
+<script
+  type="text/html"
+  import-template="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/hydraulics/hyd-servicing/hyd-servicing.html"></script>
+
+
+<script type="text/html" id="hydraulics-page-template">
+  <div class="mfd-page relative">
+    <div class="mfd-page__container">
+      <div class="mfd-page__title text-xl text-grey text-center">
+        Hydraulics
+      </div>
+      <div class="mfd-container text-grey">
+        <hyd-line-network id="hyd-line-network"></hyd-line-network>
+
+        <el-jet id="jet-left"></el-jet>
+        <el-jet id="jet-right"></el-jet>
+
+        <hyd-reservoir id="reservoir-left"></hyd-reservoir>
+        <hyd-reservoir id="reservoir-aux"></hyd-reservoir>
+        <hyd-reservoir id="reservoir-right"></hyd-reservoir>
+
+        <electric-pump id="pump-edp-left"></electric-pump>
+        <electric-pump id="pump-dcmp-left"></electric-pump>
+        <electric-pump id="pump-dcmp-aux"></electric-pump>
+        <electric-pump id="pump-dcmp-right"></electric-pump>
+        <electric-pump id="pump-edp-right"></electric-pump>
+
+        <valve-icon id="valve-sov-left"></valve-icon>
+        <valve-icon id="valve-sov-right"></valve-icon>
+
+        <press-readout id="press-left" label="PSI"></press-readout>
+        <press-readout id="press-aux" label="PSI"></press-readout>
+        <press-readout id="press-right" label="PSI"></press-readout>
+
+        <div
+          id="component-left"
+          class="text-center text-sm text-white leading-1">
+          <div>RUDDER</div>
+          <div>ELEVATOR</div>
+          <div>INBD FLT SPLRS</div>
+          <div>INBD GND SPLRS</div>
+          <div>ALTN FLAPS</div>
+          <div>GEAR</div>
+          <div>NOSE WHEEL STEER</div>
+          <div>L REVERSER</div>
+        </div>
+
+
+        <div id="label-aux" class="text-sm text-grey">AUX</div>
+
+        <div
+          id="component-aux"
+          class="text-center text-sm text-white leading-1">
+          <div>RUDDER</div>
+        </div>
+
+        <div
+          id="component-ptu"
+          class="text-center text-sm text-white leading-1">
+          <div>GEAR</div>
+        </div>
+
+        <div
+          id="component-right"
+          class="text-center text-sm text-white leading-1">
+          <div>RUDDER</div>
+          <div>ELEVATOR</div>
+          <div>OUTBD FLT SPLRS</div>
+          <div>OUTBD GND SPLRS</div>
+          <div>NORM FLAPS</div>
+          <div>GEAR DOWN ASSIST</div>
+          <div>PTU</div>
+          <div>R REVERSER</div>
+        </div>
+
+        <ptu-icon id="ptu"></ptu-icon>
+
+        <hyd-servicing position="left" id="servicing-left"></hyd-servicing>
+        <hyd-servicing position="right" id="servicing-right"></hyd-servicing>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script
+  type="text/javascript"
+  src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/pages/Hydraulics/Hydraulics.js"></script>

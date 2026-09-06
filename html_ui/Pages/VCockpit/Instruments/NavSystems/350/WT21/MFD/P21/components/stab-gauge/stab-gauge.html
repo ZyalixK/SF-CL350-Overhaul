@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/stab-gauge/stab-gauge.css">
+
+<script type="text/html" id="stab-gauge-template">
+  <div class="component-container">
+    <svg width="200" height="272" viewBox="0 0 100 136" style="background-color: var(--p21-color-black);">
+      <text x="23" y="17" class="fill-grey">
+        <tspan class="text-sm">STAB</tspan>
+      </text>
+      <text x="20" y="35" class="fill-grey">
+        <tspan class="text-sm">NU</tspan>
+      </text>
+      <text x="20" y="120" class="fill-grey">
+        <tspan class="text-sm">ND</tspan>
+      </text>
+      <line x1="40" y1="23" x2="40" y2="122" class="stroke-white"></line>
+      <line x1="40" y1="23" x2="54" y2="23" class="stroke-white"></line>
+      <line x1="40" y1="56" x2="48" y2="56" class="stroke-white"></line>
+      <line x1="40" y1="89" x2="48" y2="89" class="stroke-white"></line>
+      <line x1="40" y1="122" x2="54" y2="122" class="stroke-white"></line>
+
+
+      <rect id="stab-band" x="38" y="69.2" width="7" height="36.3" class="fill-green"></rect>
+      <g id="gauge-pointer" style="transform: translateY(0px);">
+
+        <path id="stab-callout" d="
+          M 46 123
+          L 59 110
+          H 95 
+          V 137
+          H 59
+          Z" stroke-width="2.2" class="fill-black stab-out-of-band"></path>
+
+
+        <text x="77" y="131" text-anchor="middle" class="fill-green stab-readout">
+          <tspan id="gauge-readout">7.5</tspan>
+        </text>
+        <text x="51" y="131" class="fill-green stab-readout">
+          <tspan id="gauge-neg-icon" class="hidden">-</tspan>
+        </text>
+      </g>
+    </svg>
+  </div>
+</script>
+
+<script type="text/javascript" src="/Pages/VCockpit/Instruments/NavSystems/350/wt21/MFD/P21/components/stab-gauge/stab-gauge.js"></script>

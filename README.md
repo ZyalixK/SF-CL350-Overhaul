@@ -55,7 +55,6 @@ lunar-challenger-350/
 
 ```
 simfederation-aircraft-challenger-350-overhaul-2024/   <- MSFS 2024
-lunar-challenger-350/
 ```
 
 install the overhaul folder for **one** sim, not both. `lunar-challenger-350` you need either way,
